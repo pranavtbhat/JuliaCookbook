@@ -268,7 +268,7 @@ A simple plot of `Year` vs `Income Skew (MeanMedian)` can be drawn by running:
 ```julia
 plot(ineq[:Year], ineq[:MeanMedian]; title="Income inequality in the US", xlabel="Year", ylabel="Skew of Real GDP per Family")
 ```
-![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/ineq_skew_plot.png)
+![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_skew_plot.png)
 
 More plotting examples can be obtained at the Plots.jl [documentation](https://juliaplots.github.io/).
 
@@ -291,7 +291,7 @@ p1 = plot(ineq[:Year], ineq[:RealGDPPerFamily],
 plot!(f, 2, 20, label="correlation")
 ```
 
-![Real GDP per Family vs Year](https://github.com/pranavtbhat/JuliaCookbook/blob/master/linear_regression_ineq.png)
+![Real GDP per Family vs Year](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/linear_regression_ineq.png)
 
 
 ## References

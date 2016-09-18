@@ -266,7 +266,14 @@ ineq = dataset("Ecdat", "incomeInequality")
 A simple plot of `Year` vs `Income Skew (MeanMedian)` can be drawn by running:
 
 ```julia
-plot(ineq[:Year], ineq[:MeanMedian]; title="Income inequality in the US", xlabel="Year", ylabel="Skew of Real GDP per Family")
+plot(
+   ineq[:Year],
+   ineq[:MeanMedian];
+   title="Income inequality in the US",
+   xlabel="Year",
+   ylabel="Skew of Real GDP per Family",
+   label="Income Inequality"
+   )
 ```
 ![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_skew_plot.png)
 
@@ -280,15 +287,18 @@ Fitting `RealGDPPerFamily` to the `Year` is as simple as:
 linearmodel = fit(LinearModel, RealGDPPerFamily ~ Year, ineq)
 c, m = coef(linearmodel)
 f(x) = m*x + c
-p1 = plot(ineq[:Year], ineq[:RealGDPPerFamily],
-    smooth=true,
-    seriestype=:scatter,
-    title = "RealGDPPerFamily vs Year",
-    linewidth=8,
-    linealpha=0.5,
-    label="data")
+plot(
+   ineq[:Year],
+   ineq[:RealGDPPerFamily],
+   smooth=true,
+   seriestype=:scatter,
+   title = "RealGDPPerFamily vs Year",
+   linewidth=8,
+   linealpha=0.5,
+   label="data"
+   )
 
-plot!(f, 2, 20, label="correlation")
+plot!(f, 1950, 2020, label="correlation")
 ```
 
 ![Real GDP per Family vs Year](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/linear_regression_ineq.png)

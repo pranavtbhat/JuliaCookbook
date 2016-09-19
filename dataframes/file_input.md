@@ -163,7 +163,7 @@ julia> open(`gzip -cd $filename`) do f
 │ 1034 │ "Josh_Kinney"        │ "STL" │ "Relief_Pitcher"    │ 73             │ 195            │ 27.92 │
 ```
 
-Another use case, would be to extract a DataFrame from the output of a Perl script. For example, if you want only every second row in the DataFrame, you would do:
+You could also extract a DataFrame from the output of a Perl script. For example, if you want only alternate rows in the DataFrame, you would do:
 
 ```julia
 julia> filename = joinpath(Pkg.dir("JuliaCookbook"), "datasets", "baseball_players.tsv") # Locate the dataset
@@ -192,7 +192,7 @@ Julia allows a command to pipe its output into the next command, using the `pipe
 julia> pipeline(`COMMAND_1`, `COMMAND_2` ... `COMMAND_N`)
 ```
 
-A DataFrame of every second row can be extracted from the compressed dataset by running:
+A DataFrame consisting of alternate rows can be extracted from the compressed dataset by running:
 ```julia
 julia> filename = joinpath(Pkg.dir("JuliaCookbook"), "datasets", "baseball_players.tsv.gz") # Locate the dataset
 julia> open(pipeline(`gzip -cd $filename`, `perl -ne 'print if $. % 2'`)) do f

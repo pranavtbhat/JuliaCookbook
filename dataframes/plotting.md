@@ -92,6 +92,7 @@ histogram(
      ylabel="Number of People",
      title="Age Distribution of people with Bad Health"
  )
+```
 
 ![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/bhealth_age_dist.png)
 

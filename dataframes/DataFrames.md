@@ -31,7 +31,7 @@ julia> using GZip
 
 - [Reading from Files](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dataframes/file_input.md)
 - [Accessing Data](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dataframes/accessors.md)
-- [RDatasets](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dataframes/RDatasets.md))
+- [RDatasets](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dataframes/RDatasets.md)
 - [Plotting](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dataframes/plotting.md)
 - [Regressions](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dataframes/regressions.md)
 

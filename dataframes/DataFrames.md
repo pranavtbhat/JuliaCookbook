@@ -29,7 +29,11 @@ julia> using GZip
 
 ## Contents
 
-- [Reading from Files](https://github.com/pranavtbhat/JuliaCookbook/blob/master/src/dataframe.md)
+- [Reading from Files](https://github.com/pranavtbhat/JuliaCookbook/blob/master/src/dataframes/file_input.md)
+- [Accessing Data](https://github.com/pranavtbhat/JuliaCookbook/blob/master/src/dataframes/accessors.md)
+- [RDatasets](https://github.com/pranavtbhat/JuliaCookbook/blob/master/src/dataframes/RDatasets.md))
+- [Plotting](https://github.com/pranavtbhat/JuliaCookbook/blob/master/src/dataframes/plotting.md)
+- [Regressions](https://github.com/pranavtbhat/JuliaCookbook/blob/master/src/dataframes/regressions.md)
 
 ## References
 * [DataFrames.jl documentation](https://dataframesjl.readthedocs.io/en/latest/)

@@ -98,3 +98,29 @@ histogram(
 
 
 More plotting examples can be obtained at the Plots.jl [documentation](https://juliaplots.github.io/).
+
+# Scatterplots
+
+Canadian occupational-prestige dataset is another dataset which can be loaded by running:
+
+```julia
+julia> prestige = dataset("car","prestige");
+julia> head(prestige)
+6×7 DataFrames.DataFrame
+│ Row │ Profession            │ Education │ Income │ Women │ Prestige │ Census │ Type   │
+├─────┼───────────────────────┼───────────┼────────┼───────┼──────────┼────────┼────────┤
+│ 1   │ "gov.administrators"  │ 13.11     │ 12351  │ 11.16 │ 68.8     │ 1113   │ "prof" │
+│ 2   │ "general.managers"    │ 12.26     │ 25879  │ 4.02  │ 69.1     │ 1130   │ "prof" │
+│ 3   │ "accountants"         │ 12.77     │ 9271   │ 15.7  │ 63.4     │ 1171   │ "prof" │
+│ 4   │ "purchasing.officers" │ 11.42     │ 8865   │ 9.11  │ 56.8     │ 1175   │ "prof" │
+│ 5   │ "chemists"            │ 14.62     │ 8403   │ 11.68 │ 73.5     │ 2111   │ "prof" │
+│ 6   │ "physicists"          │ 15.64     │ 11030  │ 5.13  │ 77.6     │ 2113   │ "prof" │
+```
+
+Scatterplots are useful in visually finding the correlation between two sets of variables:
+
+```julia
+julia> scatter(prestige[:Income], prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")
+```
+
+![Canadian data, Prestige - Income](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige.png)

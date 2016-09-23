@@ -15,7 +15,7 @@ julia> findfirst([0,0,1,2,0], 2)
 4
 ```
 
-Finally, a boolean-returning-function can be passed in as a "test". The position of the first element to pass the `test`, (i.e. the function returns true) is returned:
+Finally, a boolean-returning-function can be passed in as a "test". The position of the first element to pass the "test", (i.e. the function returns true) is returned:
 ```julia
 julia> findfirst(x -> x == 2, [0,0,1,2,0])
 4
@@ -42,7 +42,7 @@ julia> find([0,0,1,2,0])
  4
 ```
 
-The `find` function can also be used to find the positions of all elements that pass a "test" described by a function.
+The `find` function can also be used to find the positions of all elements that pass a "test", described by a boolean-returning-function.
 
 ```julia
 julia> find(x -> x == 0, [1,2,0,2,0,1,0])

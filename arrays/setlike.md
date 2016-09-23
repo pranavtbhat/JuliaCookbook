@@ -17,13 +17,24 @@ The `unique` function works faster when the input list comprises of sorted eleme
 
 ## Finding Elements in One Array but Not Another
 
-The easiest way to do this is `setdiff`. For example:
+To find the elements that are in one array, but not another, use `setdiff`. For example:
 
 ```julia
 julia> setdiff([1,2,3,4], [1,2,5,6])
 2-element Array{Int64,1}:
  3
  4
+```
+
+If your arrays have elements repeated, then use:
+```julia
+julia> filter(x -> !in(x, [1,2,4]), [1,2,2,3,3,4,6,7,7])
+5-element Array{Int64,1}:
+ 3
+ 3
+ 6
+ 7
+ 7
 ```
 
 ## Set union

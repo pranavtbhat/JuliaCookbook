@@ -4,7 +4,7 @@ Most use cases of Arrays involve iterating over each element in the array, and a
 
 ## Iteration
 
-Julia provides the `in` operator which when used in conjunction with the `in` operator, can be used to iterate over every element in the list:
+Julia provides the `in` operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:
 
 ```julia
 julia> for item in ["A","B","C"]

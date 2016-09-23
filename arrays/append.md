@@ -4,7 +4,7 @@ Julia provides multiple methods to concatenate, combine or append arrays.
 
 ## Appending arrays
 
-The `append!` function appends the second argument it receives into the first argument it receives. For example:
+The `append!` function can be used to append two arrays. For example:
 
 ```julia
 julia> append!([1,2,3], [4,5,6])
@@ -17,14 +17,14 @@ julia> append!([1,2,3], [4,5,6])
  6
 ```
 
-Remember, the `append!` function mutates the first array. The elements of the second array are copied into the first one, so the second array can be altered subsequently without affecting the first array.
+The `append!` function mutates the first array. The elements of the second array are copied into the first one, so the second array can be altered subsequently without affecting the first array.
 
 
 ## Vertical Concatenation
 
 Arrays can be stacked vertically using the `vcat` function.
 
-```
+```julia
 julia> vcat([1,2,3], [4,5,6])
 6-element Array{Int64,1}:
  1

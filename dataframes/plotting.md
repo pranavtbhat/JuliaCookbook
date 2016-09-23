@@ -124,3 +124,10 @@ julia> scatter(prestige[:Income], prestige[:Prestige], xaxis="Income", yaxis="Pr
 ```
 
 ![Canadian data, Prestige - Income](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige.png)
+
+It is often very useful to plot as it reveals the nature of relationships among parameters, from the above figure it can be observed that distribution of income is not very even. Hence it is worth trying to see how `log` would help here:
+
+```julia
+julia> scatter(log(prestige[:Income]), prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")
+```
+![Canadian data, Prestige - Income](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige_log.png)

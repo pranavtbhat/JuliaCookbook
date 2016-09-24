@@ -1,10 +1,10 @@
 # Strings
 
-A string in Julia is an immutable sequence of characters. In previous versions of Julia, the string type was implemented through an abstract type `AbstractString` and concrete types such as `ASCIIString`. Now, Julia provides a single `String` datatype.
+A string in Julia is an immutable sequence of characters. In previous versions of Julia, the string type was implemented through an abstract type, `AbstractString` and concrete types such as `ASCIIString`. Now, Julia provides a single `String` datatype.
 
 ## Accessing Substrings
 
-Julia doesn't allow modifications to `String` object, once it's created. However, it does provide ways of generating substrings. The getindex notation `[]` can be used on `String`s, in the same way that you'd extract sub-arrays:
+Julia doesn't allow modifications to `String` object, once it's created. However, it does provide ways of generating substrings. The getindex notation `[]` can be used on `String`, in the same way that you'd extract sub-arrays:
 
 ```julia
 julia> str = "abcdefg"
@@ -68,6 +68,7 @@ julia> reverse("abcdefg")
 ```
 
 If you want to reverse the individual words in the `String`:
+
 1. First split the string into constituent words using `split`
 2. Perform a reversal on every word
 3. Use `join` to combine the words
@@ -77,17 +78,13 @@ julia> join(map(reverse, split("abc def ghi jkl", ' ')), ' ')
 "cba fed ihg lkj"
 ```
 
-## Expanding and Compressing Tabs
+## Expanding Tabs
 
 If you have a file with tab-spaces that you'd like to replace space-indents, use the `replace` function:
 
 ```julia
-julia> filename = joinpath(Pkg.dir("JuliaCookbook"), "datasets", "baseball_players.tsv")
-
-julia> open(filename) do f
-          str = readstring(f)
-          replace(str, r"(\t)", s"   ")
-       end
+julia> replace("1\t2\t3\t4", r"(\t)", s"   ")
+"1   2   3   4"
 ```
 
 ## Expanding Variables in User Input (Interpolation)
@@ -137,7 +134,7 @@ julia> rstrip("Hello World       ")
 
 # Parsing Delimited Data
 
-Parsing a TSV or CSV file with strings can be challenging, since the string fields can contain tabs or commas themselves. The best way to parse such a file, would be to use the `readdlm` function. `readdlm` will not consider the tabs or commas inside strings, when splitting the lines of the files.
+Parsing a CSV file with strings can be challenging, since the string fields can contain commas themselves. The best way to parse such a file, would be to use the `readcsv` function. `readcsv` will not consider the commas inside strings, when splitting the lines of the files.
 
 ```julia
 julia> buf = IOBuffer("\"abcd\",\"abc,d\",\"ab,c,d\",\"a,b,c,d\"")

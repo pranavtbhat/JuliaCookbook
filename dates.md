@@ -90,7 +90,7 @@ julia> Dates.datetime2epochms(Dates.now())
 
 ## Converting Epoch Seconds to a Date-Time object
 
-Julia provides the `epochms2datetime` function to conver the date denoted by the number of milliseconds elapsed since the rounding epoch date-time into a `DateTime` object:
+Julia provides the `epochms2datetime` function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a `DateTime` object:
 
 ```julia
 julia> Dates.epochms2datetime(63642136200066)
@@ -124,7 +124,7 @@ julia> DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Date
 
 ## Day in a Week/Month/Year or Week Number
 
-Julia provides query functions for `DateTime` functions:
+Julia provides query functions for `DateTime` objects:
 
 ```julia
 julia> t = Dates.now()

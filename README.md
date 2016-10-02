@@ -6,3 +6,4 @@ A Cookbook for Julia. Contains recipes for:
 * [Arrays](https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/arrays.md)
 * [Strings](https://github.com/pranavtbhat/JuliaCookbook/blob/master/strings.md)
 * [Date Time](https://github.com/pranavtbhat/JuliaCookbook/blob/master/dates.md)
+* [Regular Expressions](https://github.com/pranavtbhat/JuliaCookbook/blob/master/regex.md)

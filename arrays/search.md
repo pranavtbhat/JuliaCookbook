@@ -31,7 +31,7 @@ julia> findfirst([0,0,0], 1)
 0
 ```
 
-# Finding All Elements in an Array Matching Certain Criteria
+## Finding All Elements in an Array Matching Certain Criteria
 
 The `find` function can be used to find the positions of all non-zero elements in an array.
 
@@ -50,4 +50,15 @@ julia> find(x -> x == 0, [1,2,0,2,0,1,0])
  3
  5
  7
+```
+## Filtering out elements
+
+If you'd like to remove the elements of an array that do not satisfy a condition, the `filter` function can come in handy. For example, to remove the negative numbers in an array:
+
+```julia
+julia> filter(x -> x >= 0, [1,-2,3,-4,0])
+2-element Array{Int64,1}:
+ 1
+ 3
+ 0
 ```

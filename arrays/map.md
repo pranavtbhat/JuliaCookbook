@@ -59,3 +59,13 @@ julia> map(x -> x + 1, [1,2,3])
  3
  4
 ```
+
+## Map Reduce
+
+If you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the `mapreduce` function can come in handy. For example, to find the sum of the squares
+of the first five numbers
+
+```julia
+julia> mapreduce(x->x^2, +, [1,2,3,4,5])
+55
+```

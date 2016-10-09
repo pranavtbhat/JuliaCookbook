@@ -58,6 +58,30 @@ julia> map(x -> x + 1, "abcd") # Increment every character in the string
 "bcde"
 ```
 
+## Concatentating strings
+
+Strings can be concatenated using the `string` function. Non string objects are converted into strings, as long as the
+`show` function is defined.
+
+```julia
+julia> string("One ", "Two ", 3, ' ', :four)
+"One Two 3 four"
+```
+
+An array of strings can be joined together, with separators, using the `join` function
+
+```julia
+julia> join([1, 2, 3, 4, 5, 6], ", ")
+"1, 2, 3, 4, 5, 6"
+```
+
+## Checking if one string is a substring of the other
+The `contains` function can be used to check string containment.
+
+```julia
+julia> contains("abcd", "ab")
+true
+```
 ## Reversing a String by Word or Character
 
 To reverse every character in the `String`, use the `reverse` function:

@@ -39,4 +39,4 @@ pages:
    - File IO: dataframes/file_input.md
    - Data Access: dataframes/accessors.md
    - R Datasets: dataframes/RDatasets.md
-   - Regressions: dataframes/regressions
+   - Regressions: dataframes/regressions.md

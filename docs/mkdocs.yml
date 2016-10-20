@@ -26,6 +26,6 @@ pages:
 - Dictionaries: dicts.md
 - Dates: dates.md
 - Regex: regex.md
-- Arrays: arrays.md
+- Arrays: arrays/arrays.md
 - Dates: dates.md
-- DataFrames: dataframes.md
+- DataFrames: dataframes/DataFrames.md

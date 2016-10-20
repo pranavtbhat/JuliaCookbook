@@ -27,5 +27,16 @@ pages:
 - Dates: dates.md
 - Regex: regex.md
 - Arrays: arrays/arrays.md
+   - Introduction: arrays/arrays.md
+   - Creation: arrays/creating.md
+   - Iteration: arrays/map.md
+   - Reordering: arrays/reorder.md
+   - Set Operations: arrays/setlike.md
+   - Search: arrays/search.md
 - Dates: dates.md
-- DataFrames: dataframes/DataFrames.md
+- DataFrames:
+   - Introduction: dataframes/DataFrames.md
+   - File IO: dataframes/file_input.md
+   - Data Access: dataframes/accessors.md
+   - R Datasets: dataframes/RDatasets.md
+   - Regressions: dataframes/regressions

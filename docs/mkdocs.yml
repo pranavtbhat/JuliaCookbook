@@ -26,7 +26,7 @@ pages:
 - Dictionaries: dicts.md
 - Dates: dates.md
 - Regex: regex.md
-- Arrays: arrays/arrays.md
+- Arrays:
    - Introduction: arrays/arrays.md
    - Creation: arrays/creating.md
    - Iteration: arrays/map.md

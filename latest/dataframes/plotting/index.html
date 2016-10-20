@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>R Datasets - JuliaCookbook</title>
+    <title>Plotting - JuliaCookbook</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -186,8 +186,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">R Datasets</a>
+<li >
+    <a href="../RDatasets/">R Datasets</a>
 </li>
 
                         
@@ -198,8 +198,8 @@
 
                         
                             
-<li >
-    <a href="../plotting/">Plotting</a>
+<li class="active">
+    <a href="./">Plotting</a>
 </li>
 
                         
@@ -218,12 +218,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../accessors/">
+                        <a rel="next" href="../regressions/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../regressions/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -248,74 +248,121 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#r-datasets">R Datasets</a></li>
+        <li class="first-level active"><a href="#plotting">Plotting</a></li>
+        
+    
+        <li class="first-level "><a href="#line-graphs">Line Graphs</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><a id='R-Datasets-1'></a></p>
-<h1 id="r-datasets">R Datasets</h1>
-<p>If you miss the standard datasets from R, or just need a few sample datasets to get familiar with DataFrames, the <a href="https://github.com/johnmyleswhite/RDatasets.jl">RDatasets</a> package would be a great place to look.</p>
-<p>The list of R packages, from which datasets are available, can be obtained using:</p>
-<pre><code class="julia">julia&gt; RDatasets.packages()
-33×2 DataFrames.DataFrame
-│ Row │ Package        │ Title                                                                     │
-├─────┼────────────────┼───────────────────────────────────────────────────────────────────────────┤
-│ 1   │ &quot;COUNT&quot;        │ &quot;Functions, data and code for count data.&quot;                                │
-│ 2   │ &quot;Ecdat&quot;        │ &quot;Data sets for econometrics&quot;                                              │
-│ 3   │ &quot;HSAUR&quot;        │ &quot;A Handbook of Statistical Analyses Using R (1st Edition)&quot;                │
-│ 4   │ &quot;HistData&quot;     │ &quot;Data sets from the history of statistics and data visualization&quot;         │
-│ 5   │ &quot;ISLR&quot;         │ &quot;Data for An Introduction to Statistical Learning with Applications in R&quot; │
-  ⋮
-│ 29  │ &quot;rpart&quot;        │ &quot;Recursive Partitioning and Regression Trees&quot;                             │
-│ 30  │ &quot;sandwich&quot;     │ &quot;Robust Covariance Matrix Estimators&quot;                                     │
-│ 31  │ &quot;sem&quot;          │ &quot;Structural Equation Models&quot;                                              │
-│ 32  │ &quot;survival&quot;     │ &quot;Survival Analysis&quot;                                                       │
-│ 33  │ &quot;vcd&quot;          │ &quot;Visualizing Categorical Data&quot;                                            │
+<p><a id='Plotting-1'></a></p>
+<h1 id="plotting">Plotting</h1>
+<p>The <a href="https://github.com/tbreloff/Plots.jl">Plots.jl</a> package is probably the best option for <code>linegraphs</code>, <code>scatterplots</code>, <code>histograms</code> etc.</p>
+<p><a id='Line-Graphs-1'></a></p>
+<h1 id="line-graphs">Line Graphs</h1>
+<p>The examples shown below use the <a href="https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/incomeInequality.html">Income Inequality in the US</a> dataset which can be loaded by running:</p>
+<pre><code class="julia">julia&gt; ineq = dataset(&quot;Ecdat&quot;, &quot;incomeInequality&quot;)
 </code></pre>
 
-<p>The datasets available from each package can be obtained by running <code>RDatasets.datasets("PACKAGE_NAME")</code>. For example, for a list of datasets for Econometrics, run:</p>
-<pre><code class="julia">julia&gt; RDatasets.datasets(&quot;Ecdat&quot;)
-93×5 DataFrames.DataFrame
-│ Row │ Package │ Dataset            │ Title                                                      │ Rows  │ Columns │
-├─────┼─────────┼────────────────────┼────────────────────────────────────────────────────────────┼───────┼─────────┤
-│ 1   │ &quot;Ecdat&quot; │ &quot;Accident&quot;         │ &quot;Ship Accidents&quot;                                           │ 40    │ 5       │
-│ 2   │ &quot;Ecdat&quot; │ &quot;Airline&quot;          │ &quot;Cost for U.S. Airlines&quot;                                   │ 90    │ 6       │
-│ 3   │ &quot;Ecdat&quot; │ &quot;Airq&quot;             │ &quot;Air Quality for Californian Metropolitan Areas&quot;           │ 30    │ 6       │
-│ 4   │ &quot;Ecdat&quot; │ &quot;Benefits&quot;         │ &quot;Unemployement of Blue Collar Workers&quot;                     │ 4877  │ 18      │
-│ 5   │ &quot;Ecdat&quot; │ &quot;Bids&quot;             │ &quot;Bids Received By U.S. Firms&quot;                              │ 126   │ 12      │
-  ⋮
-│ 89  │ &quot;Ecdat&quot; │ &quot;Wages1&quot;           │ &quot;Wages, Experience and Schooling&quot;                          │ 3294  │ 4       │
-│ 90  │ &quot;Ecdat&quot; │ &quot;Workinghours&quot;     │ &quot;Wife Working Hours&quot;                                       │ 3382  │ 12      │
-│ 91  │ &quot;Ecdat&quot; │ &quot;Yen&quot;              │ &quot;Yen-dollar Exchange Rate&quot;                                 │ 778   │ 4       │
-│ 92  │ &quot;Ecdat&quot; │ &quot;Yogurt&quot;           │ &quot;Choice of Brand for Yogurts&quot;                              │ 2412  │ 10      │
-│ 93  │ &quot;Ecdat&quot; │ &quot;incomeInequality&quot; │ &quot;Income Inequality in the US&quot;                              │ 66    │ 22      │
+<p>It would be interesting to see how the family incomes of the different sections of society have developed over the years. The dataset contains several columns corresponding to quantiles of the family incomes of Americans: <code>[Quintile1, Quintile2, median, Quintile3, Quintile4, p95, P90, P95, P99, P99.5, P99.9, P99.99]</code>.</p>
+<p>A plot of the first Quantile against time can be obtained by running:</p>
+<pre><code class="julia">plot(
+    ineq[:Year],
+    ineq[:Quintile1];
+    title=&quot;Income inequality in the US&quot;,
+    xlabel=&quot;Year&quot;,
+    ylabel=&quot;Family Income(\$)&quot;,
+    label=&quot;First Quantile&quot;
+ )
+
 </code></pre>
 
-<p>Or you can simply get a long list of all supported datasets by running:</p>
-<pre><code class="julia">RDatasets.datasets()
+<p>Subsequent quantiles can be added to the plot using the <code>plot!</code> function</p>
+<pre><code class="julia">plot!(ineq[:Year], ineq[:Quintile2], label=&quot;Second Quantile&quot;)
+plot!(ineq[:Year], ineq[:Median], label=&quot;Median&quot;)
+plot!(ineq[:Year], ineq[:Quintile3], label=&quot;Third Quantile&quot;)
+plot!(ineq[:Year], ineq[:Quintile4], label=&quot;Fourth Quantile&quot;)
 </code></pre>
 
-<p>Once you've identified the dataset you wish to use, it can be loaded into a DataFrame by running <code>dataset("PACKAGE_NAME", "DATASET_NAME")</code>. For example, you can load the dataset <a href="https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/incomeInequality.html">Income Inequality in the US</a> by running:</p>
-<pre><code class="julia">ineq = dataset(&quot;Ecdat&quot;, &quot;incomeInequality&quot;)
-66×22 DataFrames.DataFrame
-│ Row │ Year │ NumberThousands │ Quintile1 │ … │PersonsPerFamily │ RealGDPPerFamily │ MeanMedian │
-├─────┼──────┼─────────────────┼───────────│   │─────────────────┼──────────────────┼────────────┤
-│ 1   │ 1947 │ 37237           │ 14243     │ … │ 3.87051         │ 54641.2          │ 2.04158    │
-│ 2   │ 1948 │ 38624           │ 13779     │ … │ 3.79637         │ 54864.9          │ 2.09587    │
-│ 3   │ 1949 │ 39303           │ 13007     │ … │ 3.79584         │ 53623.1          │ 2.07767    │
-│ 4   │ 1950 │ 39929           │ 13829     │ … │ 3.79884         │ 57382.2          │ 2.09177    │
-│ 5   │ 1951 │ 40578           │ 15070     │ … │ 3.80223         │ 61013.9          │ 2.15917    │
-│ 24  │ 1970 │ 52227           │ 26913     │ … │ 3.92688         │ 94856.2          │ 1.85394    │
-  ⋮
-│ 62  │ 2008 │ 78874           │ 29646     │ … │ 3.86113         │ 1.97489e5        │ 3.04476    │
-│ 63  │ 2009 │ 78867           │ 28832     │ … │ 3.89567         │ 1.91972e5        │ 3.02526    │
-│ 64  │ 2010 │ 79559           │ 27928     │ … │ 3.89366         │ 1.95073e5        │ 3.10811    │
-│ 65  │ 2011 │ 80529           │ 27787     │ … │ 3.87483         │ 1.96284e5        │ 3.18783    │
-│ 66  │ 2012 │ 80944           │ 27794     │ … │ 3.88266         │ 200704.0         │ 3.25129    │
-</code></pre></div>
+<p><img alt="Income inequality in the US" src="https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_quantiles.png" /></p>
+<p>A plot of the income development of rich families can be obtained by running:</p>
+<pre><code class="julia">plot(
+    ineq[:Year],
+    ineq[:P90];
+    title=&quot;Income inequality in the US&quot;,
+    xlabel=&quot;Year&quot;,
+    ylabel=&quot;Family Income(\$)&quot;,
+    label=&quot;P90&quot;
+ )
+plot!(ineq[:Year], ineq[:P95], label=&quot;P95&quot;)
+plot!(ineq[:Year], ineq[:P99], label=&quot;P99&quot;)
+plot!(ineq[:Year], ineq[:P99_5], label=&quot;P99.5&quot;)
+plot!(ineq[:Year], ineq[:P99_9], label=&quot;P99_9&quot;)
+plot!(ineq[:Year], ineq[:P99_99], label=&quot;P99_99&quot;)
+</code></pre>
+
+<p><img alt="Income inequality in the US" src="https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_pseries.png" /></p>
+<p>Cleary, P90 and P95 are under-emphasized in the graph. A logarithmic scale can be used by setting the <code>yscale</code> argument:</p>
+<pre><code class="julia">plot(
+     ineq[:Year],
+     ineq[:P90];
+     title=&quot;Income inequality in the US&quot;,
+     xlabel=&quot;Year&quot;,
+     ylabel=&quot;Family Income(\$)&quot;,
+     label=&quot;P90&quot;,
+     yscale=:log10
+ )
+ plot!(ineq[:Year], ineq[:P95], label=&quot;P95&quot;)
+ plot!(ineq[:Year], ineq[:P99], label=&quot;P99&quot;)
+ plot!(ineq[:Year], ineq[:P99_5], label=&quot;P99.5&quot;)
+ plot!(ineq[:Year], ineq[:P99_9], label=&quot;P99_9&quot;)
+ plot!(ineq[:Year], ineq[:P99_99], label=&quot;P99_99&quot;)
+ ```
+![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_pseries_log.png)
+
+
+# Histogram
+
+The example shown below uses the [Bad Health](http://vincentarelbundock.github.io/Rdatasets/doc/COUNT/badhealth.html) dataset available in `RDatasets`. The dataset can be loaded using:
+
+</code></pre>
+
+<p>julia bhealth = dataset("COUNT", "badhealth")</p>
+<pre><code>
+A histogram of unhealthy people vs age can be plotted by running:
+</code></pre>
+
+<p>julia histogram(      bhealth[bhealth[:BadH] .== 1, :Age],      nbins=10,      label="Number of People",      xlabel="Age",      ylabel="Number of People",      title="Age Distribution of people with Bad Health"  )</p>
+<pre><code>
+![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/bhealth_age_dist.png)
+
+
+More plotting examples can be obtained at the Plots.jl [documentation](https://juliaplots.github.io/).
+
+# Scatterplots
+
+Canadian occupational-prestige dataset is another dataset which can be loaded by running:
+
+</code></pre>
+
+<p>julia julia&gt; prestige = dataset("car","prestige"); julia&gt; head(prestige) 6×7 DataFrames.DataFrame │ Row │ Profession            │ Education │ Income │ Women │ Prestige │ Census │ Type   │ ├─────┼───────────────────────┼───────────┼────────┼───────┼──────────┼────────┼────────┤ │ 1   │ "gov.administrators"  │ 13.11     │ 12351  │ 11.16 │ 68.8     │ 1113   │ "prof" │ │ 2   │ "general.managers"    │ 12.26     │ 25879  │ 4.02  │ 69.1     │ 1130   │ "prof" │ │ 3   │ "accountants"         │ 12.77     │ 9271   │ 15.7  │ 63.4     │ 1171   │ "prof" │ │ 4   │ "purchasing.officers" │ 11.42     │ 8865   │ 9.11  │ 56.8     │ 1175   │ "prof" │ │ 5   │ "chemists"            │ 14.62     │ 8403   │ 11.68 │ 73.5     │ 2111   │ "prof" │ │ 6   │ "physicists"          │ 15.64     │ 11030  │ 5.13  │ 77.6     │ 2113   │ "prof" │</p>
+<pre><code>
+Scatterplots are useful in visually finding the correlation between two sets of variables:
+
+</code></pre>
+
+<p>julia julia&gt; scatter(prestige[:Income], prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")</p>
+<pre><code>
+![Canadian data, Prestige - Income](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige.png)
+
+It is often very useful to plot as it reveals the nature of relationships among parameters, from the above figure it can be observed that distribution of income is not very even. Hence it is worth trying to see how `log` would help here:
+
+</code></pre>
+
+<p>julia julia&gt; scatter(log(prestige[:Income]), prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income") ``` <img alt="Canadian data, Prestige - Income" src="https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige_log.png" /></p></div>
         
     </div>
 

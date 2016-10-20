@@ -93,6 +93,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>None/dataframes/plotting/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>

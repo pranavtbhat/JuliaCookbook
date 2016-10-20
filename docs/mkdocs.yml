@@ -2,21 +2,17 @@ site_name: JuliaCookbook
 site_description: A cookbook for Julia
 repo_url: https://github.com/pranavtbhat/JuliaCookbook
 
-theme: material
-
-extra:
-  palette:
-    primary: 'indigo'
-    accent:  'blue'
+theme: cinder
 
 extra_css:
   - assets/Documenter.css
 
 markdown_extensions:
-  - codehilite
-  - extra
-  - tables
-  - fenced_code
+- extra
+ - mdx_math
+ - fenced_code
+ - toc:
+     permalink: True
 
 extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
@@ -25,21 +21,12 @@ extra_javascript:
 docs_dir: 'build'
 
 pages:
-- [tuples.md, Tuples]
-- [strings.md, Strings]
-- [dicts.md, Dictionaries]
-- [dates.md, Dates]
-- [regex.md, Regular Expressions]
-- [index.md, Contents]
-- [arrays/arrays.md            , Arrays    , Introduction]
-- [arrays/creating.md          , Arrays    , Creation]
-- [arrays/map.md               , Arrays    , Iteration]
-- [arrays/append.md            , Arrays    , Concatenation]
-- [arrays/reorder.md           , Arrays    , Reordering]
-- [arrays/setlike.md           , Arrays    , Set Operations]
-- [arrays/search.md            , Arrays    , Searching]
-- [dataframes/DataFrames.md    , DataFrames, Introduction]
-- [dataframes/file_input.md    , DataFrames, File IO]
-- [dataframes/accessors.md     , DataFrames, Data Access]
-- [dataframes/RDatasets.md     , DataFrames, R Datasets]
-- [dataframes/regressions      , DataFrames, Regressions]
+- Home: index.md
+- Tuples: tuples.md
+- Strings: strings.md
+- Dictionaries: dicts.md
+- Dates: dates.md
+- Regex: regex.md
+- Arrays: arrays.md
+- Dates: dates.md
+- DataFrames: dataframes.md

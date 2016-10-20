@@ -8,9 +8,10 @@ extra_css:
   - assets/Documenter.css
 
 markdown_extensions:
-- extra
-- mdx_math
-- fenced_code
+  - extra
+  - tables
+  - fenced_code
+  - mdx_math
 
 extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML

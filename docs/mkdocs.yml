@@ -27,3 +27,5 @@ docs_dir: 'build'
 pages:
 - [index.md, Contents]
 - [arrays/arrays.md     , Arrays    , Introduction]
+- [arrays/creating.md   , Arrays    , Creation]
+- [arrays/map.md  , Arrays    , Iteration]

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>Iteration - JuliaCookbook</title>
+      
+      
+      
+      
+    
+    <meta property="og:url" content="None">
+    <meta property="og:title" content="JuliaCookbook">
+    <meta property="og:image" content="None/../../">
+    <meta name="apple-mobile-web-app-title" content="JuliaCookbook">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon-e565ddfa3b.ico">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../assets/fonts/icon.eot?52m981');
+      	src: url('../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../assets/stylesheets/application-a422ff04cc.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/palettes-05ab2406df.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono">
+      <style>
+        body, input {
+          font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+      <link rel="stylesheet" href="../../assets/Documenter.css">
+    
+    <script src="../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class="palette-primary-indigo palette-accent-blue">
+    
+      
+      
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                Arrays <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        Iteration
+      </div>
+    </div>
+    
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="https://github.com/pranavtbhat/JuliaCookbook" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          JuliaCookbook
+          <span class="version">
+            
+          </span>
+        </strong>
+        
+          <br>
+          pranavtbhat/JuliaCookbook
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            
+            <a href="https://github.com/pranavtbhat/JuliaCookbook/archive/master.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/pranavtbhat/JuliaCookbook/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="Contents" href="../..">
+      Contents
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">Arrays</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="Introduction" href="../arrays/">
+      Introduction
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Creation" href="../creating/">
+      Creation
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="Iteration" href="./">
+      Iteration
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="Iteration" href="#iteration">
+                Iteration
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Map" href="#map">
+                Map
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Map Reduce" href="#map-reduce">
+                Map Reduce
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Concatenation" href="../append/">
+      Concatenation
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Reordering" href="../reorder/">
+      Reordering
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Set Operations" href="../setlike/">
+      Set Operations
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="Searching" href="../search/">
+      Searching
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <p><a id='Doing-Something-with-Every-Element-in-a-List-1'></a></p>
+<h1 id="doing-something-with-every-element-in-a-list">Doing Something with Every Element in a List</h1>
+<p>Most use cases of Arrays involve iterating over each element in the array, and applying some operation on each element. The result could be new array, changes to the same array, or an aggregate of some kind.</p>
+<p><a id='Iteration-1'></a></p>
+<h2 id="iteration">Iteration</h2>
+<p>Julia provides the <code>in</code> operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:</p>
+<div class="codehilite"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">]</span>
+          <span class="n">println</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+       <span class="k">end</span>
+<span class="n">A</span>
+<span class="n">B</span>
+<span class="n">C</span>
+</pre></div>
+
+
+<p>To iterate over every element in the list and keep track of the index of the element, the <code>enumerate</code> iterator can be used:</p>
+<div class="codehilite"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="n">item</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">([</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">])</span>
+           <span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(index)</span><span class="s"> -&gt; </span><span class="si">$(item)</span><span class="s">&quot;</span><span class="p">)</span>
+       <span class="k">end</span>
+<span class="mi">1</span> <span class="o">-&gt;</span> <span class="n">A</span>
+<span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">B</span>
+<span class="mi">3</span> <span class="o">-&gt;</span> <span class="n">C</span>
+</pre></div>
+
+
+<p>To simply iterate over the indices of an array, the <code>eachindex</code> function can be used:</p>
+<div class="codehilite"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="n">eachindex</span><span class="p">([</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">])</span>
+           <span class="n">println</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+       <span class="k">end</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+</pre></div>
+
+
+<p>To iterate over multiple arrays at the same time, use the <code>zip</code> iterator:</p>
+<div class="codehilite"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="k">for</span> <span class="p">(</span><span class="n">item1</span><span class="p">,</span><span class="n">item2</span><span class="p">)</span> <span class="k">in</span> <span class="n">zip</span><span class="p">([</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">])</span>
+          <span class="n">println</span><span class="p">(</span><span class="n">item1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="n">item2</span><span class="p">)</span>
+       <span class="k">end</span>
+ <span class="n">A</span> <span class="n">a</span>
+ <span class="n">B</span> <span class="n">b</span>
+ <span class="n">C</span> <span class="n">c</span>
+</pre></div>
+
+
+<p><a id='Map-1'></a></p>
+<h2 id="map">Map</h2>
+<p>If you want to perform the same operation, specified by a function <code>f</code>, on every element of an array: <code>map(f, ARRAY)</code>. For example, to increment every element in the array by one:</p>
+<div class="codehilite"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="mi">3</span><span class="o">-</span><span class="n">element</span> <span class="n">Array</span><span class="p">{</span><span class="kt">Int64</span><span class="p">,</span><span class="mi">1</span><span class="p">}:</span>
+ <span class="mi">2</span>
+ <span class="mi">3</span>
+ <span class="mi">4</span>
+</pre></div>
+
+
+<p><a id='Map-Reduce-1'></a></p>
+<h2 id="map-reduce">Map Reduce</h2>
+<p>If you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the <code>mapreduce</code> function can come in handy. For example, to find the sum of the squares of the first five numbers</p>
+<div class="codehilite"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">mapreduce</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="o">+</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="mi">55</span>
+</pre></div>
+          <aside class="copyright" role="note">
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../creating/" title="Creation">
+          <span class="direction">
+            Previous
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                Creation
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../append/" title="Concatenation">
+          <span class="direction">
+            Next
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                Concatenation
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../..';
+      var repo_id  = 'pranavtbhat/JuliaCookbook';
+    </script>
+    <script src="../../assets/javascripts/application-997097ee0c.js"></script>
+    
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+      <script src="../../assets/mathjaxhelper.js"></script>
+    
+    
+  </body>
+</html>

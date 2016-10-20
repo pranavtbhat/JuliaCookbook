@@ -1,0 +1,184 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "JuliaCookbook\n\n\nA Cookbook for Julia. Contains recipes for:\n\n\n\n\nDataFrames\n\n\nTuples\n\n\nArrays\n\n\nStrings\n\n\nDictionaries\n\n\nDate Time\n\n\n\n\nRegular Expressions\n\n\n\n\n\n\nlink to \nJuliaCookbook", 
+            "title": "Contents"
+        }, 
+        {
+            "location": "/#juliacookbook", 
+            "text": "A Cookbook for Julia. Contains recipes for:   DataFrames  Tuples  Arrays  Strings  Dictionaries  Date Time   Regular Expressions    link to  JuliaCookbook", 
+            "title": "JuliaCookbook"
+        }, 
+        {
+            "location": "/arrays/arrays/", 
+            "text": "Arrays\n\n\nThis file contains recipes for common problems related to arrays. The problem shown here are from the arrays section in the \nPerl Cookbook\n.\n\n\nIn Julia, an array is an ordered collection of elements. We will be dealing with the \nArray{T,N}\n data structure exclusively, and won't be dealing with other subtypes of  \nAbstractArray{T,N}\n.\n\n\n\n\nContents\n\n\n\n\nCreating an array\n\n\nDoing Something with Every Element in a List\n\n\nCombining arrays together\n\n\nReordering Elements\n\n\nSet Operations\n\n\nSearching\n\n\n\n\n\n\nReferences\n\n\n\n\nJulia Array documentation\n\n\nJulia Array Wiki", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/arrays/arrays/#arrays", 
+            "text": "This file contains recipes for common problems related to arrays. The problem shown here are from the arrays section in the  Perl Cookbook .  In Julia, an array is an ordered collection of elements. We will be dealing with the  Array{T,N}  data structure exclusively, and won't be dealing with other subtypes of   AbstractArray{T,N} .", 
+            "title": "Arrays"
+        }, 
+        {
+            "location": "/arrays/arrays/#contents", 
+            "text": "Creating an array  Doing Something with Every Element in a List  Combining arrays together  Reordering Elements  Set Operations  Searching", 
+            "title": "Contents"
+        }, 
+        {
+            "location": "/arrays/arrays/#references", 
+            "text": "Julia Array documentation  Julia Array Wiki", 
+            "title": "References"
+        }, 
+        {
+            "location": "/arrays/creating/", 
+            "text": "Creating an array\n\n\n\n\n1 Dimensional Arrays\n\n\nJulia provides multiple methods to create arrays. An array can be created by specifying all elements in a comma separated list.\n\n\njulia\n \n[\n1\n,\n \n2\n,\n \n3\n,\n \n4\n,\n \n5\n]\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n\n\n\n\n\nAn array of type \nAny\n can support elements of all types:\n\n\njulia\n \nAny\n[\n1\n,\n \n1.0\n,\n \n1\n,\n \ntrue\n]\n\n\n4\n-\nelement\n \nArray\n{\nAny\n,\n1\n}:\n\n \n1\n   \n \n1.0\n\n \n1\n\n \ntrue\n\n\n\n\n\n\nAn uninitialized array of type T can be created using the \nArray\n constructor:\n\n\njulia\n \nArray\n(\nAny\n,\n \n5\n)\n\n\n5\n-\nelement\n \nArray\n{\nAny\n,\n1\n}:\n\n \n#undef\n\n \n#undef\n\n \n#undef\n\n \n#undef\n\n \n#undef\n\n\n\n\n\n\nAn array of zero valued elements can be created using the \nzeros\n function. The function can be called as \nzeros(T, n)\n where \nT\n is a type and \nn\n is the size of the array:\n\n\njulia\n \nzeros\n(\nFloat64\n,\n \n5\n)\n\n\n5\n-\nelement\n \nArray\n{\nFloat64\n,\n1\n}:\n\n \n0.0\n\n \n0.0\n\n \n0.0\n\n \n0.0\n\n \n0.0\n\n\n\n\n\n\nSimilarly, an array of ones can be created using the \nones\n function:\n\n\n \njulia\n \nones\n(\nBool\n,\n \n5\n)\n\n\n5\n-\nelement\n \nArray\n{\nBool\n,\n1\n}:\n\n \ntrue\n\n \ntrue\n\n \ntrue\n\n \ntrue\n\n \ntrue\n\n\n\n\n\n\nAn array of random numbers can be created using the \nrand\n function. The function can be called as \nrand(T, n)\n where \nT\n is a numeric type and \nn\n is the size of the array.\n\n\njulia\n \nrand\n(\nInt\n,\n \n3\n)\n\n\nrand\n(\nInt\n,\n \n3\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n  \n337280521677695220\n\n \n9086787289687117354\n\n \n7160428826622140198\n\n\n\n\n\n\nTo create an array with elements in a specific range:\n\n\njulia\n \nrand\n(\n1\n \n:\n \n10\n,\n \n3\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n  \n4\n\n \n10\n\n  \n4\n\n\n\n\n\n\n\n\n2 Dimensional Arrays\n\n\nA 2D array can be created by specifying all elements in blank separated columns and semicolon separated rows:\n\n\njulia\n \n[\n1\n \n2\n \n3\n \n4\n \n;\n \n5\n \n6\n \n7\n \n8\n]\n\n\n2\n\u00d74\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n2\n  \n3\n  \n4\n\n \n5\n  \n6\n  \n7\n  \n8\n\n\n\n\n\n\nAn uninitialized 2D array of type \nT\n can be created as \nArray(T, m, n)\n, where \nm\n is the number of rows, and \nn\n is the number of columns:\n\n\njulia\n \nArray\n(\nBool\n,\n \n3\n,\n \n3\n)\n\n\n3\n\u00d73\n \nArray\n{\nBool\n,\n2\n}:\n\n \nfalse\n  \nfalse\n  \nfalse\n\n \nfalse\n   \ntrue\n  \nfalse\n\n \nfalse\n  \nfalse\n  \nfalse\n\n\n\n\n\n\nThe \nzeros\n, \nones\n and \nrand\n function can be used to produce 2D arrays, by supplying the length of the second dimension.\n\n\njulia\n \nzeros\n(\nFloat64\n,\n \n3\n,\n \n3\n)\n\n\n3\n\u00d73\n \nArray\n{\nFloat64\n,\n2\n}:\n\n \n0.0\n  \n0.0\n  \n0.0\n\n \n0.0\n  \n0.0\n  \n0.0\n\n \n0.0\n  \n0.0\n  \n0.0\n\n\n\njulia\n \nones\n(\nBool\n,\n \n3\n,\n \n3\n)\n\n\n3\n\u00d73\n \nArray\n{\nBool\n,\n2\n}:\n\n \ntrue\n  \ntrue\n  \ntrue\n\n \ntrue\n  \ntrue\n  \ntrue\n\n \ntrue\n  \ntrue\n  \ntrue\n\n\n\njulia\n \nrand\n(\n1\n \n:\n \n5\n,\n \n2\n,\n \n2\n)\n\n\n2\n\u00d72\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n2\n  \n5\n\n \n4\n  \n2", 
+            "title": "Creation"
+        }, 
+        {
+            "location": "/arrays/creating/#creating-an-array", 
+            "text": "", 
+            "title": "Creating an array"
+        }, 
+        {
+            "location": "/arrays/creating/#1-dimensional-arrays", 
+            "text": "Julia provides multiple methods to create arrays. An array can be created by specifying all elements in a comma separated list.  julia   [ 1 ,   2 ,   3 ,   4 ,   5 ]  5 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5   An array of type  Any  can support elements of all types:  julia   Any [ 1 ,   1.0 ,   1 ,   true ]  4 - element   Array { Any , 1 }: \n  1    \n  1.0 \n  1 \n  true   An uninitialized array of type T can be created using the  Array  constructor:  julia   Array ( Any ,   5 )  5 - element   Array { Any , 1 }: \n  #undef \n  #undef \n  #undef \n  #undef \n  #undef   An array of zero valued elements can be created using the  zeros  function. The function can be called as  zeros(T, n)  where  T  is a type and  n  is the size of the array:  julia   zeros ( Float64 ,   5 )  5 - element   Array { Float64 , 1 }: \n  0.0 \n  0.0 \n  0.0 \n  0.0 \n  0.0   Similarly, an array of ones can be created using the  ones  function:    julia   ones ( Bool ,   5 )  5 - element   Array { Bool , 1 }: \n  true \n  true \n  true \n  true \n  true   An array of random numbers can be created using the  rand  function. The function can be called as  rand(T, n)  where  T  is a numeric type and  n  is the size of the array.  julia   rand ( Int ,   3 )  rand ( Int ,   3 )  3 - element   Array { Int64 , 1 }: \n   337280521677695220 \n  9086787289687117354 \n  7160428826622140198   To create an array with elements in a specific range:  julia   rand ( 1   :   10 ,   3 )  3 - element   Array { Int64 , 1 }: \n   4 \n  10 \n   4", 
+            "title": "1 Dimensional Arrays"
+        }, 
+        {
+            "location": "/arrays/creating/#2-dimensional-arrays", 
+            "text": "A 2D array can be created by specifying all elements in blank separated columns and semicolon separated rows:  julia   [ 1   2   3   4   ;   5   6   7   8 ]  2 \u00d74   Array { Int64 , 2 }: \n  1    2    3    4 \n  5    6    7    8   An uninitialized 2D array of type  T  can be created as  Array(T, m, n) , where  m  is the number of rows, and  n  is the number of columns:  julia   Array ( Bool ,   3 ,   3 )  3 \u00d73   Array { Bool , 2 }: \n  false    false    false \n  false     true    false \n  false    false    false   The  zeros ,  ones  and  rand  function can be used to produce 2D arrays, by supplying the length of the second dimension.  julia   zeros ( Float64 ,   3 ,   3 )  3 \u00d73   Array { Float64 , 2 }: \n  0.0    0.0    0.0 \n  0.0    0.0    0.0 \n  0.0    0.0    0.0  julia   ones ( Bool ,   3 ,   3 )  3 \u00d73   Array { Bool , 2 }: \n  true    true    true \n  true    true    true \n  true    true    true  julia   rand ( 1   :   5 ,   2 ,   2 )  2 \u00d72   Array { Int64 , 2 }: \n  2    5 \n  4    2", 
+            "title": "2 Dimensional Arrays"
+        }, 
+        {
+            "location": "/arrays/map/", 
+            "text": "Doing Something with Every Element in a List\n\n\nMost use cases of Arrays involve iterating over each element in the array, and applying some operation on each element. The result could be new array, changes to the same array, or an aggregate of some kind.\n\n\n\n\nIteration\n\n\nJulia provides the \nin\n operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:\n\n\njulia\n \nfor\n \nitem\n \nin\n \n[\nA\n,\nB\n,\nC\n]\n\n          \nprintln\n(\nitem\n)\n\n       \nend\n\n\nA\n\n\nB\n\n\nC\n\n\n\n\n\n\nTo iterate over every element in the list and keep track of the index of the element, the \nenumerate\n iterator can be used:\n\n\njulia\n \nfor\n \n(\nindex\n,\nitem\n)\n \nin\n \nenumerate\n([\nA\n,\nB\n,\nC\n])\n\n           \nprintln\n(\n$(index)\n -\n \n$(item)\n)\n\n       \nend\n\n\n1\n \n-\n \nA\n\n\n2\n \n-\n \nB\n\n\n3\n \n-\n \nC\n\n\n\n\n\n\nTo simply iterate over the indices of an array, the \neachindex\n function can be used:\n\n\njulia\n \nfor\n \nindex\n \nin\n \neachindex\n([\nA\n,\nB\n,\nC\n])\n\n           \nprintln\n(\nindex\n)\n\n       \nend\n\n\n1\n\n\n2\n\n\n3\n\n\n\n\n\n\nTo iterate over multiple arrays at the same time, use the \nzip\n iterator:\n\n\njulia\n \nfor\n \n(\nitem1\n,\nitem2\n)\n \nin\n \nzip\n([\nA\n,\nB\n,\nC\n],\n \n[\na\n,\nb\n,\nc\n])\n\n          \nprintln\n(\nitem1\n,\n \n \n,\n \nitem2\n)\n\n       \nend\n\n \nA\n \na\n\n \nB\n \nb\n\n \nC\n \nc\n\n\n\n\n\n\n\n\nMap\n\n\nIf you want to perform the same operation, specified by a function \nf\n, on every element of an array: \nmap(f, ARRAY)\n. For example, to increment every element in the array by one:\n\n\njulia\n \nmap\n(\nx\n \n-\n \nx\n \n+\n \n1\n,\n \n[\n1\n,\n2\n,\n3\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n2\n\n \n3\n\n \n4\n\n\n\n\n\n\n\n\nMap Reduce\n\n\nIf you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the \nmapreduce\n function can come in handy. For example, to find the sum of the squares of the first five numbers\n\n\njulia\n \nmapreduce\n(\nx\n-\nx\n^\n2\n,\n \n+\n,\n \n[\n1\n,\n2\n,\n3\n,\n4\n,\n5\n])\n\n\n55", 
+            "title": "Iteration"
+        }, 
+        {
+            "location": "/arrays/map/#doing-something-with-every-element-in-a-list", 
+            "text": "Most use cases of Arrays involve iterating over each element in the array, and applying some operation on each element. The result could be new array, changes to the same array, or an aggregate of some kind.", 
+            "title": "Doing Something with Every Element in a List"
+        }, 
+        {
+            "location": "/arrays/map/#iteration", 
+            "text": "Julia provides the  in  operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:  julia   for   item   in   [ A , B , C ] \n           println ( item ) \n        end  A  B  C   To iterate over every element in the list and keep track of the index of the element, the  enumerate  iterator can be used:  julia   for   ( index , item )   in   enumerate ([ A , B , C ]) \n            println ( $(index)  -   $(item) ) \n        end  1   -   A  2   -   B  3   -   C   To simply iterate over the indices of an array, the  eachindex  function can be used:  julia   for   index   in   eachindex ([ A , B , C ]) \n            println ( index ) \n        end  1  2  3   To iterate over multiple arrays at the same time, use the  zip  iterator:  julia   for   ( item1 , item2 )   in   zip ([ A , B , C ],   [ a , b , c ]) \n           println ( item1 ,     ,   item2 ) \n        end \n  A   a \n  B   b \n  C   c", 
+            "title": "Iteration"
+        }, 
+        {
+            "location": "/arrays/map/#map", 
+            "text": "If you want to perform the same operation, specified by a function  f , on every element of an array:  map(f, ARRAY) . For example, to increment every element in the array by one:  julia   map ( x   -   x   +   1 ,   [ 1 , 2 , 3 ])  3 - element   Array { Int64 , 1 }: \n  2 \n  3 \n  4", 
+            "title": "Map"
+        }, 
+        {
+            "location": "/arrays/map/#map-reduce", 
+            "text": "If you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the  mapreduce  function can come in handy. For example, to find the sum of the squares of the first five numbers  julia   mapreduce ( x - x ^ 2 ,   + ,   [ 1 , 2 , 3 , 4 , 5 ])  55", 
+            "title": "Map Reduce"
+        }, 
+        {
+            "location": "/arrays/append/", 
+            "text": "Appending/Concatenating Arrays\n\n\nJulia provides multiple methods to concatenate, combine or append arrays.\n\n\n\n\nAppending arrays\n\n\nThe \nappend!\n function can be used to append two arrays. For example:\n\n\njulia\n \nappend!\n([\n1\n,\n2\n,\n3\n],\n \n[\n4\n,\n5\n,\n6\n])\n\n\n6\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n \n6\n\n\n\n\n\n\nThe \nappend!\n function mutates the first array. The elements of the second array are copied into the first one, so the second array can be altered subsequently without affecting the first array.\n\n\n\n\nVertical Concatenation\n\n\nArrays can be stacked vertically using the \nvcat\n function.\n\n\njulia\n \nvcat\n([\n1\n,\n2\n,\n3\n],\n \n[\n4\n,\n5\n,\n6\n])\n\n\n6\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n \n6\n\n\n\n\n\n\nvcat\n works on 2D arrays too. The input arrays must have the same number of columns.\n\n\njulia\n \nvcat\n([\n1\n \n5\n \n9\n;\n \n2\n \n6\n \n10\n],\n \n[\n3\n \n7\n \n11\n;\n \n4\n \n8\n \n12\n])\n\n\n4\n\u00d73\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n5\n   \n9\n\n \n2\n  \n6\n  \n10\n\n \n3\n  \n7\n  \n11\n\n \n4\n  \n8\n  \n12\n\n\n\n\n\n\n\n\nHorizontal Concatenation\n\n\nArrays can be stacked horizontally using the \nhcat\n function. The input arrays must have the same of rows.\n\n\njulia\n \nhcat\n([\n1\n,\n2\n,\n3\n],\n \n[\n4\n,\n5\n,\n6\n])\n\n\n3\n\u00d72\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n4\n\n \n2\n  \n5\n\n \n3\n  \n6\n\n\n\njulia\n \nhcat\n([\n1\n \n2\n \n3\n;\n \n7\n \n8\n \n9\n],\n \n[\n4\n \n5\n \n6\n;\n \n10\n \n11\n \n12\n])\n\n\n2\n\u00d76\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n2\n  \n3\n   \n4\n   \n5\n   \n6\n\n \n7\n  \n8\n  \n9\n  \n10\n  \n11\n  \n12", 
+            "title": "Concatenation"
+        }, 
+        {
+            "location": "/arrays/append/#appendingconcatenating-arrays", 
+            "text": "Julia provides multiple methods to concatenate, combine or append arrays.", 
+            "title": "Appending/Concatenating Arrays"
+        }, 
+        {
+            "location": "/arrays/append/#appending-arrays", 
+            "text": "The  append!  function can be used to append two arrays. For example:  julia   append! ([ 1 , 2 , 3 ],   [ 4 , 5 , 6 ])  6 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5 \n  6   The  append!  function mutates the first array. The elements of the second array are copied into the first one, so the second array can be altered subsequently without affecting the first array.", 
+            "title": "Appending arrays"
+        }, 
+        {
+            "location": "/arrays/append/#vertical-concatenation", 
+            "text": "Arrays can be stacked vertically using the  vcat  function.  julia   vcat ([ 1 , 2 , 3 ],   [ 4 , 5 , 6 ])  6 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5 \n  6   vcat  works on 2D arrays too. The input arrays must have the same number of columns.  julia   vcat ([ 1   5   9 ;   2   6   10 ],   [ 3   7   11 ;   4   8   12 ])  4 \u00d73   Array { Int64 , 2 }: \n  1    5     9 \n  2    6    10 \n  3    7    11 \n  4    8    12", 
+            "title": "Vertical Concatenation"
+        }, 
+        {
+            "location": "/arrays/append/#horizontal-concatenation", 
+            "text": "Arrays can be stacked horizontally using the  hcat  function. The input arrays must have the same of rows.  julia   hcat ([ 1 , 2 , 3 ],   [ 4 , 5 , 6 ])  3 \u00d72   Array { Int64 , 2 }: \n  1    4 \n  2    5 \n  3    6  julia   hcat ([ 1   2   3 ;   7   8   9 ],   [ 4   5   6 ;   10   11   12 ])  2 \u00d76   Array { Int64 , 2 }: \n  1    2    3     4     5     6 \n  7    8    9    10    11    12", 
+            "title": "Horizontal Concatenation"
+        }, 
+        {
+            "location": "/arrays/reorder/", 
+            "text": "Reordering the elements\n\n\n\n\nSorting\n\n\nJulia provides the highly customizable \nsort\n method to put the elements of an array in a specific order. \nsort\n leaves the original array intact, and produces a new sorted array by copying in the elements from the original array. \nSort\n accepts the following keyword arguments:\n\n\n\n\nalg\n : The sorting algorithm to be used. Can be one of \n[InsertionSort, MergeSort, QuickSort]\n.\n\n\nby\n  : Pass in a function to be applied on each element of the array before sorting.\n\n\nlt\n  : Pass in a function that can be used to compare any two elements in the array.\n\n\nrev\n : Boolean argument which sorts in reverse, or decreasing order, when set to true.\n\n\n\n\nThe \nsort\n function will never modify the elements in the array.\n\n\njulia\n \nsort\n([\n3\n,\n1\n,\n2\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n\n\njulia\n \nsort\n([\n1\n,\n2\n,\n3\n],\n \nby\n \n=\n \nx\n \n-\n \n-\n \nx\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\njulia\n \nsort\n([\n1\n,\n2\n,\n3\n],\n \nlt\n \n=\n \n(\nx\n,\ny\n)\n \n-\n \n!\n(\nx\n \n \ny\n))\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\njulia\n \nsort\n([\n1\n,\n2\n,\n3\n],\n \nrev\n=\ntrue\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\n\n\n\nIf you'd like to sort the original array, without creating a copy, use the \nsort!\n function instead.\n\n\n\n\nReverse\n\n\nTo simply reverse the contents of an array:\n\n\njulia\n \nreverse\n([\n1\n,\n2\n,\n3\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\n\n\n\nLike \nsort\n, the \nreverse\n function creates a copy of the argument array and reverses that. If you'd like to reverse the input array, use the \nreverse!\n function.\n\n\n\n\nRandomize\n\n\nTo put the elements of an array in a random order, use the \nshuffle\n function:\n\n\njulia\n \nshuffle\n([\n1\n,\n2\n,\n3\n,\n4\n,\n5\n])\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n4\n\n \n1\n\n \n5\n\n \n3\n\n \n2\n\n\n\n\n\n\nIf you want to randomize the original array itself, instead of its copy, use the \nshuffle!\n function.", 
+            "title": "Reordering"
+        }, 
+        {
+            "location": "/arrays/reorder/#reordering-the-elements", 
+            "text": "", 
+            "title": "Reordering the elements"
+        }, 
+        {
+            "location": "/arrays/reorder/#sorting", 
+            "text": "Julia provides the highly customizable  sort  method to put the elements of an array in a specific order.  sort  leaves the original array intact, and produces a new sorted array by copying in the elements from the original array.  Sort  accepts the following keyword arguments:   alg  : The sorting algorithm to be used. Can be one of  [InsertionSort, MergeSort, QuickSort] .  by   : Pass in a function to be applied on each element of the array before sorting.  lt   : Pass in a function that can be used to compare any two elements in the array.  rev  : Boolean argument which sorts in reverse, or decreasing order, when set to true.   The  sort  function will never modify the elements in the array.  julia   sort ([ 3 , 1 , 2 ])  3 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3  julia   sort ([ 1 , 2 , 3 ],   by   =   x   -   -   x )  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1  julia   sort ([ 1 , 2 , 3 ],   lt   =   ( x , y )   -   ! ( x     y ))  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1  julia   sort ([ 1 , 2 , 3 ],   rev = true )  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1   If you'd like to sort the original array, without creating a copy, use the  sort!  function instead.", 
+            "title": "Sorting"
+        }, 
+        {
+            "location": "/arrays/reorder/#reverse", 
+            "text": "To simply reverse the contents of an array:  julia   reverse ([ 1 , 2 , 3 ])  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1   Like  sort , the  reverse  function creates a copy of the argument array and reverses that. If you'd like to reverse the input array, use the  reverse!  function.", 
+            "title": "Reverse"
+        }, 
+        {
+            "location": "/arrays/reorder/#randomize", 
+            "text": "To put the elements of an array in a random order, use the  shuffle  function:  julia   shuffle ([ 1 , 2 , 3 , 4 , 5 ])  5 - element   Array { Int64 , 1 }: \n  4 \n  1 \n  5 \n  3 \n  2   If you want to randomize the original array itself, instead of its copy, use the  shuffle!  function.", 
+            "title": "Randomize"
+        }, 
+        {
+            "location": "/arrays/setlike/", 
+            "text": "Set-like operations\n\n\n\n\nFinding unique elements in the list\n\n\nThe \nunique\n function produces the list of unique elements present in an array:\n\n\njulia\n \nunique\n([\n1\n,\n1\n,\n2\n,\n2\n,\n3\n,\n3\n,\n4\n,\n4\n])\n\n\n4\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n\n\n\n\n\nThe \nunique\n function works faster when the input list comprises of sorted elements.\n\n\n\n\nFinding Elements in One Array but Not Another\n\n\nTo find the elements that are in one array, but not another, use \nsetdiff\n. For example:\n\n\njulia\n \nsetdiff\n([\n1\n,\n2\n,\n3\n,\n4\n],\n \n[\n1\n,\n2\n,\n5\n,\n6\n])\n\n\n2\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n4\n\n\n\n\n\n\nIf your arrays have elements repeated, then use:\n\n\njulia\n \nfilter\n(\nx\n \n-\n \n!\nin\n(\nx\n,\n \n[\n1\n,\n2\n,\n4\n]),\n \n[\n1\n,\n2\n,\n2\n,\n3\n,\n3\n,\n4\n,\n6\n,\n7\n,\n7\n])\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n3\n\n \n6\n\n \n7\n\n \n7\n\n\n\n\n\n\n\n\nSet union\n\n\nThe \nunion\n function can be used to perform the set-union operation:\n\n\njulia\n \nunion\n([\n1\n,\n2\n,\n3\n],\n \n[\n1\n,\n4\n,\n5\n])\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n\n\n\n\n\n\n\nSet intersection\n\n\nThe \nintersect\n function can be used to perform the set-intersection operation:\n\n\njulia\n \nintersect\n([\n1\n,\n2\n,\n3\n,\n4\n],\n \n[\n1\n,\n2\n,\n3\n,\n5\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3", 
+            "title": "Set Operations"
+        }, 
+        {
+            "location": "/arrays/setlike/#set-like-operations", 
+            "text": "", 
+            "title": "Set-like operations"
+        }, 
+        {
+            "location": "/arrays/setlike/#finding-unique-elements-in-the-list", 
+            "text": "The  unique  function produces the list of unique elements present in an array:  julia   unique ([ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 ])  4 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4   The  unique  function works faster when the input list comprises of sorted elements.", 
+            "title": "Finding unique elements in the list"
+        }, 
+        {
+            "location": "/arrays/setlike/#finding-elements-in-one-array-but-not-another", 
+            "text": "To find the elements that are in one array, but not another, use  setdiff . For example:  julia   setdiff ([ 1 , 2 , 3 , 4 ],   [ 1 , 2 , 5 , 6 ])  2 - element   Array { Int64 , 1 }: \n  3 \n  4   If your arrays have elements repeated, then use:  julia   filter ( x   -   ! in ( x ,   [ 1 , 2 , 4 ]),   [ 1 , 2 , 2 , 3 , 3 , 4 , 6 , 7 , 7 ])  5 - element   Array { Int64 , 1 }: \n  3 \n  3 \n  6 \n  7 \n  7", 
+            "title": "Finding Elements in One Array but Not Another"
+        }, 
+        {
+            "location": "/arrays/setlike/#set-union", 
+            "text": "The  union  function can be used to perform the set-union operation:  julia   union ([ 1 , 2 , 3 ],   [ 1 , 4 , 5 ])  5 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5", 
+            "title": "Set union"
+        }, 
+        {
+            "location": "/arrays/setlike/#set-intersection", 
+            "text": "The  intersect  function can be used to perform the set-intersection operation:  julia   intersect ([ 1 , 2 , 3 , 4 ],   [ 1 , 2 , 3 , 5 ])  3 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3", 
+            "title": "Set intersection"
+        }, 
+        {
+            "location": "/arrays/search/", 
+            "text": "Searching\n\n\n\n\nFinding the First List Element That Passes a Test\n\n\nThe \nfindfirst\n function can be used to find the position of the first non-zero element in an array:\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n1\n,\n2\n,\n0\n])\n\n\n3\n\n\n\n\n\n\nIt can also be used to find the first element equal to some value \nv\n.\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n1\n,\n2\n,\n0\n],\n \n2\n)\n\n\n4\n\n\n\n\n\n\nFinally, a boolean-returning-function can be passed in as a \"test\". The position of the first element to pass the \"test\", (i.e. the function returns true) is returned:\n\n\njulia\n \nfindfirst\n(\nx\n \n-\n \nx\n \n==\n \n2\n,\n \n[\n0\n,\n0\n,\n1\n,\n2\n,\n0\n])\n\n\n4\n\n\n\n\n\n\nIf \nfindfirst\n cannot find a value, or if no element passes the \"test\", then it returns 0.\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n0\n])\n\n\n0\n\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n0\n],\n \n1\n)\n\n\n0\n\n\n\n\n\n\n\n\nFinding All Elements in an Array Matching Certain Criteria\n\n\nThe \nfind\n function can be used to find the positions of all non-zero elements in an array.\n\n\njulia\n \nfind\n([\n0\n,\n0\n,\n1\n,\n2\n,\n0\n])\n\n\n2\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n4\n\n\n\n\n\n\nThe \nfind\n function can also be used to find the positions of all elements that pass a \"test\", described by a boolean-returning-function.\n\n\njulia\n \nfind\n(\nx\n \n-\n \nx\n \n==\n \n0\n,\n \n[\n1\n,\n2\n,\n0\n,\n2\n,\n0\n,\n1\n,\n0\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n5\n\n \n7\n\n\n\n\n\n\n\n\nFiltering out elements\n\n\nIf you'd like to remove the elements of an array that do not satisfy a condition, the \nfilter\n function can come in handy. For example, to remove the negative numbers in an array:\n\n\njulia\n \nfilter\n(\nx\n \n-\n \nx\n \n=\n \n0\n,\n \n[\n1\n,\n-\n2\n,\n3\n,\n-\n4\n,\n0\n])\n\n\n2\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n3\n\n \n0", 
+            "title": "Searching"
+        }, 
+        {
+            "location": "/arrays/search/#searching", 
+            "text": "", 
+            "title": "Searching"
+        }, 
+        {
+            "location": "/arrays/search/#finding-the-first-list-element-that-passes-a-test", 
+            "text": "The  findfirst  function can be used to find the position of the first non-zero element in an array:  julia   findfirst ([ 0 , 0 , 1 , 2 , 0 ])  3   It can also be used to find the first element equal to some value  v .  julia   findfirst ([ 0 , 0 , 1 , 2 , 0 ],   2 )  4   Finally, a boolean-returning-function can be passed in as a \"test\". The position of the first element to pass the \"test\", (i.e. the function returns true) is returned:  julia   findfirst ( x   -   x   ==   2 ,   [ 0 , 0 , 1 , 2 , 0 ])  4   If  findfirst  cannot find a value, or if no element passes the \"test\", then it returns 0.  julia   findfirst ([ 0 , 0 , 0 ])  0  julia   findfirst ([ 0 , 0 , 0 ],   1 )  0", 
+            "title": "Finding the First List Element That Passes a Test"
+        }, 
+        {
+            "location": "/arrays/search/#finding-all-elements-in-an-array-matching-certain-criteria", 
+            "text": "The  find  function can be used to find the positions of all non-zero elements in an array.  julia   find ([ 0 , 0 , 1 , 2 , 0 ])  2 - element   Array { Int64 , 1 }: \n  3 \n  4   The  find  function can also be used to find the positions of all elements that pass a \"test\", described by a boolean-returning-function.  julia   find ( x   -   x   ==   0 ,   [ 1 , 2 , 0 , 2 , 0 , 1 , 0 ])  3 - element   Array { Int64 , 1 }: \n  3 \n  5 \n  7", 
+            "title": "Finding All Elements in an Array Matching Certain Criteria"
+        }, 
+        {
+            "location": "/arrays/search/#filtering-out-elements", 
+            "text": "If you'd like to remove the elements of an array that do not satisfy a condition, the  filter  function can come in handy. For example, to remove the negative numbers in an array:  julia   filter ( x   -   x   =   0 ,   [ 1 , - 2 , 3 , - 4 , 0 ])  2 - element   Array { Int64 , 1 }: \n  1 \n  3 \n  0", 
+            "title": "Filtering out elements"
+        }
+    ]
+}

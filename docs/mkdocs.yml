@@ -9,10 +9,8 @@ extra_css:
 
 markdown_extensions:
 - extra
- - mdx_math
- - fenced_code
- - toc:
-     permalink: True
+- mdx_math
+- fenced_code
 
 extra_javascript:
   - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML

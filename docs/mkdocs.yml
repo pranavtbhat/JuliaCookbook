@@ -21,18 +21,19 @@ docs_dir: 'build'
 
 pages:
 - Home: index.md
-- Tuples: tuples.md
-- Strings: strings.md
-- Dictionaries: dicts.md
+- DataStructures:
+   - Tuples: tuples.md
+   - Strings: strings.md
+   - Dictionaries: dicts.md
+   - Arrays:
+      - Introduction: arrays/arrays.md
+      - Creation: arrays/creating.md
+      - Iteration: arrays/map.md
+      - Reordering: arrays/reorder.md
+      - Set Operations: arrays/setlike.md
+      - Search: arrays/search.md
 - Dates: dates.md
 - Regex: regex.md
-- Arrays:
-   - Introduction: arrays/arrays.md
-   - Creation: arrays/creating.md
-   - Iteration: arrays/map.md
-   - Reordering: arrays/reorder.md
-   - Set Operations: arrays/setlike.md
-   - Search: arrays/search.md
 - Dates: dates.md
 - DataFrames:
    - Introduction: dataframes/DataFrames.md

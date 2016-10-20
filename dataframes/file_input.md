@@ -64,6 +64,7 @@ If your dataset uses a different character to indicate commented lines, specify 
 ```julia
 julia> readtable("FILE_NAME"; allowcomments=true, commentmark='%')
 ```
+
 ## Multiple missing value strings
 
 By default, `readtable` translates the strings `""` and `"NA"` into null values or `NA`s. If your dataset uses different or additional strings to represent null values, you can set the `nastrings` keyword argument to these strings. For example, if your dataset contains `"null"`, `"NULL"` and `"-"` to indicate null values, then run:

@@ -3,7 +3,7 @@
         {
             "location": "/", 
             "text": "JuliaCookbook\n\n\nA Cookbook for Julia. Contains recipes for:\n\n\n\n\nDataFrames\n\n\nTuples\n\n\nArrays\n\n\nStrings\n\n\nDictionaries\n\n\nDate Time\n\n\n\n\nRegular Expressions\n\n\n\n\n\n\nlink to \nJuliaCookbook", 
-            "title": "Contents"
+            "title": "Home"
         }, 
         {
             "location": "/#juliacookbook", 
@@ -11,9 +11,209 @@
             "title": "JuliaCookbook"
         }, 
         {
+            "location": "/tuples/", 
+            "text": "Tuple\n\n\nA tuple is an immutable, ordered sequence of elements. Once a tuple is created, it cannot be modified. A tuple is an easy way to pack elements, of any type, into a container. It can be also be thought of as a dynamic user defined type.\n\n\n\n\nCreating a tuple\n\n\nGeneral Syntax:\n\n\n(ITEM_1, ITEM_2 ... ITEM_N)\n\n\n\n\nThe contents of a tuple need not be homogenous:\n\n\njulia\n typeof((1, 1.0, \n1\n, true))\nTuple{Int64,Float64,String,Bool}\n\n\n\n\n\n\nTuple of tuples\n\n\nA tuple can contain tuples:\n\n\njulia\n typeof(((1,2), 3.0, \n4\n))\nTuple{Tuple{Int64,Int64},Float64,String}\n\n\n\n\n\n\nAccessing elements\n\n\nThe \ngetindex\n operator \n[]\n can be used to obtain an element at a specific position.\n\n\n\n\nGetting a single element (Unit Getindex)\n\n\njulia\n (1,2,3)[1]\n1\n\n\n\n\n\n\nGetting a range of elements (Ranged Getindex)\n\n\njulia\n (1,2,3,4,5)[2 : 4]\n\n\n\n\n\n\nGetting a set of discontiguous elements (Vector Getindex)\n\n\njulia\n (1,2,3,4,5)[[1,3,5]]\n\n\n\n\n\n\nSplice operator\n\n\nThe contents of an tuple can be unpacked into the arguments of a function, using the \n...\n operator. For example:\n\n\njulia\n f(x, y) = x + y\nf (generic function with 1 method)\n\njulia\n t = (1, 2)\n(1,2)\n\njulia\n f(t...)\n3", 
+            "title": "Tuples"
+        }, 
+        {
+            "location": "/tuples/#tuple", 
+            "text": "A tuple is an immutable, ordered sequence of elements. Once a tuple is created, it cannot be modified. A tuple is an easy way to pack elements, of any type, into a container. It can be also be thought of as a dynamic user defined type.", 
+            "title": "Tuple"
+        }, 
+        {
+            "location": "/tuples/#creating-a-tuple", 
+            "text": "General Syntax:  (ITEM_1, ITEM_2 ... ITEM_N)  The contents of a tuple need not be homogenous:  julia  typeof((1, 1.0,  1 , true))\nTuple{Int64,Float64,String,Bool}", 
+            "title": "Creating a tuple"
+        }, 
+        {
+            "location": "/tuples/#tuple-of-tuples", 
+            "text": "A tuple can contain tuples:  julia  typeof(((1,2), 3.0,  4 ))\nTuple{Tuple{Int64,Int64},Float64,String}", 
+            "title": "Tuple of tuples"
+        }, 
+        {
+            "location": "/tuples/#accessing-elements", 
+            "text": "The  getindex  operator  []  can be used to obtain an element at a specific position.", 
+            "title": "Accessing elements"
+        }, 
+        {
+            "location": "/tuples/#getting-a-single-element-unit-getindex", 
+            "text": "julia  (1,2,3)[1]\n1", 
+            "title": "Getting a single element (Unit Getindex)"
+        }, 
+        {
+            "location": "/tuples/#getting-a-range-of-elements-ranged-getindex", 
+            "text": "julia  (1,2,3,4,5)[2 : 4]", 
+            "title": "Getting a range of elements (Ranged Getindex)"
+        }, 
+        {
+            "location": "/tuples/#getting-a-set-of-discontiguous-elements-vector-getindex", 
+            "text": "julia  (1,2,3,4,5)[[1,3,5]]", 
+            "title": "Getting a set of discontiguous elements (Vector Getindex)"
+        }, 
+        {
+            "location": "/tuples/#splice-operator", 
+            "text": "The contents of an tuple can be unpacked into the arguments of a function, using the  ...  operator. For example:  julia  f(x, y) = x + y\nf (generic function with 1 method)\n\njulia  t = (1, 2)\n(1,2)\n\njulia  f(t...)\n3", 
+            "title": "Splice operator"
+        }, 
+        {
+            "location": "/strings/", 
+            "text": "Strings\n\n\nA string in Julia is an immutable sequence of characters. In previous versions of Julia, the string type was implemented through an abstract type, \nAbstractString\n and concrete types such as \nASCIIString\n. Now, Julia provides a single \nString\n datatype.\n\n\n\n\nAccessing Substrings\n\n\nJulia doesn't allow modifications to \nString\n object, once it's created. However, it does provide ways of generating substrings. The getindex notation \n[]\n can be used on \nString\n, in the same way that you'd extract sub-arrays:\n\n\njulia\n str = \nabcdefg\n\n\nabcdefg\n\n\njulia\n str[1:3]\n\nabc\n\n\njulia\n str[5:end]\n\nefg\n\n\n\n\n\nIf your string has delimiting characters such as \n' ', '\\t' or ','\n, you can use the \nsplit\n function to split it:\n\n\njulia\n split(\n1,2,3,4,5\n, ',')\n5-element Array{SubString{String},1}:\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n\n\n\n\nYou can also combine smaller strings, while inserting characters between them:\n\n\njulia\n join([\n1\n, \n2\n, \n3\n, \n4\n, \n5\n], ',')\n\n1,2,3,4,5\n\n\n\n\n\n\n\nProcessing a String One Character at a Time\n\n\nStrings in Julia are similar to Arrays. You can iterate over the characters in a \nString\n the same way you'd iterate over the elements in an array:\n\n\njulia\n for ch in \nabcd\n\n          println(ch)\n       end\n a\n b\n c\n d\n\n\n\n\nYou can also use the \nmap\n function if you want to perform the same operation over every character in the \nString\n:\n\n\njulia\n map(x -\n x + 1, \nabcd\n) # Increment every character in the string\n\nbcde\n\n\n\n\n\n\n\nConcatentating strings\n\n\nStrings can be concatenated using the \nstring\n function. Non string objects are converted into strings, as long as the \nshow\n function is defined.\n\n\njulia\n string(\nOne \n, \nTwo \n, 3, ' ', :four)\n\nOne Two 3 four\n\n\n\n\n\nAn array of strings can be joined together, with separators, using the \njoin\n function\n\n\njulia\n join([1, 2, 3, 4, 5, 6], \n, \n)\n\n1, 2, 3, 4, 5, 6\n\n\n\n\n\n\n\nChecking if one string is a substring of the other\n\n\nThe \ncontains\n function can be used to check string containment.\n\n\njulia\n contains(\nabcd\n, \nab\n)\ntrue\n\n\n\n\n\n\nReversing a String by Word or Character\n\n\nTo reverse every character in the \nString\n, use the \nreverse\n function:\n\n\njulia\n reverse(\nabcdefg\n)\n\ngfedcba\n\n\n\n\n\nIf you want to reverse the individual words in the \nString\n:\n\n\n\n\nFirst split the string into constituent words using \nsplit\n\n\nPerform a reversal on every word\n\n\nUse \njoin\n to combine the words\n\n\n\n\njulia\n join(map(reverse, split(\nabc def ghi jkl\n, ' ')), ' ')\n\ncba fed ihg lkj\n\n\n\n\n\n\n\nExpanding Tabs\n\n\nIf you have a file with tab-spaces that you'd like to replace space-indents, use the \nreplace\n function:\n\n\njulia\n replace(\n1\\t2\\t3\\t4\n, r\n(\\t)\n, s\n   \n)\n\n1   2   3   4\n\n\n\n\n\n\n\nExpanding Variables in User Input (Interpolation)\n\n\nThe \n$\n notation can be used to substitute a user defined variable or expression (its string equivalent to be more precise) into any position in a string:\n\n\njulia\n \ntwo = $(1 + 1)\n\n\ntwo = 2\n\n\njulia\n a = \nHello\n\n\njulia\n \n$a World\n\n\nHello World\n\n\n\n\n\n\n\nChanging Case\n\n\nA string can be converted to lower case using the \nlowercase\n function, and the \nislower\n function can be used to see if a string is in lower case:\n\n\njulia\n lowercase(\naBcD\n)\n\nabcd\n\n\njulia\n islower(\nabcd\n)\ntrue\n\n\n\n\nSimilarly, the \nuppercase\n function can be used to convert an entire string to uppercase, and the \nisupper\n function can be used to see if a string is in lower case:\n\n\njulia\n uppercase(\naBcD\n)\n\nABCD\n\n\njulia\n isupper(\nABCD\n)\ntrue\n\n\n\n\n\n\nTrimming Blanks from the Ends of a String\n\n\nThe \nrstrip\n function can be used to remove trailing blanks from a string:\n\n\njulia\n rstrip(\nHello World       \n)\n\nHello World\n\n\n\n\n\n\n\nParsing Delimited Data\n\n\nParsing a CSV file with strings can be challenging, since the string fields can contain commas themselves. The best way to parse such a file, would be to use the \nreadcsv\n function. \nreadcsv\n will not consider the commas inside strings, when splitting the lines of the files.\n\n\njulia\n buf = IOBuffer(\n\\\nabcd\\\n,\\\nabc,d\\\n,\\\nab,c,d\\\n,\\\na,b,c,d\\\n)\n\njulia\n readcsv(buf)\n1\u00d74 Array{Any,2}:\n \nabcd\n  \nabc,d\n  \nab,c,d\n  \na,b,c,d", 
+            "title": "Strings"
+        }, 
+        {
+            "location": "/strings/#strings", 
+            "text": "A string in Julia is an immutable sequence of characters. In previous versions of Julia, the string type was implemented through an abstract type,  AbstractString  and concrete types such as  ASCIIString . Now, Julia provides a single  String  datatype.", 
+            "title": "Strings"
+        }, 
+        {
+            "location": "/strings/#accessing-substrings", 
+            "text": "Julia doesn't allow modifications to  String  object, once it's created. However, it does provide ways of generating substrings. The getindex notation  []  can be used on  String , in the same way that you'd extract sub-arrays:  julia  str =  abcdefg  abcdefg \n\njulia  str[1:3] abc \n\njulia  str[5:end] efg   If your string has delimiting characters such as  ' ', '\\t' or ',' , you can use the  split  function to split it:  julia  split( 1,2,3,4,5 , ',')\n5-element Array{SubString{String},1}:\n  1 \n  2 \n  3 \n  4 \n  5   You can also combine smaller strings, while inserting characters between them:  julia  join([ 1 ,  2 ,  3 ,  4 ,  5 ], ',') 1,2,3,4,5", 
+            "title": "Accessing Substrings"
+        }, 
+        {
+            "location": "/strings/#processing-a-string-one-character-at-a-time", 
+            "text": "Strings in Julia are similar to Arrays. You can iterate over the characters in a  String  the same way you'd iterate over the elements in an array:  julia  for ch in  abcd \n          println(ch)\n       end\n a\n b\n c\n d  You can also use the  map  function if you want to perform the same operation over every character in the  String :  julia  map(x -  x + 1,  abcd ) # Increment every character in the string bcde", 
+            "title": "Processing a String One Character at a Time"
+        }, 
+        {
+            "location": "/strings/#concatentating-strings", 
+            "text": "Strings can be concatenated using the  string  function. Non string objects are converted into strings, as long as the  show  function is defined.  julia  string( One  ,  Two  , 3, ' ', :four) One Two 3 four   An array of strings can be joined together, with separators, using the  join  function  julia  join([1, 2, 3, 4, 5, 6],  ,  ) 1, 2, 3, 4, 5, 6", 
+            "title": "Concatentating strings"
+        }, 
+        {
+            "location": "/strings/#checking-if-one-string-is-a-substring-of-the-other", 
+            "text": "The  contains  function can be used to check string containment.  julia  contains( abcd ,  ab )\ntrue", 
+            "title": "Checking if one string is a substring of the other"
+        }, 
+        {
+            "location": "/strings/#reversing-a-string-by-word-or-character", 
+            "text": "To reverse every character in the  String , use the  reverse  function:  julia  reverse( abcdefg ) gfedcba   If you want to reverse the individual words in the  String :   First split the string into constituent words using  split  Perform a reversal on every word  Use  join  to combine the words   julia  join(map(reverse, split( abc def ghi jkl , ' ')), ' ') cba fed ihg lkj", 
+            "title": "Reversing a String by Word or Character"
+        }, 
+        {
+            "location": "/strings/#expanding-tabs", 
+            "text": "If you have a file with tab-spaces that you'd like to replace space-indents, use the  replace  function:  julia  replace( 1\\t2\\t3\\t4 , r (\\t) , s     ) 1   2   3   4", 
+            "title": "Expanding Tabs"
+        }, 
+        {
+            "location": "/strings/#expanding-variables-in-user-input-interpolation", 
+            "text": "The  $  notation can be used to substitute a user defined variable or expression (its string equivalent to be more precise) into any position in a string:  julia   two = $(1 + 1)  two = 2 \n\njulia  a =  Hello \n\njulia   $a World  Hello World", 
+            "title": "Expanding Variables in User Input (Interpolation)"
+        }, 
+        {
+            "location": "/strings/#changing-case", 
+            "text": "A string can be converted to lower case using the  lowercase  function, and the  islower  function can be used to see if a string is in lower case:  julia  lowercase( aBcD ) abcd \n\njulia  islower( abcd )\ntrue  Similarly, the  uppercase  function can be used to convert an entire string to uppercase, and the  isupper  function can be used to see if a string is in lower case:  julia  uppercase( aBcD ) ABCD \n\njulia  isupper( ABCD )\ntrue", 
+            "title": "Changing Case"
+        }, 
+        {
+            "location": "/strings/#trimming-blanks-from-the-ends-of-a-string", 
+            "text": "The  rstrip  function can be used to remove trailing blanks from a string:  julia  rstrip( Hello World        ) Hello World", 
+            "title": "Trimming Blanks from the Ends of a String"
+        }, 
+        {
+            "location": "/strings/#parsing-delimited-data", 
+            "text": "Parsing a CSV file with strings can be challenging, since the string fields can contain commas themselves. The best way to parse such a file, would be to use the  readcsv  function.  readcsv  will not consider the commas inside strings, when splitting the lines of the files.  julia  buf = IOBuffer( \\ abcd\\ ,\\ abc,d\\ ,\\ ab,c,d\\ ,\\ a,b,c,d\\ )\n\njulia  readcsv(buf)\n1\u00d74 Array{Any,2}:\n  abcd    abc,d    ab,c,d    a,b,c,d", 
+            "title": "Parsing Delimited Data"
+        }, 
+        {
+            "location": "/dicts/", 
+            "text": "Dictionaries\n\n\nJulia supports the \nDict\n data structure, a simple implementation of a look-up table or hashmap.\n\n\n\n\nCreating a dictionary\n\n\nThe \nDict\n constructor accepts a list of pairs as arguments, and returns a dictionary.\n\n\njulia\n Dict(\nOne\n =\n 1, \nTwo\n =\n 2, \nThree\n =\n 3)\nDict{String,Int64} with 3 entries:\n  \nOne\n   =\n 1\n  \nTwo\n   =\n 2\n  \nThree\n =\n 3\n\n\n\n\nThe \nDict\n constructor also allows for comprehension-like syntax:\n\n\njulia\n Dict(\n$i\n =\n i for i in 1 : 3)\nDict{String,Int64} with 3 entries:\n  \n1\n =\n 1\n  \n2\n =\n 2\n  \n3\n =\n 3\n\n\n\n\n\n\nAccessing the elements of a dictionary\n\n\nThe getindex operator can be used to fetch the value corresponding to the input key. However, if the key doesn't exist in the dictionary, an error is thrown.\n\n\nd = Dict(\nOne\n =\n 1, \nTwo\n =\n 2, \nThree\n =\n 3)\n\njulia\n d[\nOne\n]\n1\n\njulia\n d[\nFour\n]\nERROR: KeyError: key \nFour\n not found\n\n\n\n\nAlternativey, the \nget\n function can be used to fetch the value corresponding to the key, while specifying a default value.\n\n\njulia\n get(d, \nFour\n, 4)\n4\n\n\n\n\n\n\nMap\n\n\nThe map function can be used to perform an operation on every key/value in a dictionary, producing a new dictionary:\n\n\nd = Dict(\nOne\n =\n 1, \nTwo\n =\n 2, \nThree\n =\n 3)\n\njulia\n map(x -\n (string(x[1], \ns\n) =\n fill(x[2], x[2])), d)\nDict{String,Array{Int64,1}} with 3 entries:\n  \nTwos\n   =\n [2,2]\n  \nOnes\n   =\n [1]\n  \nThrees\n =\n [3,3,3]\n\n\n\n\n\n\nFilter\n\n\nThe \nfilter\n function can be used to remove key-value pairs that do not satisfy a condition.\n\n\nd = Dict(\nOne\n =\n 1, \nTwo\n =\n 2, \nThree\n =\n 3)\n\njulia\n filter((key, value) -\n value % 2 == 1, d)\nDict{String,Int64} with 2 entries:\n  \nOne\n   =\n 1\n  \nThree\n =\n 3", 
+            "title": "Dictionaries"
+        }, 
+        {
+            "location": "/dicts/#dictionaries", 
+            "text": "Julia supports the  Dict  data structure, a simple implementation of a look-up table or hashmap.", 
+            "title": "Dictionaries"
+        }, 
+        {
+            "location": "/dicts/#creating-a-dictionary", 
+            "text": "The  Dict  constructor accepts a list of pairs as arguments, and returns a dictionary.  julia  Dict( One  =  1,  Two  =  2,  Three  =  3)\nDict{String,Int64} with 3 entries:\n   One    =  1\n   Two    =  2\n   Three  =  3  The  Dict  constructor also allows for comprehension-like syntax:  julia  Dict( $i  =  i for i in 1 : 3)\nDict{String,Int64} with 3 entries:\n   1  =  1\n   2  =  2\n   3  =  3", 
+            "title": "Creating a dictionary"
+        }, 
+        {
+            "location": "/dicts/#accessing-the-elements-of-a-dictionary", 
+            "text": "The getindex operator can be used to fetch the value corresponding to the input key. However, if the key doesn't exist in the dictionary, an error is thrown.  d = Dict( One  =  1,  Two  =  2,  Three  =  3)\n\njulia  d[ One ]\n1\n\njulia  d[ Four ]\nERROR: KeyError: key  Four  not found  Alternativey, the  get  function can be used to fetch the value corresponding to the key, while specifying a default value.  julia  get(d,  Four , 4)\n4", 
+            "title": "Accessing the elements of a dictionary"
+        }, 
+        {
+            "location": "/dicts/#map", 
+            "text": "The map function can be used to perform an operation on every key/value in a dictionary, producing a new dictionary:  d = Dict( One  =  1,  Two  =  2,  Three  =  3)\n\njulia  map(x -  (string(x[1],  s ) =  fill(x[2], x[2])), d)\nDict{String,Array{Int64,1}} with 3 entries:\n   Twos    =  [2,2]\n   Ones    =  [1]\n   Threes  =  [3,3,3]", 
+            "title": "Map"
+        }, 
+        {
+            "location": "/dicts/#filter", 
+            "text": "The  filter  function can be used to remove key-value pairs that do not satisfy a condition.  d = Dict( One  =  1,  Two  =  2,  Three  =  3)\n\njulia  filter((key, value) -  value % 2 == 1, d)\nDict{String,Int64} with 2 entries:\n   One    =  1\n   Three  =  3", 
+            "title": "Filter"
+        }, 
+        {
+            "location": "/dates/", 
+            "text": "Date-Time\n\n\nJulia provides the immutable \nDate\n and \nDateTime\n data structures for working with dates. The \nDate\n object stores only a date and can be created as:\n\n\nDate(YEAR, MONTH, DAY)\n\njulia\n Date(2016, 9, 26)\n2016-09-26\n\n\n\n\nAlternatively a format string can be passed in for a custom date string:\n\n\njulia\n Date(\n26/09/2016\n, \ndd/mm/yyyy\n)\n2016-09-26\n\njulia\n Date(\n09-26-2016\n, \nmm-dd-yyyy\n)\n2016-09-26\n\n\n\n\nThe \nDateTime\n object can be used to work with both date and time, and accepts a variable number of arguments:\n\n\nDateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia\n DateTime(2016)\n2016-01-01T00:00:00\n\njulia\n DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00\n\n\n\n\nThe \nDateTime\n function also accepts a format string for date strings:\n\n\njulia\n DateTime(\n20160926 173000\n,\nyyyymmdd HHMMSS\n)\n2016-09-26T17:30:00\n\n\n\n\n\n\nFinding Today's Date\n\n\nTo fetch a \nDate\n object containing the current date:\n\n\njulia\n Dates.today()\n2016-09-26\n\n\n\n\nTo fetch a \nDateTime\n object containing the current date and time:\n\n\njulia\n Dates.now()\n2016-09-26T18:56:04.868\n\n\n\n\n\n\nAccessing Date-Time fields\n\n\nJulia provides functions to access the individual fields in a \nDateTime\n or \nDate\n object:\n\n\njulia\n using Dates\n\njulia\n t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia\n Dates.year(t)\n2016\n\njulia\n Dates.month(t)\n9\n\njulia\n Dates.day(t)\n26\n\njulia\n Dates.hour(t)\n17\n\njulia\n Dates.minute(t)\n30\n\njulia\n Dates.second(t)\n0\n\n\n\n\n\n\nConverting a Date-Time object to Epoch seconds\n\n\nJulia provides the \ndatetime2epochms\n function to convert the date denoted by a \nDateTime\n object into the number of seconds elapsed since the rounding epoch date-time \n0000-01-01T00:00:00\n:\n\n\njulia\n Dates.datetime2epochms(Dates.now())\n63642136200066\n\n\n\n\n\n\nConverting Epoch Seconds to a Date-Time object\n\n\nJulia provides the \nepochms2datetime\n function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a \nDateTime\n object:\n\n\njulia\n Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066\n\n\n\n\n\n\nAdding to or Subtracting from a Date\n\n\nDate\n objects can be subtracted to yield a result in days:\n\n\njulia\n Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days\n\n\n\n\nSimilarly, \nDateTime\n objects can be subtracted to yield a result in milliseconds:\n\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds\n\n\n\n\nAdditionally, individual \nDateTime\n components can be added or subtracted from both \nDate\n and \nDateTime\n objects, to yield new objects:\n\n\njulia\n Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16\n\n\n\n\n\n\nDay in a Week/Month/Year or Week Number\n\n\nJulia provides query functions for \nDateTime\n objects:\n\n\njulia\n t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia\n Dates.dayofweek(t)\n1\n\njulia\n Dates.dayofmonth(t)\n26\n\njulia\n Dates.dayofyear(t)\n270\n\njulia\n Dates.week(t)\n39", 
+            "title": "Dates"
+        }, 
+        {
+            "location": "/dates/#date-time", 
+            "text": "Julia provides the immutable  Date  and  DateTime  data structures for working with dates. The  Date  object stores only a date and can be created as:  Date(YEAR, MONTH, DAY)\n\njulia  Date(2016, 9, 26)\n2016-09-26  Alternatively a format string can be passed in for a custom date string:  julia  Date( 26/09/2016 ,  dd/mm/yyyy )\n2016-09-26\n\njulia  Date( 09-26-2016 ,  mm-dd-yyyy )\n2016-09-26  The  DateTime  object can be used to work with both date and time, and accepts a variable number of arguments:  DateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia  DateTime(2016)\n2016-01-01T00:00:00\n\njulia  DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00  The  DateTime  function also accepts a format string for date strings:  julia  DateTime( 20160926 173000 , yyyymmdd HHMMSS )\n2016-09-26T17:30:00", 
+            "title": "Date-Time"
+        }, 
+        {
+            "location": "/dates/#finding-todays-date", 
+            "text": "To fetch a  Date  object containing the current date:  julia  Dates.today()\n2016-09-26  To fetch a  DateTime  object containing the current date and time:  julia  Dates.now()\n2016-09-26T18:56:04.868", 
+            "title": "Finding Today's Date"
+        }, 
+        {
+            "location": "/dates/#accessing-date-time-fields", 
+            "text": "Julia provides functions to access the individual fields in a  DateTime  or  Date  object:  julia  using Dates\n\njulia  t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia  Dates.year(t)\n2016\n\njulia  Dates.month(t)\n9\n\njulia  Dates.day(t)\n26\n\njulia  Dates.hour(t)\n17\n\njulia  Dates.minute(t)\n30\n\njulia  Dates.second(t)\n0", 
+            "title": "Accessing Date-Time fields"
+        }, 
+        {
+            "location": "/dates/#converting-a-date-time-object-to-epoch-seconds", 
+            "text": "Julia provides the  datetime2epochms  function to convert the date denoted by a  DateTime  object into the number of seconds elapsed since the rounding epoch date-time  0000-01-01T00:00:00 :  julia  Dates.datetime2epochms(Dates.now())\n63642136200066", 
+            "title": "Converting a Date-Time object to Epoch seconds"
+        }, 
+        {
+            "location": "/dates/#converting-epoch-seconds-to-a-date-time-object", 
+            "text": "Julia provides the  epochms2datetime  function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a  DateTime  object:  julia  Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066", 
+            "title": "Converting Epoch Seconds to a Date-Time object"
+        }, 
+        {
+            "location": "/dates/#adding-to-or-subtracting-from-a-date", 
+            "text": "Date  objects can be subtracted to yield a result in days:  julia  Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days  Similarly,  DateTime  objects can be subtracted to yield a result in milliseconds:  julia  DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds  Additionally, individual  DateTime  components can be added or subtracted from both  Date  and  DateTime  objects, to yield new objects:  julia  Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia  DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16", 
+            "title": "Adding to or Subtracting from a Date"
+        }, 
+        {
+            "location": "/dates/#day-in-a-weekmonthyear-or-week-number", 
+            "text": "Julia provides query functions for  DateTime  objects:  julia  t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia  Dates.dayofweek(t)\n1\n\njulia  Dates.dayofmonth(t)\n26\n\njulia  Dates.dayofyear(t)\n270\n\njulia  Dates.week(t)\n39", 
+            "title": "Day in a Week/Month/Year or Week Number"
+        }, 
+        {
+            "location": "/regex/", 
+            "text": "Pattern Matching\n\n\nJulia supports regular expressions or regexes for string matching. The expressions must be compliant with the \nPerl Compatible Regular Expressions\n library.\n\n\nA regular expression in Julia is denoted by a leading \nr\n. For example, a regular to match comments will look like:\n\n\nr\n^\\s*(?:#|$)\n\n\n\n\n\nThe \nismatch\n, \nmatch\n and \nreplace\n functions accept regular expressions.\n\n\n\n\nMatching Letters\n\n\nTo check if a string consists of only alphabetic characters:\n\n\njulia\n ismatch(r\n^[A-Za-z]*$\n, \nasdf\n)\ntrue\n\njulia\n ismatch(r\n^[A-Za-z]*$\n, \nasdf123\n)\nfalse\n\n\n\n\n\n\nMatching Words\n\n\nUse the \n\\b\n character to match at word boundaries.\n\n\njulia\n match(r\n\\bthe\\b\n, \nread the thesaurus\n).offset\n6\n\n\n\n\n\n\nFinding the nth match\n\n\nThe \nmatchall\n function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:\n\n\njulia\n matchall(r\n[0-9]+\n, \n12 apples plus 1 make 13\n)[3]\n\n13\n\n\n\n\n\nHowever, for larger strings, it may take a while to generate all matches. For such cases:\n\n\nfunction nth_occurance(pattern::Regex, n::Int, str::String)\n   count = 1\n   idx = 1\n   while idx \n= length(str)\n      m = match(pattern, str, idx)\n      if m == nothing\n         return\n      elseif(count == n)\n         return m.match\n      else\n         count += 1\n         idx = m.offset + length(m.match) + 1\n      end\n   end\n\n   return\nend\n\njulia\n nth_occurance(r\n[0-9]+\n, 3, \n12 plus 1 make 13\n)\n\n13", 
+            "title": "Regex"
+        }, 
+        {
+            "location": "/regex/#pattern-matching", 
+            "text": "Julia supports regular expressions or regexes for string matching. The expressions must be compliant with the  Perl Compatible Regular Expressions  library.  A regular expression in Julia is denoted by a leading  r . For example, a regular to match comments will look like:  r ^\\s*(?:#|$)   The  ismatch ,  match  and  replace  functions accept regular expressions.", 
+            "title": "Pattern Matching"
+        }, 
+        {
+            "location": "/regex/#matching-letters", 
+            "text": "To check if a string consists of only alphabetic characters:  julia  ismatch(r ^[A-Za-z]*$ ,  asdf )\ntrue\n\njulia  ismatch(r ^[A-Za-z]*$ ,  asdf123 )\nfalse", 
+            "title": "Matching Letters"
+        }, 
+        {
+            "location": "/regex/#matching-words", 
+            "text": "Use the  \\b  character to match at word boundaries.  julia  match(r \\bthe\\b ,  read the thesaurus ).offset\n6", 
+            "title": "Matching Words"
+        }, 
+        {
+            "location": "/regex/#finding-the-nth-match", 
+            "text": "The  matchall  function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:  julia  matchall(r [0-9]+ ,  12 apples plus 1 make 13 )[3] 13   However, for larger strings, it may take a while to generate all matches. For such cases:  function nth_occurance(pattern::Regex, n::Int, str::String)\n   count = 1\n   idx = 1\n   while idx  = length(str)\n      m = match(pattern, str, idx)\n      if m == nothing\n         return\n      elseif(count == n)\n         return m.match\n      else\n         count += 1\n         idx = m.offset + length(m.match) + 1\n      end\n   end\n\n   return\nend\n\njulia  nth_occurance(r [0-9]+ , 3,  12 plus 1 make 13 ) 13", 
+            "title": "Finding the nth match"
+        }, 
+        {
             "location": "/arrays/arrays/", 
             "text": "Arrays\n\n\nThis file contains recipes for common problems related to arrays. The problem shown here are from the arrays section in the \nPerl Cookbook\n.\n\n\nIn Julia, an array is an ordered collection of elements. We will be dealing with the \nArray{T,N}\n data structure exclusively, and won't be dealing with other subtypes of  \nAbstractArray{T,N}\n.\n\n\n\n\nContents\n\n\n\n\nCreating an array\n\n\nDoing Something with Every Element in a List\n\n\nCombining arrays together\n\n\nReordering Elements\n\n\nSet Operations\n\n\nSearching\n\n\n\n\n\n\nReferences\n\n\n\n\nJulia Array documentation\n\n\nJulia Array Wiki", 
-            "title": "Introduction"
+            "title": "Arrays"
         }, 
         {
             "location": "/arrays/arrays/#arrays", 
@@ -31,154 +231,74 @@
             "title": "References"
         }, 
         {
-            "location": "/arrays/creating/", 
-            "text": "Creating an array\n\n\n\n\n1 Dimensional Arrays\n\n\nJulia provides multiple methods to create arrays. An array can be created by specifying all elements in a comma separated list.\n\n\njulia\n \n[\n1\n,\n \n2\n,\n \n3\n,\n \n4\n,\n \n5\n]\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n\n\n\n\n\nAn array of type \nAny\n can support elements of all types:\n\n\njulia\n \nAny\n[\n1\n,\n \n1.0\n,\n \n1\n,\n \ntrue\n]\n\n\n4\n-\nelement\n \nArray\n{\nAny\n,\n1\n}:\n\n \n1\n   \n \n1.0\n\n \n1\n\n \ntrue\n\n\n\n\n\n\nAn uninitialized array of type T can be created using the \nArray\n constructor:\n\n\njulia\n \nArray\n(\nAny\n,\n \n5\n)\n\n\n5\n-\nelement\n \nArray\n{\nAny\n,\n1\n}:\n\n \n#undef\n\n \n#undef\n\n \n#undef\n\n \n#undef\n\n \n#undef\n\n\n\n\n\n\nAn array of zero valued elements can be created using the \nzeros\n function. The function can be called as \nzeros(T, n)\n where \nT\n is a type and \nn\n is the size of the array:\n\n\njulia\n \nzeros\n(\nFloat64\n,\n \n5\n)\n\n\n5\n-\nelement\n \nArray\n{\nFloat64\n,\n1\n}:\n\n \n0.0\n\n \n0.0\n\n \n0.0\n\n \n0.0\n\n \n0.0\n\n\n\n\n\n\nSimilarly, an array of ones can be created using the \nones\n function:\n\n\n \njulia\n \nones\n(\nBool\n,\n \n5\n)\n\n\n5\n-\nelement\n \nArray\n{\nBool\n,\n1\n}:\n\n \ntrue\n\n \ntrue\n\n \ntrue\n\n \ntrue\n\n \ntrue\n\n\n\n\n\n\nAn array of random numbers can be created using the \nrand\n function. The function can be called as \nrand(T, n)\n where \nT\n is a numeric type and \nn\n is the size of the array.\n\n\njulia\n \nrand\n(\nInt\n,\n \n3\n)\n\n\nrand\n(\nInt\n,\n \n3\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n  \n337280521677695220\n\n \n9086787289687117354\n\n \n7160428826622140198\n\n\n\n\n\n\nTo create an array with elements in a specific range:\n\n\njulia\n \nrand\n(\n1\n \n:\n \n10\n,\n \n3\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n  \n4\n\n \n10\n\n  \n4\n\n\n\n\n\n\n\n\n2 Dimensional Arrays\n\n\nA 2D array can be created by specifying all elements in blank separated columns and semicolon separated rows:\n\n\njulia\n \n[\n1\n \n2\n \n3\n \n4\n \n;\n \n5\n \n6\n \n7\n \n8\n]\n\n\n2\n\u00d74\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n2\n  \n3\n  \n4\n\n \n5\n  \n6\n  \n7\n  \n8\n\n\n\n\n\n\nAn uninitialized 2D array of type \nT\n can be created as \nArray(T, m, n)\n, where \nm\n is the number of rows, and \nn\n is the number of columns:\n\n\njulia\n \nArray\n(\nBool\n,\n \n3\n,\n \n3\n)\n\n\n3\n\u00d73\n \nArray\n{\nBool\n,\n2\n}:\n\n \nfalse\n  \nfalse\n  \nfalse\n\n \nfalse\n   \ntrue\n  \nfalse\n\n \nfalse\n  \nfalse\n  \nfalse\n\n\n\n\n\n\nThe \nzeros\n, \nones\n and \nrand\n function can be used to produce 2D arrays, by supplying the length of the second dimension.\n\n\njulia\n \nzeros\n(\nFloat64\n,\n \n3\n,\n \n3\n)\n\n\n3\n\u00d73\n \nArray\n{\nFloat64\n,\n2\n}:\n\n \n0.0\n  \n0.0\n  \n0.0\n\n \n0.0\n  \n0.0\n  \n0.0\n\n \n0.0\n  \n0.0\n  \n0.0\n\n\n\njulia\n \nones\n(\nBool\n,\n \n3\n,\n \n3\n)\n\n\n3\n\u00d73\n \nArray\n{\nBool\n,\n2\n}:\n\n \ntrue\n  \ntrue\n  \ntrue\n\n \ntrue\n  \ntrue\n  \ntrue\n\n \ntrue\n  \ntrue\n  \ntrue\n\n\n\njulia\n \nrand\n(\n1\n \n:\n \n5\n,\n \n2\n,\n \n2\n)\n\n\n2\n\u00d72\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n2\n  \n5\n\n \n4\n  \n2", 
-            "title": "Creation"
+            "location": "/dates/", 
+            "text": "Date-Time\n\n\nJulia provides the immutable \nDate\n and \nDateTime\n data structures for working with dates. The \nDate\n object stores only a date and can be created as:\n\n\nDate(YEAR, MONTH, DAY)\n\njulia\n Date(2016, 9, 26)\n2016-09-26\n\n\n\n\nAlternatively a format string can be passed in for a custom date string:\n\n\njulia\n Date(\n26/09/2016\n, \ndd/mm/yyyy\n)\n2016-09-26\n\njulia\n Date(\n09-26-2016\n, \nmm-dd-yyyy\n)\n2016-09-26\n\n\n\n\nThe \nDateTime\n object can be used to work with both date and time, and accepts a variable number of arguments:\n\n\nDateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia\n DateTime(2016)\n2016-01-01T00:00:00\n\njulia\n DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00\n\n\n\n\nThe \nDateTime\n function also accepts a format string for date strings:\n\n\njulia\n DateTime(\n20160926 173000\n,\nyyyymmdd HHMMSS\n)\n2016-09-26T17:30:00\n\n\n\n\n\n\nFinding Today's Date\n\n\nTo fetch a \nDate\n object containing the current date:\n\n\njulia\n Dates.today()\n2016-09-26\n\n\n\n\nTo fetch a \nDateTime\n object containing the current date and time:\n\n\njulia\n Dates.now()\n2016-09-26T18:56:04.868\n\n\n\n\n\n\nAccessing Date-Time fields\n\n\nJulia provides functions to access the individual fields in a \nDateTime\n or \nDate\n object:\n\n\njulia\n using Dates\n\njulia\n t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia\n Dates.year(t)\n2016\n\njulia\n Dates.month(t)\n9\n\njulia\n Dates.day(t)\n26\n\njulia\n Dates.hour(t)\n17\n\njulia\n Dates.minute(t)\n30\n\njulia\n Dates.second(t)\n0\n\n\n\n\n\n\nConverting a Date-Time object to Epoch seconds\n\n\nJulia provides the \ndatetime2epochms\n function to convert the date denoted by a \nDateTime\n object into the number of seconds elapsed since the rounding epoch date-time \n0000-01-01T00:00:00\n:\n\n\njulia\n Dates.datetime2epochms(Dates.now())\n63642136200066\n\n\n\n\n\n\nConverting Epoch Seconds to a Date-Time object\n\n\nJulia provides the \nepochms2datetime\n function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a \nDateTime\n object:\n\n\njulia\n Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066\n\n\n\n\n\n\nAdding to or Subtracting from a Date\n\n\nDate\n objects can be subtracted to yield a result in days:\n\n\njulia\n Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days\n\n\n\n\nSimilarly, \nDateTime\n objects can be subtracted to yield a result in milliseconds:\n\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds\n\n\n\n\nAdditionally, individual \nDateTime\n components can be added or subtracted from both \nDate\n and \nDateTime\n objects, to yield new objects:\n\n\njulia\n Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16\n\n\n\n\n\n\nDay in a Week/Month/Year or Week Number\n\n\nJulia provides query functions for \nDateTime\n objects:\n\n\njulia\n t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia\n Dates.dayofweek(t)\n1\n\njulia\n Dates.dayofmonth(t)\n26\n\njulia\n Dates.dayofyear(t)\n270\n\njulia\n Dates.week(t)\n39", 
+            "title": "Dates"
         }, 
         {
-            "location": "/arrays/creating/#creating-an-array", 
-            "text": "", 
-            "title": "Creating an array"
+            "location": "/dates/#date-time", 
+            "text": "Julia provides the immutable  Date  and  DateTime  data structures for working with dates. The  Date  object stores only a date and can be created as:  Date(YEAR, MONTH, DAY)\n\njulia  Date(2016, 9, 26)\n2016-09-26  Alternatively a format string can be passed in for a custom date string:  julia  Date( 26/09/2016 ,  dd/mm/yyyy )\n2016-09-26\n\njulia  Date( 09-26-2016 ,  mm-dd-yyyy )\n2016-09-26  The  DateTime  object can be used to work with both date and time, and accepts a variable number of arguments:  DateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia  DateTime(2016)\n2016-01-01T00:00:00\n\njulia  DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00  The  DateTime  function also accepts a format string for date strings:  julia  DateTime( 20160926 173000 , yyyymmdd HHMMSS )\n2016-09-26T17:30:00", 
+            "title": "Date-Time"
         }, 
         {
-            "location": "/arrays/creating/#1-dimensional-arrays", 
-            "text": "Julia provides multiple methods to create arrays. An array can be created by specifying all elements in a comma separated list.  julia   [ 1 ,   2 ,   3 ,   4 ,   5 ]  5 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5   An array of type  Any  can support elements of all types:  julia   Any [ 1 ,   1.0 ,   1 ,   true ]  4 - element   Array { Any , 1 }: \n  1    \n  1.0 \n  1 \n  true   An uninitialized array of type T can be created using the  Array  constructor:  julia   Array ( Any ,   5 )  5 - element   Array { Any , 1 }: \n  #undef \n  #undef \n  #undef \n  #undef \n  #undef   An array of zero valued elements can be created using the  zeros  function. The function can be called as  zeros(T, n)  where  T  is a type and  n  is the size of the array:  julia   zeros ( Float64 ,   5 )  5 - element   Array { Float64 , 1 }: \n  0.0 \n  0.0 \n  0.0 \n  0.0 \n  0.0   Similarly, an array of ones can be created using the  ones  function:    julia   ones ( Bool ,   5 )  5 - element   Array { Bool , 1 }: \n  true \n  true \n  true \n  true \n  true   An array of random numbers can be created using the  rand  function. The function can be called as  rand(T, n)  where  T  is a numeric type and  n  is the size of the array.  julia   rand ( Int ,   3 )  rand ( Int ,   3 )  3 - element   Array { Int64 , 1 }: \n   337280521677695220 \n  9086787289687117354 \n  7160428826622140198   To create an array with elements in a specific range:  julia   rand ( 1   :   10 ,   3 )  3 - element   Array { Int64 , 1 }: \n   4 \n  10 \n   4", 
-            "title": "1 Dimensional Arrays"
+            "location": "/dates/#finding-todays-date", 
+            "text": "To fetch a  Date  object containing the current date:  julia  Dates.today()\n2016-09-26  To fetch a  DateTime  object containing the current date and time:  julia  Dates.now()\n2016-09-26T18:56:04.868", 
+            "title": "Finding Today's Date"
         }, 
         {
-            "location": "/arrays/creating/#2-dimensional-arrays", 
-            "text": "A 2D array can be created by specifying all elements in blank separated columns and semicolon separated rows:  julia   [ 1   2   3   4   ;   5   6   7   8 ]  2 \u00d74   Array { Int64 , 2 }: \n  1    2    3    4 \n  5    6    7    8   An uninitialized 2D array of type  T  can be created as  Array(T, m, n) , where  m  is the number of rows, and  n  is the number of columns:  julia   Array ( Bool ,   3 ,   3 )  3 \u00d73   Array { Bool , 2 }: \n  false    false    false \n  false     true    false \n  false    false    false   The  zeros ,  ones  and  rand  function can be used to produce 2D arrays, by supplying the length of the second dimension.  julia   zeros ( Float64 ,   3 ,   3 )  3 \u00d73   Array { Float64 , 2 }: \n  0.0    0.0    0.0 \n  0.0    0.0    0.0 \n  0.0    0.0    0.0  julia   ones ( Bool ,   3 ,   3 )  3 \u00d73   Array { Bool , 2 }: \n  true    true    true \n  true    true    true \n  true    true    true  julia   rand ( 1   :   5 ,   2 ,   2 )  2 \u00d72   Array { Int64 , 2 }: \n  2    5 \n  4    2", 
-            "title": "2 Dimensional Arrays"
+            "location": "/dates/#accessing-date-time-fields", 
+            "text": "Julia provides functions to access the individual fields in a  DateTime  or  Date  object:  julia  using Dates\n\njulia  t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia  Dates.year(t)\n2016\n\njulia  Dates.month(t)\n9\n\njulia  Dates.day(t)\n26\n\njulia  Dates.hour(t)\n17\n\njulia  Dates.minute(t)\n30\n\njulia  Dates.second(t)\n0", 
+            "title": "Accessing Date-Time fields"
         }, 
         {
-            "location": "/arrays/map/", 
-            "text": "Doing Something with Every Element in a List\n\n\nMost use cases of Arrays involve iterating over each element in the array, and applying some operation on each element. The result could be new array, changes to the same array, or an aggregate of some kind.\n\n\n\n\nIteration\n\n\nJulia provides the \nin\n operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:\n\n\njulia\n \nfor\n \nitem\n \nin\n \n[\nA\n,\nB\n,\nC\n]\n\n          \nprintln\n(\nitem\n)\n\n       \nend\n\n\nA\n\n\nB\n\n\nC\n\n\n\n\n\n\nTo iterate over every element in the list and keep track of the index of the element, the \nenumerate\n iterator can be used:\n\n\njulia\n \nfor\n \n(\nindex\n,\nitem\n)\n \nin\n \nenumerate\n([\nA\n,\nB\n,\nC\n])\n\n           \nprintln\n(\n$(index)\n -\n \n$(item)\n)\n\n       \nend\n\n\n1\n \n-\n \nA\n\n\n2\n \n-\n \nB\n\n\n3\n \n-\n \nC\n\n\n\n\n\n\nTo simply iterate over the indices of an array, the \neachindex\n function can be used:\n\n\njulia\n \nfor\n \nindex\n \nin\n \neachindex\n([\nA\n,\nB\n,\nC\n])\n\n           \nprintln\n(\nindex\n)\n\n       \nend\n\n\n1\n\n\n2\n\n\n3\n\n\n\n\n\n\nTo iterate over multiple arrays at the same time, use the \nzip\n iterator:\n\n\njulia\n \nfor\n \n(\nitem1\n,\nitem2\n)\n \nin\n \nzip\n([\nA\n,\nB\n,\nC\n],\n \n[\na\n,\nb\n,\nc\n])\n\n          \nprintln\n(\nitem1\n,\n \n \n,\n \nitem2\n)\n\n       \nend\n\n \nA\n \na\n\n \nB\n \nb\n\n \nC\n \nc\n\n\n\n\n\n\n\n\nMap\n\n\nIf you want to perform the same operation, specified by a function \nf\n, on every element of an array: \nmap(f, ARRAY)\n. For example, to increment every element in the array by one:\n\n\njulia\n \nmap\n(\nx\n \n-\n \nx\n \n+\n \n1\n,\n \n[\n1\n,\n2\n,\n3\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n2\n\n \n3\n\n \n4\n\n\n\n\n\n\n\n\nMap Reduce\n\n\nIf you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the \nmapreduce\n function can come in handy. For example, to find the sum of the squares of the first five numbers\n\n\njulia\n \nmapreduce\n(\nx\n-\nx\n^\n2\n,\n \n+\n,\n \n[\n1\n,\n2\n,\n3\n,\n4\n,\n5\n])\n\n\n55", 
-            "title": "Iteration"
+            "location": "/dates/#converting-a-date-time-object-to-epoch-seconds", 
+            "text": "Julia provides the  datetime2epochms  function to convert the date denoted by a  DateTime  object into the number of seconds elapsed since the rounding epoch date-time  0000-01-01T00:00:00 :  julia  Dates.datetime2epochms(Dates.now())\n63642136200066", 
+            "title": "Converting a Date-Time object to Epoch seconds"
         }, 
         {
-            "location": "/arrays/map/#doing-something-with-every-element-in-a-list", 
-            "text": "Most use cases of Arrays involve iterating over each element in the array, and applying some operation on each element. The result could be new array, changes to the same array, or an aggregate of some kind.", 
-            "title": "Doing Something with Every Element in a List"
+            "location": "/dates/#converting-epoch-seconds-to-a-date-time-object", 
+            "text": "Julia provides the  epochms2datetime  function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a  DateTime  object:  julia  Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066", 
+            "title": "Converting Epoch Seconds to a Date-Time object"
         }, 
         {
-            "location": "/arrays/map/#iteration", 
-            "text": "Julia provides the  in  operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:  julia   for   item   in   [ A , B , C ] \n           println ( item ) \n        end  A  B  C   To iterate over every element in the list and keep track of the index of the element, the  enumerate  iterator can be used:  julia   for   ( index , item )   in   enumerate ([ A , B , C ]) \n            println ( $(index)  -   $(item) ) \n        end  1   -   A  2   -   B  3   -   C   To simply iterate over the indices of an array, the  eachindex  function can be used:  julia   for   index   in   eachindex ([ A , B , C ]) \n            println ( index ) \n        end  1  2  3   To iterate over multiple arrays at the same time, use the  zip  iterator:  julia   for   ( item1 , item2 )   in   zip ([ A , B , C ],   [ a , b , c ]) \n           println ( item1 ,     ,   item2 ) \n        end \n  A   a \n  B   b \n  C   c", 
-            "title": "Iteration"
+            "location": "/dates/#adding-to-or-subtracting-from-a-date", 
+            "text": "Date  objects can be subtracted to yield a result in days:  julia  Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days  Similarly,  DateTime  objects can be subtracted to yield a result in milliseconds:  julia  DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds  Additionally, individual  DateTime  components can be added or subtracted from both  Date  and  DateTime  objects, to yield new objects:  julia  Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia  DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16", 
+            "title": "Adding to or Subtracting from a Date"
         }, 
         {
-            "location": "/arrays/map/#map", 
-            "text": "If you want to perform the same operation, specified by a function  f , on every element of an array:  map(f, ARRAY) . For example, to increment every element in the array by one:  julia   map ( x   -   x   +   1 ,   [ 1 , 2 , 3 ])  3 - element   Array { Int64 , 1 }: \n  2 \n  3 \n  4", 
-            "title": "Map"
+            "location": "/dates/#day-in-a-weekmonthyear-or-week-number", 
+            "text": "Julia provides query functions for  DateTime  objects:  julia  t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia  Dates.dayofweek(t)\n1\n\njulia  Dates.dayofmonth(t)\n26\n\njulia  Dates.dayofyear(t)\n270\n\njulia  Dates.week(t)\n39", 
+            "title": "Day in a Week/Month/Year or Week Number"
         }, 
         {
-            "location": "/arrays/map/#map-reduce", 
-            "text": "If you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the  mapreduce  function can come in handy. For example, to find the sum of the squares of the first five numbers  julia   mapreduce ( x - x ^ 2 ,   + ,   [ 1 , 2 , 3 , 4 , 5 ])  55", 
-            "title": "Map Reduce"
+            "location": "/dataframes/DataFrames/", 
+            "text": "DataFrames Recipes\n\n\nThis folder contains concrete examples for getting started with \nDataFrames\n in Julia. Efforts have been made to match the use cases in popular DataFrames cookbooks for other languages, such as the \nPandas\n cookbook for Python.\n\n\nThe \nRDatasets\n repository is introduced as a collection of R datatests, and \nGLM.jl\n (Generalized Linear Models) is used for Linear Regressions. Plotting is accomplished using \nPlots.jl\n.\n\n\nCompressed files are read using \nGZip.jl\n.\n\n\n\n\nRequired Packages\n\n\n\njulia\n Pkg.add(\nDataFrames\n)\njulia\n Pkg.add(\nRDatasets\n)\njulia\n Pkg.add(\nPyPlot\n)\njulia\n Pkg.add(\nGLM\n)\njulia\n Pkg.add(\nGZip\n)\n\n\n\n\n\n\nLoading Packages\n\n\njulia\n using DataFrames\njulia\n using RDatasets\njulia\n using PyPlot\njulia\n using GLM\njulia\n using GZip\n\n\n\n\n\n\nContents\n\n\n\n\nReading from Files\n\n\nAccessing Data\n\n\nRDatasets\n\n\nPlotting\n\n\nRegressions\n\n\n\n\n\n\nReferences\n\n\n\n\nDataFrames.jl documentation\n\n\nDataFrames.jl Wiki\n\n\nRDatasets.jl\n\n\nPlots.jl documentation\n\n\nGLM.jl\n\n\nGZip.jl", 
+            "title": "DataFrames"
         }, 
         {
-            "location": "/arrays/append/", 
-            "text": "Appending/Concatenating Arrays\n\n\nJulia provides multiple methods to concatenate, combine or append arrays.\n\n\n\n\nAppending arrays\n\n\nThe \nappend!\n function can be used to append two arrays. For example:\n\n\njulia\n \nappend!\n([\n1\n,\n2\n,\n3\n],\n \n[\n4\n,\n5\n,\n6\n])\n\n\n6\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n \n6\n\n\n\n\n\n\nThe \nappend!\n function mutates the first array. The elements of the second array are copied into the first one, so the second array can be altered subsequently without affecting the first array.\n\n\n\n\nVertical Concatenation\n\n\nArrays can be stacked vertically using the \nvcat\n function.\n\n\njulia\n \nvcat\n([\n1\n,\n2\n,\n3\n],\n \n[\n4\n,\n5\n,\n6\n])\n\n\n6\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n \n6\n\n\n\n\n\n\nvcat\n works on 2D arrays too. The input arrays must have the same number of columns.\n\n\njulia\n \nvcat\n([\n1\n \n5\n \n9\n;\n \n2\n \n6\n \n10\n],\n \n[\n3\n \n7\n \n11\n;\n \n4\n \n8\n \n12\n])\n\n\n4\n\u00d73\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n5\n   \n9\n\n \n2\n  \n6\n  \n10\n\n \n3\n  \n7\n  \n11\n\n \n4\n  \n8\n  \n12\n\n\n\n\n\n\n\n\nHorizontal Concatenation\n\n\nArrays can be stacked horizontally using the \nhcat\n function. The input arrays must have the same of rows.\n\n\njulia\n \nhcat\n([\n1\n,\n2\n,\n3\n],\n \n[\n4\n,\n5\n,\n6\n])\n\n\n3\n\u00d72\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n4\n\n \n2\n  \n5\n\n \n3\n  \n6\n\n\n\njulia\n \nhcat\n([\n1\n \n2\n \n3\n;\n \n7\n \n8\n \n9\n],\n \n[\n4\n \n5\n \n6\n;\n \n10\n \n11\n \n12\n])\n\n\n2\n\u00d76\n \nArray\n{\nInt64\n,\n2\n}:\n\n \n1\n  \n2\n  \n3\n   \n4\n   \n5\n   \n6\n\n \n7\n  \n8\n  \n9\n  \n10\n  \n11\n  \n12", 
-            "title": "Concatenation"
+            "location": "/dataframes/DataFrames/#dataframes-recipes", 
+            "text": "This folder contains concrete examples for getting started with  DataFrames  in Julia. Efforts have been made to match the use cases in popular DataFrames cookbooks for other languages, such as the  Pandas  cookbook for Python.  The  RDatasets  repository is introduced as a collection of R datatests, and  GLM.jl  (Generalized Linear Models) is used for Linear Regressions. Plotting is accomplished using  Plots.jl .  Compressed files are read using  GZip.jl .", 
+            "title": "DataFrames Recipes"
         }, 
         {
-            "location": "/arrays/append/#appendingconcatenating-arrays", 
-            "text": "Julia provides multiple methods to concatenate, combine or append arrays.", 
-            "title": "Appending/Concatenating Arrays"
+            "location": "/dataframes/DataFrames/#required-packages", 
+            "text": "julia  Pkg.add( DataFrames )\njulia  Pkg.add( RDatasets )\njulia  Pkg.add( PyPlot )\njulia  Pkg.add( GLM )\njulia  Pkg.add( GZip )", 
+            "title": "Required Packages"
         }, 
         {
-            "location": "/arrays/append/#appending-arrays", 
-            "text": "The  append!  function can be used to append two arrays. For example:  julia   append! ([ 1 , 2 , 3 ],   [ 4 , 5 , 6 ])  6 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5 \n  6   The  append!  function mutates the first array. The elements of the second array are copied into the first one, so the second array can be altered subsequently without affecting the first array.", 
-            "title": "Appending arrays"
+            "location": "/dataframes/DataFrames/#loading-packages", 
+            "text": "julia  using DataFrames\njulia  using RDatasets\njulia  using PyPlot\njulia  using GLM\njulia  using GZip", 
+            "title": "Loading Packages"
         }, 
         {
-            "location": "/arrays/append/#vertical-concatenation", 
-            "text": "Arrays can be stacked vertically using the  vcat  function.  julia   vcat ([ 1 , 2 , 3 ],   [ 4 , 5 , 6 ])  6 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5 \n  6   vcat  works on 2D arrays too. The input arrays must have the same number of columns.  julia   vcat ([ 1   5   9 ;   2   6   10 ],   [ 3   7   11 ;   4   8   12 ])  4 \u00d73   Array { Int64 , 2 }: \n  1    5     9 \n  2    6    10 \n  3    7    11 \n  4    8    12", 
-            "title": "Vertical Concatenation"
+            "location": "/dataframes/DataFrames/#contents", 
+            "text": "Reading from Files  Accessing Data  RDatasets  Plotting  Regressions", 
+            "title": "Contents"
         }, 
         {
-            "location": "/arrays/append/#horizontal-concatenation", 
-            "text": "Arrays can be stacked horizontally using the  hcat  function. The input arrays must have the same of rows.  julia   hcat ([ 1 , 2 , 3 ],   [ 4 , 5 , 6 ])  3 \u00d72   Array { Int64 , 2 }: \n  1    4 \n  2    5 \n  3    6  julia   hcat ([ 1   2   3 ;   7   8   9 ],   [ 4   5   6 ;   10   11   12 ])  2 \u00d76   Array { Int64 , 2 }: \n  1    2    3     4     5     6 \n  7    8    9    10    11    12", 
-            "title": "Horizontal Concatenation"
-        }, 
-        {
-            "location": "/arrays/reorder/", 
-            "text": "Reordering the elements\n\n\n\n\nSorting\n\n\nJulia provides the highly customizable \nsort\n method to put the elements of an array in a specific order. \nsort\n leaves the original array intact, and produces a new sorted array by copying in the elements from the original array. \nSort\n accepts the following keyword arguments:\n\n\n\n\nalg\n : The sorting algorithm to be used. Can be one of \n[InsertionSort, MergeSort, QuickSort]\n.\n\n\nby\n  : Pass in a function to be applied on each element of the array before sorting.\n\n\nlt\n  : Pass in a function that can be used to compare any two elements in the array.\n\n\nrev\n : Boolean argument which sorts in reverse, or decreasing order, when set to true.\n\n\n\n\nThe \nsort\n function will never modify the elements in the array.\n\n\njulia\n \nsort\n([\n3\n,\n1\n,\n2\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n\n\njulia\n \nsort\n([\n1\n,\n2\n,\n3\n],\n \nby\n \n=\n \nx\n \n-\n \n-\n \nx\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\njulia\n \nsort\n([\n1\n,\n2\n,\n3\n],\n \nlt\n \n=\n \n(\nx\n,\ny\n)\n \n-\n \n!\n(\nx\n \n \ny\n))\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\njulia\n \nsort\n([\n1\n,\n2\n,\n3\n],\n \nrev\n=\ntrue\n)\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\n\n\n\nIf you'd like to sort the original array, without creating a copy, use the \nsort!\n function instead.\n\n\n\n\nReverse\n\n\nTo simply reverse the contents of an array:\n\n\njulia\n \nreverse\n([\n1\n,\n2\n,\n3\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n2\n\n \n1\n\n\n\n\n\n\nLike \nsort\n, the \nreverse\n function creates a copy of the argument array and reverses that. If you'd like to reverse the input array, use the \nreverse!\n function.\n\n\n\n\nRandomize\n\n\nTo put the elements of an array in a random order, use the \nshuffle\n function:\n\n\njulia\n \nshuffle\n([\n1\n,\n2\n,\n3\n,\n4\n,\n5\n])\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n4\n\n \n1\n\n \n5\n\n \n3\n\n \n2\n\n\n\n\n\n\nIf you want to randomize the original array itself, instead of its copy, use the \nshuffle!\n function.", 
-            "title": "Reordering"
-        }, 
-        {
-            "location": "/arrays/reorder/#reordering-the-elements", 
-            "text": "", 
-            "title": "Reordering the elements"
-        }, 
-        {
-            "location": "/arrays/reorder/#sorting", 
-            "text": "Julia provides the highly customizable  sort  method to put the elements of an array in a specific order.  sort  leaves the original array intact, and produces a new sorted array by copying in the elements from the original array.  Sort  accepts the following keyword arguments:   alg  : The sorting algorithm to be used. Can be one of  [InsertionSort, MergeSort, QuickSort] .  by   : Pass in a function to be applied on each element of the array before sorting.  lt   : Pass in a function that can be used to compare any two elements in the array.  rev  : Boolean argument which sorts in reverse, or decreasing order, when set to true.   The  sort  function will never modify the elements in the array.  julia   sort ([ 3 , 1 , 2 ])  3 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3  julia   sort ([ 1 , 2 , 3 ],   by   =   x   -   -   x )  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1  julia   sort ([ 1 , 2 , 3 ],   lt   =   ( x , y )   -   ! ( x     y ))  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1  julia   sort ([ 1 , 2 , 3 ],   rev = true )  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1   If you'd like to sort the original array, without creating a copy, use the  sort!  function instead.", 
-            "title": "Sorting"
-        }, 
-        {
-            "location": "/arrays/reorder/#reverse", 
-            "text": "To simply reverse the contents of an array:  julia   reverse ([ 1 , 2 , 3 ])  3 - element   Array { Int64 , 1 }: \n  3 \n  2 \n  1   Like  sort , the  reverse  function creates a copy of the argument array and reverses that. If you'd like to reverse the input array, use the  reverse!  function.", 
-            "title": "Reverse"
-        }, 
-        {
-            "location": "/arrays/reorder/#randomize", 
-            "text": "To put the elements of an array in a random order, use the  shuffle  function:  julia   shuffle ([ 1 , 2 , 3 , 4 , 5 ])  5 - element   Array { Int64 , 1 }: \n  4 \n  1 \n  5 \n  3 \n  2   If you want to randomize the original array itself, instead of its copy, use the  shuffle!  function.", 
-            "title": "Randomize"
-        }, 
-        {
-            "location": "/arrays/setlike/", 
-            "text": "Set-like operations\n\n\n\n\nFinding unique elements in the list\n\n\nThe \nunique\n function produces the list of unique elements present in an array:\n\n\njulia\n \nunique\n([\n1\n,\n1\n,\n2\n,\n2\n,\n3\n,\n3\n,\n4\n,\n4\n])\n\n\n4\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n\n\n\n\n\nThe \nunique\n function works faster when the input list comprises of sorted elements.\n\n\n\n\nFinding Elements in One Array but Not Another\n\n\nTo find the elements that are in one array, but not another, use \nsetdiff\n. For example:\n\n\njulia\n \nsetdiff\n([\n1\n,\n2\n,\n3\n,\n4\n],\n \n[\n1\n,\n2\n,\n5\n,\n6\n])\n\n\n2\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n4\n\n\n\n\n\n\nIf your arrays have elements repeated, then use:\n\n\njulia\n \nfilter\n(\nx\n \n-\n \n!\nin\n(\nx\n,\n \n[\n1\n,\n2\n,\n4\n]),\n \n[\n1\n,\n2\n,\n2\n,\n3\n,\n3\n,\n4\n,\n6\n,\n7\n,\n7\n])\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n3\n\n \n6\n\n \n7\n\n \n7\n\n\n\n\n\n\n\n\nSet union\n\n\nThe \nunion\n function can be used to perform the set-union operation:\n\n\njulia\n \nunion\n([\n1\n,\n2\n,\n3\n],\n \n[\n1\n,\n4\n,\n5\n])\n\n\n5\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3\n\n \n4\n\n \n5\n\n\n\n\n\n\n\n\nSet intersection\n\n\nThe \nintersect\n function can be used to perform the set-intersection operation:\n\n\njulia\n \nintersect\n([\n1\n,\n2\n,\n3\n,\n4\n],\n \n[\n1\n,\n2\n,\n3\n,\n5\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n2\n\n \n3", 
-            "title": "Set Operations"
-        }, 
-        {
-            "location": "/arrays/setlike/#set-like-operations", 
-            "text": "", 
-            "title": "Set-like operations"
-        }, 
-        {
-            "location": "/arrays/setlike/#finding-unique-elements-in-the-list", 
-            "text": "The  unique  function produces the list of unique elements present in an array:  julia   unique ([ 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 ])  4 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4   The  unique  function works faster when the input list comprises of sorted elements.", 
-            "title": "Finding unique elements in the list"
-        }, 
-        {
-            "location": "/arrays/setlike/#finding-elements-in-one-array-but-not-another", 
-            "text": "To find the elements that are in one array, but not another, use  setdiff . For example:  julia   setdiff ([ 1 , 2 , 3 , 4 ],   [ 1 , 2 , 5 , 6 ])  2 - element   Array { Int64 , 1 }: \n  3 \n  4   If your arrays have elements repeated, then use:  julia   filter ( x   -   ! in ( x ,   [ 1 , 2 , 4 ]),   [ 1 , 2 , 2 , 3 , 3 , 4 , 6 , 7 , 7 ])  5 - element   Array { Int64 , 1 }: \n  3 \n  3 \n  6 \n  7 \n  7", 
-            "title": "Finding Elements in One Array but Not Another"
-        }, 
-        {
-            "location": "/arrays/setlike/#set-union", 
-            "text": "The  union  function can be used to perform the set-union operation:  julia   union ([ 1 , 2 , 3 ],   [ 1 , 4 , 5 ])  5 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3 \n  4 \n  5", 
-            "title": "Set union"
-        }, 
-        {
-            "location": "/arrays/setlike/#set-intersection", 
-            "text": "The  intersect  function can be used to perform the set-intersection operation:  julia   intersect ([ 1 , 2 , 3 , 4 ],   [ 1 , 2 , 3 , 5 ])  3 - element   Array { Int64 , 1 }: \n  1 \n  2 \n  3", 
-            "title": "Set intersection"
-        }, 
-        {
-            "location": "/arrays/search/", 
-            "text": "Searching\n\n\n\n\nFinding the First List Element That Passes a Test\n\n\nThe \nfindfirst\n function can be used to find the position of the first non-zero element in an array:\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n1\n,\n2\n,\n0\n])\n\n\n3\n\n\n\n\n\n\nIt can also be used to find the first element equal to some value \nv\n.\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n1\n,\n2\n,\n0\n],\n \n2\n)\n\n\n4\n\n\n\n\n\n\nFinally, a boolean-returning-function can be passed in as a \"test\". The position of the first element to pass the \"test\", (i.e. the function returns true) is returned:\n\n\njulia\n \nfindfirst\n(\nx\n \n-\n \nx\n \n==\n \n2\n,\n \n[\n0\n,\n0\n,\n1\n,\n2\n,\n0\n])\n\n\n4\n\n\n\n\n\n\nIf \nfindfirst\n cannot find a value, or if no element passes the \"test\", then it returns 0.\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n0\n])\n\n\n0\n\n\n\njulia\n \nfindfirst\n([\n0\n,\n0\n,\n0\n],\n \n1\n)\n\n\n0\n\n\n\n\n\n\n\n\nFinding All Elements in an Array Matching Certain Criteria\n\n\nThe \nfind\n function can be used to find the positions of all non-zero elements in an array.\n\n\njulia\n \nfind\n([\n0\n,\n0\n,\n1\n,\n2\n,\n0\n])\n\n\n2\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n4\n\n\n\n\n\n\nThe \nfind\n function can also be used to find the positions of all elements that pass a \"test\", described by a boolean-returning-function.\n\n\njulia\n \nfind\n(\nx\n \n-\n \nx\n \n==\n \n0\n,\n \n[\n1\n,\n2\n,\n0\n,\n2\n,\n0\n,\n1\n,\n0\n])\n\n\n3\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n3\n\n \n5\n\n \n7\n\n\n\n\n\n\n\n\nFiltering out elements\n\n\nIf you'd like to remove the elements of an array that do not satisfy a condition, the \nfilter\n function can come in handy. For example, to remove the negative numbers in an array:\n\n\njulia\n \nfilter\n(\nx\n \n-\n \nx\n \n=\n \n0\n,\n \n[\n1\n,\n-\n2\n,\n3\n,\n-\n4\n,\n0\n])\n\n\n2\n-\nelement\n \nArray\n{\nInt64\n,\n1\n}:\n\n \n1\n\n \n3\n\n \n0", 
-            "title": "Searching"
-        }, 
-        {
-            "location": "/arrays/search/#searching", 
-            "text": "", 
-            "title": "Searching"
-        }, 
-        {
-            "location": "/arrays/search/#finding-the-first-list-element-that-passes-a-test", 
-            "text": "The  findfirst  function can be used to find the position of the first non-zero element in an array:  julia   findfirst ([ 0 , 0 , 1 , 2 , 0 ])  3   It can also be used to find the first element equal to some value  v .  julia   findfirst ([ 0 , 0 , 1 , 2 , 0 ],   2 )  4   Finally, a boolean-returning-function can be passed in as a \"test\". The position of the first element to pass the \"test\", (i.e. the function returns true) is returned:  julia   findfirst ( x   -   x   ==   2 ,   [ 0 , 0 , 1 , 2 , 0 ])  4   If  findfirst  cannot find a value, or if no element passes the \"test\", then it returns 0.  julia   findfirst ([ 0 , 0 , 0 ])  0  julia   findfirst ([ 0 , 0 , 0 ],   1 )  0", 
-            "title": "Finding the First List Element That Passes a Test"
-        }, 
-        {
-            "location": "/arrays/search/#finding-all-elements-in-an-array-matching-certain-criteria", 
-            "text": "The  find  function can be used to find the positions of all non-zero elements in an array.  julia   find ([ 0 , 0 , 1 , 2 , 0 ])  2 - element   Array { Int64 , 1 }: \n  3 \n  4   The  find  function can also be used to find the positions of all elements that pass a \"test\", described by a boolean-returning-function.  julia   find ( x   -   x   ==   0 ,   [ 1 , 2 , 0 , 2 , 0 , 1 , 0 ])  3 - element   Array { Int64 , 1 }: \n  3 \n  5 \n  7", 
-            "title": "Finding All Elements in an Array Matching Certain Criteria"
-        }, 
-        {
-            "location": "/arrays/search/#filtering-out-elements", 
-            "text": "If you'd like to remove the elements of an array that do not satisfy a condition, the  filter  function can come in handy. For example, to remove the negative numbers in an array:  julia   filter ( x   -   x   =   0 ,   [ 1 , - 2 , 3 , - 4 , 0 ])  2 - element   Array { Int64 , 1 }: \n  1 \n  3 \n  0", 
-            "title": "Filtering out elements"
+            "location": "/dataframes/DataFrames/#references", 
+            "text": "DataFrames.jl documentation  DataFrames.jl Wiki  RDatasets.jl  Plots.jl documentation  GLM.jl  GZip.jl", 
+            "title": "References"
         }
     ]
 }

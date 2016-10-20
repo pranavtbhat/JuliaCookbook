@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Dates - JuliaCookbook</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../assets/Documenter.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">JuliaCookbook</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../tuples/">Tuples</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../strings/">Strings</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../dicts/">Dictionaries</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="./">Dates</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../regex/">Regex</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../arrays/arrays/">Arrays</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Dates</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../dataframes/DataFrames/">DataFrames</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../arrays/arrays/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../dataframes/DataFrames/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/pranavtbhat/JuliaCookbook">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#date-time">Date-Time</a></li>
+        
+            <li class="second-level"><a href="#finding-todays-date">Finding Today's Date</a></li>
+            
+        
+            <li class="second-level"><a href="#accessing-date-time-fields">Accessing Date-Time fields</a></li>
+            
+        
+            <li class="second-level"><a href="#converting-a-date-time-object-to-epoch-seconds">Converting a Date-Time object to Epoch seconds</a></li>
+            
+        
+            <li class="second-level"><a href="#converting-epoch-seconds-to-a-date-time-object">Converting Epoch Seconds to a Date-Time object</a></li>
+            
+        
+            <li class="second-level"><a href="#adding-to-or-subtracting-from-a-date">Adding to or Subtracting from a Date</a></li>
+            
+        
+            <li class="second-level"><a href="#day-in-a-weekmonthyear-or-week-number">Day in a Week/Month/Year or Week Number</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p><a id='Date-Time-1'></a></p>
+<h1 id="date-time">Date-Time</h1>
+<p>Julia provides the immutable <code>Date</code> and <code>DateTime</code> data structures for working with dates. The <code>Date</code> object stores only a date and can be created as:</p>
+<pre><code class="julia">Date(YEAR, MONTH, DAY)
+
+julia&gt; Date(2016, 9, 26)
+2016-09-26
+</code></pre>
+
+<p>Alternatively a format string can be passed in for a custom date string:</p>
+<pre><code class="julia">julia&gt; Date(&quot;26/09/2016&quot;, &quot;dd/mm/yyyy&quot;)
+2016-09-26
+
+julia&gt; Date(&quot;09-26-2016&quot;, &quot;mm-dd-yyyy&quot;)
+2016-09-26
+</code></pre>
+
+<p>The <code>DateTime</code> object can be used to work with both date and time, and accepts a variable number of arguments:</p>
+<pre><code class="julia">DateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])
+
+julia&gt; DateTime(2016)
+2016-01-01T00:00:00
+
+julia&gt; DateTime(2016, 09, 26, 5, 30)
+2016-09-26T05:30:00
+</code></pre>
+
+<p>The <code>DateTime</code> function also accepts a format string for date strings:</p>
+<pre><code class="julia">julia&gt; DateTime(&quot;20160926 173000&quot;,&quot;yyyymmdd HHMMSS&quot;)
+2016-09-26T17:30:00
+</code></pre>
+
+<p><a id='Finding-Today's-Date-1'></a></p>
+<h2 id="finding-todays-date">Finding Today's Date</h2>
+<p>To fetch a <code>Date</code> object containing the current date:</p>
+<pre><code class="julia">julia&gt; Dates.today()
+2016-09-26
+</code></pre>
+
+<p>To fetch a <code>DateTime</code> object containing the current date and time:</p>
+<pre><code class="julia">julia&gt; Dates.now()
+2016-09-26T18:56:04.868
+</code></pre>
+
+<p><a id='Accessing-Date-Time-fields-1'></a></p>
+<h2 id="accessing-date-time-fields">Accessing Date-Time fields</h2>
+<p>Julia provides functions to access the individual fields in a <code>DateTime</code> or <code>Date</code> object:</p>
+<pre><code class="julia">julia&gt; using Dates
+
+julia&gt; t = DateTime(2016, 9, 26, 17, 30, 0)
+2016-09-26T17:30:00
+
+julia&gt; Dates.year(t)
+2016
+
+julia&gt; Dates.month(t)
+9
+
+julia&gt; Dates.day(t)
+26
+
+julia&gt; Dates.hour(t)
+17
+
+julia&gt; Dates.minute(t)
+30
+
+julia&gt; Dates.second(t)
+0
+</code></pre>
+
+<p><a id='Converting-a-Date-Time-object-to-Epoch-seconds-1'></a></p>
+<h2 id="converting-a-date-time-object-to-epoch-seconds">Converting a Date-Time object to Epoch seconds</h2>
+<p>Julia provides the <code>datetime2epochms</code> function to convert the date denoted by a <code>DateTime</code> object into the number of seconds elapsed since the rounding epoch date-time <code>0000-01-01T00:00:00</code>:</p>
+<pre><code class="julia">julia&gt; Dates.datetime2epochms(Dates.now())
+63642136200066
+</code></pre>
+
+<p><a id='Converting-Epoch-Seconds-to-a-Date-Time-object-1'></a></p>
+<h2 id="converting-epoch-seconds-to-a-date-time-object">Converting Epoch Seconds to a Date-Time object</h2>
+<p>Julia provides the <code>epochms2datetime</code> function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a <code>DateTime</code> object:</p>
+<pre><code class="julia">julia&gt; Dates.epochms2datetime(63642136200066)
+2016-09-26T19:10:00.066
+</code></pre>
+
+<p><a id='Adding-to-or-Subtracting-from-a-Date-1'></a></p>
+<h2 id="adding-to-or-subtracting-from-a-date">Adding to or Subtracting from a Date</h2>
+<p><code>Date</code> objects can be subtracted to yield a result in days:</p>
+<pre><code class="julia">julia&gt; Date(2016, 09, 26) - Date(2016, 07, 13)
+75 days
+</code></pre>
+
+<p>Similarly, <code>DateTime</code> objects can be subtracted to yield a result in milliseconds:</p>
+<pre><code class="julia">julia&gt; DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)
+6458486000 milliseconds
+</code></pre>
+
+<p>Additionally, individual <code>DateTime</code> components can be added or subtracted from both <code>Date</code> and <code>DateTime</code> objects, to yield new objects:</p>
+<pre><code class="julia">julia&gt; Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)
+2015-10-06
+
+julia&gt; DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)
+2016-07-26T08:20:16
+</code></pre>
+
+<p><a id='Day-in-a-Week/Month/Year-or-Week-Number-1'></a></p>
+<h2 id="day-in-a-weekmonthyear-or-week-number">Day in a Week/Month/Year or Week Number</h2>
+<p>Julia provides query functions for <code>DateTime</code> objects:</p>
+<pre><code class="julia">julia&gt; t = Dates.now()
+2016-09-26T19:25:01.028
+
+julia&gt; Dates.dayofweek(t)
+1
+
+julia&gt; Dates.dayofmonth(t)
+26
+
+julia&gt; Dates.dayofyear(t)
+270
+
+julia&gt; Dates.week(t)
+39
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="../assets/mathjaxhelper.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

@@ -4,23 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A cookbook for Julia">   
-    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>JuliaCookbook</title>
+    <title>Regex - JuliaCookbook</title>
 
-    <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/cinder.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/highlight.css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
 
 
-    <link href="./assets/Documenter.css" rel="stylesheet">
+    <link href="../assets/Documenter.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -40,7 +39,7 @@
     
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -58,7 +57,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">JuliaCookbook</a>
+            <a class="navbar-brand" href="..">JuliaCookbook</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -68,56 +67,56 @@
                 <ul class="nav navbar-nav">
                 
                 
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../tuples/">Tuples</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../strings/">Strings</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../dicts/">Dictionaries</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../dates/">Dates</a>
+                    </li>
+                
+                
+                
                     <li class="active">
-                        <a href=".">Home</a>
+                        <a href="./">Regex</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="tuples/">Tuples</a>
+                        <a href="../arrays/arrays/">Arrays</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="strings/">Strings</a>
+                        <a href="../dates/">Dates</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="dicts/">Dictionaries</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="dates/">Dates</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="regex/">Regex</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="arrays/arrays/">Arrays</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="dates/">Dates</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="dataframes/DataFrames/">DataFrames</a>
+                        <a href="../dataframes/DataFrames/">DataFrames</a>
                     </li>
                 
                 
@@ -131,13 +130,13 @@
                     </a>
                 </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../dates/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="tuples/">
+                        <a rel="prev" href="../arrays/arrays/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -162,30 +161,76 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#juliacookbook">JuliaCookbook</a></li>
+        <li class="first-level active"><a href="#pattern-matching">Pattern Matching</a></li>
+        
+            <li class="second-level"><a href="#matching-letters">Matching Letters</a></li>
+            
+        
+            <li class="second-level"><a href="#matching-words">Matching Words</a></li>
+            
+        
+            <li class="second-level"><a href="#finding-the-nth-match">Finding the nth match</a></li>
+            
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><a id='JuliaCookbook-1'></a></p>
-<h1 id="juliacookbook">JuliaCookbook</h1>
-<p>A Cookbook for Julia. Contains recipes for:</p>
-<ul>
-<li>DataFrames</li>
-<li>Tuples</li>
-<li>Arrays</li>
-<li>Strings</li>
-<li>Dictionaries</li>
-<li>Date Time</li>
-<li>
-<p>Regular Expressions</p>
-</li>
-<li>
-<p>link to <a href=".#JuliaCookbook-1">JuliaCookbook</a></p>
-</li>
-</ul></div>
+<p><a id='Pattern-Matching-1'></a></p>
+<h1 id="pattern-matching">Pattern Matching</h1>
+<p>Julia supports regular expressions or regexes for string matching. The expressions must be compliant with the <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> library.</p>
+<p>A regular expression in Julia is denoted by a leading <code>r</code>. For example, a regular to match comments will look like:</p>
+<pre><code class="julia">r&quot;^\s*(?:#|$)&quot;
+</code></pre>
+
+<p>The <code>ismatch</code>, <code>match</code> and <code>replace</code> functions accept regular expressions.</p>
+<p><a id='Matching-Letters-1'></a></p>
+<h2 id="matching-letters">Matching Letters</h2>
+<p>To check if a string consists of only alphabetic characters:</p>
+<pre><code class="julia">julia&gt; ismatch(r&quot;^[A-Za-z]*$&quot;, &quot;asdf&quot;)
+true
+
+julia&gt; ismatch(r&quot;^[A-Za-z]*$&quot;, &quot;asdf123&quot;)
+false
+</code></pre>
+
+<p><a id='Matching-Words-1'></a></p>
+<h2 id="matching-words">Matching Words</h2>
+<p>Use the <code>\b</code> character to match at word boundaries.</p>
+<pre><code class="julia">julia&gt; match(r&quot;\bthe\b&quot;, &quot;read the thesaurus&quot;).offset
+6
+</code></pre>
+
+<p><a id='Finding-the-nth-match-1'></a></p>
+<h2 id="finding-the-nth-match">Finding the nth match</h2>
+<p>The <code>matchall</code> function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:</p>
+<pre><code class="julia">julia&gt; matchall(r&quot;[0-9]+&quot;, &quot;12 apples plus 1 make 13&quot;)[3]
+&quot;13&quot;
+</code></pre>
+
+<p>However, for larger strings, it may take a while to generate all matches. For such cases:</p>
+<pre><code class="julia">function nth_occurance(pattern::Regex, n::Int, str::String)
+   count = 1
+   idx = 1
+   while idx &lt;= length(str)
+      m = match(pattern, str, idx)
+      if m == nothing
+         return
+      elseif(count == n)
+         return m.match
+      else
+         count += 1
+         idx = m.offset + length(m.match) + 1
+      end
+   end
+
+   return
+end
+
+julia&gt; nth_occurance(r&quot;[0-9]+&quot;, 3, &quot;12 plus 1 make 13&quot;)
+&quot;13&quot;
+</code></pre></div>
         
     </div>
 
@@ -195,17 +240,17 @@
         <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
     </footer>
 
-    <script src="./js/jquery-1.10.2.min.js"></script>
-    <script src="./js/bootstrap-3.0.3.min.js"></script>
-    <script src="./js/highlight.pack.js"></script>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script>
-    var base_url = '.';
+    var base_url = '..';
     </script>
-    <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-    <script src="./js/base.js"></script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script src="./assets/mathjaxhelper.js"></script>
+    <script src="../assets/mathjaxhelper.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -237,8 +282,3 @@
     </body>
 
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-10-20 20:55:00.374383
--->

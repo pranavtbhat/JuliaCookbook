@@ -10,49 +10,67 @@
     
 
     
-        
+    <url>
+     <loc>None/tuples/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/strings/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/dicts/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/dates/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/regex/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
     <url>
      <loc>None/arrays/arrays/</loc>
      <lastmod>2016-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
+    
+
+    
     <url>
-     <loc>None/arrays/creating/</loc>
+     <loc>None/dates/</loc>
      <lastmod>2016-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
+    
+
+    
     <url>
-     <loc>None/arrays/map/</loc>
+     <loc>None/dataframes/DataFrames/</loc>
      <lastmod>2016-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    <url>
-     <loc>None/arrays/append/</loc>
-     <lastmod>2016-10-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/arrays/reorder/</loc>
-     <lastmod>2016-10-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/arrays/setlike/</loc>
-     <lastmod>2016-10-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/arrays/search/</loc>
-     <lastmod>2016-10-20</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
     
 
 </urlset>

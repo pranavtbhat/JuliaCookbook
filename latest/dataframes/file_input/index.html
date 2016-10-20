@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>File IO - JuliaCookbook</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../assets/Documenter.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">JuliaCookbook</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../tuples/">Tuples</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../strings/">Strings</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../dicts/">Dictionaries</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../dates/">Dates</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../regex/">Regex</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Arrays <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../arrays/arrays/">Introduction</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../arrays/creating/">Creation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../arrays/map/">Iteration</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../arrays/reorder/">Reordering</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../arrays/setlike/">Set Operations</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../arrays/search/">Search</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../dates/">Dates</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">DataFrames <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../DataFrames/">Introduction</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">File IO</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../accessors/">Data Access</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../RDatasets/">R Datasets</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../regressions/">Regressions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../DataFrames/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../accessors/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/pranavtbhat/JuliaCookbook">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#reading-delimiter-separated-data">Reading Delimiter-Separated data</a></li>
+        
+    
+        <li class="first-level "><a href="#handling-different-comment-marks">Handling different comment marks</a></li>
+        
+    
+        <li class="first-level "><a href="#multiple-missing-value-strings">Multiple missing value strings</a></li>
+        
+    
+        <li class="first-level "><a href="#reading-a-subset-of-rows">Reading a subset of rows</a></li>
+        
+    
+        <li class="first-level "><a href="#reading-from-compressed-files">Reading from compressed files</a></li>
+        
+    
+        <li class="first-level "><a href="#reading-from-pipes">Reading from pipes</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p><a id='Reading-Delimiter-Separated-data-1'></a></p>
+<h2 id="reading-delimiter-separated-data">Reading Delimiter-Separated data</h2>
+<p>The <code>readtable</code> function from <code>DataFrames.jl</code> can be used to read the contents of a <code>CSV/TSV/WSV</code> file into a DataFrame. A call to <code>readtable</code> typically looks like:</p>
+<pre><code class="julia">readtable(&quot;FILENAME&quot;; [KEYWORD_ARGS]...)
+</code></pre>
+
+<p>Some of the keyword arguments, described in the <code>readtable</code> docstring, are:</p>
+<ol>
+<li><code>header::Bool=true</code> – Use the information from the file's header line to determine column names.</li>
+<li><code>separator::Char</code> – Assume that fields are split by the separator character. If not specified, it will be guessed from the filename.</li>
+<li><code>allowcomments::Bool=false</code> – Ignore all text inside comments. Defaults to false.</li>
+<li><code>skipblanks::Bool=true</code> – Skip any blank lines in input. Defaults to true.</li>
+</ol>
+<p>You can see the entire list of keyword arguments using:</p>
+<pre><code class="julia">julia&gt; ?readtable
+</code></pre>
+
+<p>Since the dataset has commented lines, we set the <code>allowcomments</code> argument to <code>true</code>.</p>
+<pre><code class="julia">julia&gt; filename = joinpath(Pkg.dir(&quot;JuliaCookbook&quot;), &quot;datasets&quot;, &quot;baseball_players.tsv&quot;) # Locate the dataset
+julia&gt; df = readtable(filename; allowcomments=true)                                      # Read the DataFrame
+1033×6 DataFrames.DataFrame
+│ Row  │ Name                 │ Team  │ Position            │ Height_inches_ │ Weight_pounds_ │ Age   │
+├──────┼──────────────────────┼───────┼─────────────────────┼────────────────┼────────────────┼───────┤
+│ 1    │ &quot;Adam_Donachie&quot;      │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 74             │ 180            │ 22.99 │
+│ 2    │ &quot;Paul_Bako&quot;          │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 74             │ 215            │ 34.69 │
+│ 3    │ &quot;Ramon_Hernandez&quot;    │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 72             │ 210            │ 30.78 │
+│ 4    │ &quot;Kevin_Millar&quot;       │ &quot;BAL&quot; │ &quot;First_Baseman&quot;     │ 72             │ 210            │ 35.43 │
+│ 5    │ &quot;Chris_Gomez&quot;        │ &quot;BAL&quot; │ &quot;First_Baseman&quot;     │ 73             │ 188            │ 35.71 │
+│ 6    │ &quot;Brian_Roberts&quot;      │ &quot;BAL&quot; │ &quot;Second_Baseman&quot;    │ 69             │ 176            │ 29.39 │
+│ 7    │ &quot;Miguel_Tejada&quot;      │ &quot;BAL&quot; │ &quot;Shortstop&quot;         │ 69             │ 209            │ 30.77 │
+│ 8    │ &quot;Melvin_Mora&quot;        │ &quot;BAL&quot; │ &quot;Third_Baseman&quot;     │ 71             │ 200            │ 35.07 │
+│ 9    │ &quot;Aubrey_Huff&quot;        │ &quot;BAL&quot; │ &quot;Third_Baseman&quot;     │ 76             │ 231            │ 30.19 │
+│ 10   │ &quot;Adam_Stern&quot;         │ &quot;BAL&quot; │ &quot;Outfielder&quot;        │ 71             │ 180            │ 27.05 │
+⋮
+│ 1025 │ &quot;Jason_Isringhausen&quot; │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 230            │ 34.48 │
+│ 1026 │ &quot;Ricardo_Rincon&quot;     │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 69             │ 190            │ 36.88 │
+│ 1027 │ &quot;Braden_Looper&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 220            │ 32.34 │
+│ 1028 │ &quot;Randy_Flores&quot;       │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 72             │ 180            │ 31.58 │
+│ 1029 │ &quot;Josh_Hancock&quot;       │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 205            │ 28.89 │
+│ 1030 │ &quot;Brad_Thompson&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 73             │ 190            │ 25.08 │
+│ 1031 │ &quot;Tyler_Johnson&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 74             │ 180            │ 25.73 │
+│ 1032 │ &quot;Chris_Narveson&quot;     │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 205            │ 25.19 │
+│ 1033 │ &quot;Randy_Keisler&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 190            │ 31.01 │
+│ 1034 │ &quot;Josh_Kinney&quot;        │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 73             │ 195            │ 27.92 │
+</code></pre>
+
+<p><a id='Handling-different-comment-marks-1'></a></p>
+<h2 id="handling-different-comment-marks">Handling different comment marks</h2>
+<p>The <code>readtable</code> function assumes that comment lines begin with the '#' character. Therefore, the default <code>readtable</code> invocation looks like:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; allowcomments=true, commentmark='#')
+</code></pre>
+
+<p>If your dataset uses a different character to indicate commented lines, specify the character using the <code>commentmark</code> keyword argument. For example, if your dataset uses the <code>%</code> character:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; allowcomments=true, commentmark='%')
+</code></pre>
+
+<p><a id='Multiple-missing-value-strings-1'></a></p>
+<h2 id="multiple-missing-value-strings">Multiple missing value strings</h2>
+<p>By default, <code>readtable</code> translates the strings <code>""</code> and <code>"NA"</code> into null values or <code>NA</code>s. If your dataset uses different or additional strings to represent null values, you can set the <code>nastrings</code> keyword argument to these strings. For example, if your dataset contains <code>"null"</code>, <code>"NULL"</code> and <code>"-"</code> to indicate null values, then run:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; nastrings=[&quot;null&quot;, &quot;NULL&quot;, &quot;-&quot;])
+</code></pre>
+
+<p><a id='Reading-a-subset-of-rows-1'></a></p>
+<h2 id="reading-a-subset-of-rows">Reading a subset of rows</h2>
+<p>By default, <code>readtable</code> reads the entire file into a dataframe. Therefore, the default <code>readtable</code> invocation looks like:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; nrows=-1)
+</code></pre>
+
+<p>If you're interested in the first few lines or don't want to overwhelm your memory, specify the number of rows you want to read with the <code>nrows</code> keyword argument. For example, to read the first 500 lines:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; nrows=500)
+</code></pre>
+
+<p>If you want to skip the first few lines, set the <code>skipstart</code> keyword argument. For example to skip the first 500 lines:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; skipstart=500)
+</code></pre>
+
+<p>To skip specific lines in the file, set the <code>skiprows</code> keyword argument to an array containing the rows you want to skip. For example to skip rows <code>[10, 50, 100]</code>:</p>
+<pre><code class="julia">julia&gt; readtable(&quot;FILE_NAME&quot;; skiplines=[10, 50, 100])
+</code></pre>
+
+<p>A complex combination of lines can be read by using one or more of <code>nrows</code>, <code>skipstart</code> and <code>skiprows</code>.</p>
+<p><a id='Reading-from-compressed-files-1'></a></p>
+<h2 id="reading-from-compressed-files">Reading from compressed files</h2>
+<p>The GZip package can be used to read <code>DataFrame</code>s from compressed files. The general syntax to do this is:</p>
+<pre><code class="julia">julia&gt; GZip.open(&quot;FILE_NAME.gz&quot;) do f
+           readtable(f; [KEYWORD_ARGS]...)
+       end
+</code></pre>
+
+<p>To read a compressed version of the baseball players dataset:</p>
+<pre><code class="julia">julia&gt; filename = joinpath(Pkg.dir(&quot;JuliaCookbook&quot;), &quot;datasets&quot;, &quot;baseball_players.tsv.gz&quot;) # Locate the dataset
+julia&gt; GZip.open(filename) do f
+           readtable(f; allowcomments=true, separator='\t')
+       end
+1034×6 DataFrames.DataFrame
+│ Row  │ Name                 │ Team  │ Position            │ Height_inches_ │ Weight_pounds_ │ Age   │
+├──────┼──────────────────────┼───────┼─────────────────────┼────────────────┼────────────────┼───────┤
+│ 1    │ &quot;Adam_Donachie&quot;      │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 74             │ 180            │ 22.99 │
+│ 2    │ &quot;Paul_Bako&quot;          │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 74             │ 215            │ 34.69 │
+│ 3    │ &quot;Ramon_Hernandez&quot;    │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 72             │ 210            │ 30.78 │
+│ 4    │ &quot;Kevin_Millar&quot;       │ &quot;BAL&quot; │ &quot;First_Baseman&quot;     │ 72             │ 210            │ 35.43 │
+│ 5    │ &quot;Chris_Gomez&quot;        │ &quot;BAL&quot; │ &quot;First_Baseman&quot;     │ 73             │ 188            │ 35.71 │
+  ⋮
+│ 1030 │ &quot;Brad_Thompson&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 73             │ 190            │ 25.08 │
+│ 1031 │ &quot;Tyler_Johnson&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 74             │ 180            │ 25.73 │
+│ 1032 │ &quot;Chris_Narveson&quot;     │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 205            │ 25.19 │
+│ 1033 │ &quot;Randy_Keisler&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 190            │ 31.01 │
+│ 1034 │ &quot;Josh_Kinney&quot;        │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 73             │ 195            │ 27.92 │
+</code></pre>
+
+<p><a id='Reading-from-pipes-1'></a></p>
+<h2 id="reading-from-pipes">Reading from pipes</h2>
+<p>Julia can run external programs, especially shell script, from within the REPL. The backtick notation is used to represent commands. For commands that return pipes, or streams of data, Julia can treat the output as a file to read the DataFrame. The general syntax for such a workflow is:</p>
+<pre><code class="julia">julia&gt; open(`COMMAND`) do f
+          readtable(f)
+       end
+</code></pre>
+
+<p>The file <code>baseball_players.tsv.gz</code> can be uncompressed onto STDOUT using the command $gzip -cd baseball_players.tsv.gz$. The DataFrame can therefore be read as:</p>
+<pre><code class="julia">julia&gt; filename = joinpath(Pkg.dir(&quot;JuliaCookbook&quot;), &quot;datasets&quot;, &quot;baseball_players.tsv.gz&quot;) # Locate the dataset
+julia&gt; open(`gzip -cd $filename`) do f
+           readtable(f; allowcomments=true, separator='\t')
+       end
+1034×6 DataFrames.DataFrame
+│ Row  │ Name                 │ Team  │ Position            │ Height_inches_ │ Weight_pounds_ │ Age   │
+├──────┼──────────────────────┼───────┼─────────────────────┼────────────────┼────────────────┼───────┤
+│ 1    │ &quot;Adam_Donachie&quot;      │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 74             │ 180            │ 22.99 │
+│ 2    │ &quot;Paul_Bako&quot;          │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 74             │ 215            │ 34.69 │
+│ 3    │ &quot;Ramon_Hernandez&quot;    │ &quot;BAL&quot; │ &quot;Catcher&quot;           │ 72             │ 210            │ 30.78 │
+│ 4    │ &quot;Kevin_Millar&quot;       │ &quot;BAL&quot; │ &quot;First_Baseman&quot;     │ 72             │ 210            │ 35.43 │
+│ 5    │ &quot;Chris_Gomez&quot;        │ &quot;BAL&quot; │ &quot;First_Baseman&quot;     │ 73             │ 188            │ 35.71 │
+⋮
+│ 1030 │ &quot;Brad_Thompson&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 73             │ 190            │ 25.08 │
+│ 1031 │ &quot;Tyler_Johnson&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 74             │ 180            │ 25.73 │
+│ 1032 │ &quot;Chris_Narveson&quot;     │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 205            │ 25.19 │
+│ 1033 │ &quot;Randy_Keisler&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 75             │ 190            │ 31.01 │
+│ 1034 │ &quot;Josh_Kinney&quot;        │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;    │ 73             │ 195            │ 27.92 │
+</code></pre>
+
+<p>You could also extract a DataFrame from the output of a Perl script. For example, if you want only alternate rows in the DataFrame, you would do:</p>
+<pre><code class="julia">julia&gt; filename = joinpath(Pkg.dir(&quot;JuliaCookbook&quot;), &quot;datasets&quot;, &quot;baseball_players.tsv&quot;) # Locate the dataset
+julia&gt; open(`perl -ne 'print if $. %2' $filename`) do f
+           readtable(f; allowcomments=true, separator='\t')
+       end
+517×6 DataFrames.DataFrame
+│ Row │ Name               │ Team  │ Position           │ Height_inches_ │ Weight_pounds_ │ Age   │
+├─────┼────────────────────┼───────┼────────────────────┼────────────────┼────────────────┼───────┤
+│ 1   │ &quot;Paul_Bako&quot;        │ &quot;BAL&quot; │ &quot;Catcher&quot;          │ 74             │ 215            │ 34.69 │
+│ 2   │ &quot;Kevin_Millar&quot;     │ &quot;BAL&quot; │ &quot;First_Baseman&quot;    │ 72             │ 210            │ 35.43 │
+│ 3   │ &quot;Brian_Roberts&quot;    │ &quot;BAL&quot; │ &quot;Second_Baseman&quot;   │ 69             │ 176            │ 29.39 │
+│ 4   │ &quot;Melvin_Mora&quot;      │ &quot;BAL&quot; │ &quot;Third_Baseman&quot;    │ 71             │ 200            │ 35.07 │
+│ 5   │ &quot;Adam_Stern&quot;       │ &quot;BAL&quot; │ &quot;Outfielder&quot;       │ 71             │ 180            │ 27.05 │
+⋮
+│ 513 │ &quot;Ricardo_Rincon&quot;   │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 69             │ 190            │ 36.88 │
+│ 514 │ &quot;Randy_Flores&quot;     │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 72             │ 180            │ 31.58 │
+│ 515 │ &quot;Brad_Thompson&quot;    │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 73             │ 190            │ 25.08 │
+│ 516 │ &quot;Chris_Narveson&quot;   │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 75             │ 205            │ 25.19 │
+│ 517 │ &quot;Josh_Kinney&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 73             │ 195            │ 27.92 │
+</code></pre>
+
+<p>Julia allows a command to pipe its output into the next command, using the <code>pipeline</code> method. The general syntax for such a construct would be:</p>
+<pre><code class="julia">julia&gt; pipeline(`COMMAND_1`, `COMMAND_2` ... `COMMAND_N`)
+</code></pre>
+
+<p>A DataFrame consisting of alternate rows can be extracted from the compressed dataset by running:</p>
+<pre><code class="julia">julia&gt; filename = joinpath(Pkg.dir(&quot;JuliaCookbook&quot;), &quot;datasets&quot;, &quot;baseball_players.tsv.gz&quot;) # Locate the dataset
+julia&gt; open(pipeline(`gzip -cd $filename`, `perl -ne 'print if $. % 2'`)) do f
+          readtable(f; allowcomments=true, separator='\t')
+       end
+517×6 DataFrames.DataFrame
+│ Row │ Name               │ Team  │ Position           │ Height_inches_ │ Weight_pounds_ │ Age   │
+├─────┼────────────────────┼───────┼────────────────────┼────────────────┼────────────────┼───────┤
+│ 1   │ &quot;Paul_Bako&quot;        │ &quot;BAL&quot; │ &quot;Catcher&quot;          │ 74             │ 215            │ 34.69 │
+│ 2   │ &quot;Kevin_Millar&quot;     │ &quot;BAL&quot; │ &quot;First_Baseman&quot;    │ 72             │ 210            │ 35.43 │
+│ 3   │ &quot;Brian_Roberts&quot;    │ &quot;BAL&quot; │ &quot;Second_Baseman&quot;   │ 69             │ 176            │ 29.39 │
+│ 4   │ &quot;Melvin_Mora&quot;      │ &quot;BAL&quot; │ &quot;Third_Baseman&quot;    │ 71             │ 200            │ 35.07 │
+│ 5   │ &quot;Adam_Stern&quot;       │ &quot;BAL&quot; │ &quot;Outfielder&quot;       │ 71             │ 180            │ 27.05 │
+⋮
+│ 513 │ &quot;Ricardo_Rincon&quot;   │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 69             │ 190            │ 36.88 │
+│ 514 │ &quot;Randy_Flores&quot;     │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 72             │ 180            │ 31.58 │
+│ 515 │ &quot;Brad_Thompson&quot;    │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 73             │ 190            │ 25.08 │
+│ 516 │ &quot;Chris_Narveson&quot;   │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 75             │ 205            │ 25.19 │
+│ 517 │ &quot;Josh_Kinney&quot;      │ &quot;STL&quot; │ &quot;Relief_Pitcher&quot;   │ 73             │ 195            │ 27.92 │
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="../../assets/mathjaxhelper.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

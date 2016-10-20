@@ -50,11 +50,43 @@
     
 
     
+        
     <url>
      <loc>None/arrays/arrays/</loc>
      <lastmod>2016-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>None/arrays/creating/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/arrays/map/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/arrays/reorder/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/arrays/setlike/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/arrays/search/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
@@ -66,11 +98,37 @@
     
 
     
+        
     <url>
      <loc>None/dataframes/DataFrames/</loc>
      <lastmod>2016-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>None/dataframes/file_input/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/dataframes/accessors/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/dataframes/RDatasets/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/dataframes/regressions/</loc>
+     <lastmod>2016-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>

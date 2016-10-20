@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Introduction - JuliaCookbook</title>
+    <title>R Datasets - JuliaCookbook</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -103,43 +103,43 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Arrays <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">Introduction</a>
+<li >
+    <a href="../../arrays/arrays/">Introduction</a>
 </li>
 
                         
                             
 <li >
-    <a href="../creating/">Creation</a>
+    <a href="../../arrays/creating/">Creation</a>
 </li>
 
                         
                             
 <li >
-    <a href="../map/">Iteration</a>
+    <a href="../../arrays/map/">Iteration</a>
 </li>
 
                         
                             
 <li >
-    <a href="../reorder/">Reordering</a>
+    <a href="../../arrays/reorder/">Reordering</a>
 </li>
 
                         
                             
 <li >
-    <a href="../setlike/">Set Operations</a>
+    <a href="../../arrays/setlike/">Set Operations</a>
 </li>
 
                         
                             
 <li >
-    <a href="../search/">Search</a>
+    <a href="../../arrays/search/">Search</a>
 </li>
 
                         
@@ -154,37 +154,37 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">DataFrames <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="../../dataframes/DataFrames/">Introduction</a>
+    <a href="../DataFrames/">Introduction</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../dataframes/file_input/">File IO</a>
+    <a href="../file_input/">File IO</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../dataframes/accessors/">Data Access</a>
+    <a href="../accessors/">Data Access</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">R Datasets</a>
 </li>
 
                         
                             
 <li >
-    <a href="../../dataframes/RDatasets/">R Datasets</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="../../dataframes/regressions/">Regressions</a>
+    <a href="../regressions/">Regressions</a>
 </li>
 
                         
@@ -203,12 +203,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../../regex/">
+                        <a rel="next" href="../accessors/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../creating/">
+                        <a rel="prev" href="../regressions/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -233,39 +233,74 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#arrays">Arrays</a></li>
-        
-    
-        <li class="first-level "><a href="#contents">Contents</a></li>
-        
-    
-        <li class="first-level "><a href="#references">References</a></li>
+        <li class="first-level active"><a href="#r-datasets">R Datasets</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><a id='Arrays-1'></a></p>
-<h1 id="arrays">Arrays</h1>
-<p>This file contains recipes for common problems related to arrays. The problem shown here are from the arrays section in the <a href="http://docstore.mik.ua/orelly/perl/cookbook/ch04_01.htm">Perl Cookbook</a>.</p>
-<p>In Julia, an array is an ordered collection of elements. We will be dealing with the <code>Array{T,N}</code> data structure exclusively, and won't be dealing with other subtypes of  <code>AbstractArray{T,N}</code>.</p>
-<p><a id='Contents-1'></a></p>
-<h1 id="contents">Contents</h1>
-<ul>
-<li><a href="https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/creating.md">Creating an array</a></li>
-<li><a href="https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/map.md">Doing Something with Every Element in a List</a></li>
-<li><a href="https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/append.md">Combining arrays together</a></li>
-<li><a href="https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/reorder.md">Reordering Elements</a></li>
-<li><a href="https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/setlike.md">Set Operations</a></li>
-<li><a href="https://github.com/pranavtbhat/JuliaCookbook/blob/master/arrays/search.md">Searching</a></li>
-</ul>
-<p><a id='References-1'></a></p>
-<h1 id="references">References</h1>
-<ul>
-<li><a href="http://docs.julialang.org/en/release-0.5/stdlib/arrays/">Julia Array documentation</a></li>
-<li><a href="https://en.wikibooks.org/wiki/Introducing_Julia/Arrays_and_tuples">Julia Array Wiki</a></li>
-</ul></div>
+<p><a id='R-Datasets-1'></a></p>
+<h1 id="r-datasets">R Datasets</h1>
+<p>If you miss the standard datasets from R, or just need a few sample datasets to get familiar with DataFrames, the <a href="https://github.com/johnmyleswhite/RDatasets.jl">RDatasets</a> package would be a great place to look.</p>
+<p>The list of R packages, from which datasets are available, can be obtained using:</p>
+<pre><code class="julia">julia&gt; RDatasets.packages()
+33×2 DataFrames.DataFrame
+│ Row │ Package        │ Title                                                                     │
+├─────┼────────────────┼───────────────────────────────────────────────────────────────────────────┤
+│ 1   │ &quot;COUNT&quot;        │ &quot;Functions, data and code for count data.&quot;                                │
+│ 2   │ &quot;Ecdat&quot;        │ &quot;Data sets for econometrics&quot;                                              │
+│ 3   │ &quot;HSAUR&quot;        │ &quot;A Handbook of Statistical Analyses Using R (1st Edition)&quot;                │
+│ 4   │ &quot;HistData&quot;     │ &quot;Data sets from the history of statistics and data visualization&quot;         │
+│ 5   │ &quot;ISLR&quot;         │ &quot;Data for An Introduction to Statistical Learning with Applications in R&quot; │
+  ⋮
+│ 29  │ &quot;rpart&quot;        │ &quot;Recursive Partitioning and Regression Trees&quot;                             │
+│ 30  │ &quot;sandwich&quot;     │ &quot;Robust Covariance Matrix Estimators&quot;                                     │
+│ 31  │ &quot;sem&quot;          │ &quot;Structural Equation Models&quot;                                              │
+│ 32  │ &quot;survival&quot;     │ &quot;Survival Analysis&quot;                                                       │
+│ 33  │ &quot;vcd&quot;          │ &quot;Visualizing Categorical Data&quot;                                            │
+</code></pre>
+
+<p>The datasets available from each package can be obtained by running <code>RDatasets.datasets("PACKAGE_NAME")</code>. For example, for a list of datasets for Econometrics, run:</p>
+<pre><code class="julia">julia&gt; RDatasets.datasets(&quot;Ecdat&quot;)
+93×5 DataFrames.DataFrame
+│ Row │ Package │ Dataset            │ Title                                                      │ Rows  │ Columns │
+├─────┼─────────┼────────────────────┼────────────────────────────────────────────────────────────┼───────┼─────────┤
+│ 1   │ &quot;Ecdat&quot; │ &quot;Accident&quot;         │ &quot;Ship Accidents&quot;                                           │ 40    │ 5       │
+│ 2   │ &quot;Ecdat&quot; │ &quot;Airline&quot;          │ &quot;Cost for U.S. Airlines&quot;                                   │ 90    │ 6       │
+│ 3   │ &quot;Ecdat&quot; │ &quot;Airq&quot;             │ &quot;Air Quality for Californian Metropolitan Areas&quot;           │ 30    │ 6       │
+│ 4   │ &quot;Ecdat&quot; │ &quot;Benefits&quot;         │ &quot;Unemployement of Blue Collar Workers&quot;                     │ 4877  │ 18      │
+│ 5   │ &quot;Ecdat&quot; │ &quot;Bids&quot;             │ &quot;Bids Received By U.S. Firms&quot;                              │ 126   │ 12      │
+  ⋮
+│ 89  │ &quot;Ecdat&quot; │ &quot;Wages1&quot;           │ &quot;Wages, Experience and Schooling&quot;                          │ 3294  │ 4       │
+│ 90  │ &quot;Ecdat&quot; │ &quot;Workinghours&quot;     │ &quot;Wife Working Hours&quot;                                       │ 3382  │ 12      │
+│ 91  │ &quot;Ecdat&quot; │ &quot;Yen&quot;              │ &quot;Yen-dollar Exchange Rate&quot;                                 │ 778   │ 4       │
+│ 92  │ &quot;Ecdat&quot; │ &quot;Yogurt&quot;           │ &quot;Choice of Brand for Yogurts&quot;                              │ 2412  │ 10      │
+│ 93  │ &quot;Ecdat&quot; │ &quot;incomeInequality&quot; │ &quot;Income Inequality in the US&quot;                              │ 66    │ 22      │
+</code></pre>
+
+<p>Or you can simply get a long list of all supported datasets by running:</p>
+<pre><code class="julia">RDatasets.datasets()
+</code></pre>
+
+<p>Once you've identified the dataset you wish to use, it can be loaded into a DataFrame by running <code>dataset("PACKAGE_NAME", "DATASET_NAME")</code>. For example, you can load the dataset <a href="https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/incomeInequality.html">Income Inequality in the US</a> by running:</p>
+<pre><code class="julia">ineq = dataset(&quot;Ecdat&quot;, &quot;incomeInequality&quot;)
+66×22 DataFrames.DataFrame
+│ Row │ Year │ NumberThousands │ Quintile1 │ … │PersonsPerFamily │ RealGDPPerFamily │ MeanMedian │
+├─────┼──────┼─────────────────┼───────────│   │─────────────────┼──────────────────┼────────────┤
+│ 1   │ 1947 │ 37237           │ 14243     │ … │ 3.87051         │ 54641.2          │ 2.04158    │
+│ 2   │ 1948 │ 38624           │ 13779     │ … │ 3.79637         │ 54864.9          │ 2.09587    │
+│ 3   │ 1949 │ 39303           │ 13007     │ … │ 3.79584         │ 53623.1          │ 2.07767    │
+│ 4   │ 1950 │ 39929           │ 13829     │ … │ 3.79884         │ 57382.2          │ 2.09177    │
+│ 5   │ 1951 │ 40578           │ 15070     │ … │ 3.80223         │ 61013.9          │ 2.15917    │
+│ 24  │ 1970 │ 52227           │ 26913     │ … │ 3.92688         │ 94856.2          │ 1.85394    │
+  ⋮
+│ 62  │ 2008 │ 78874           │ 29646     │ … │ 3.86113         │ 1.97489e5        │ 3.04476    │
+│ 63  │ 2009 │ 78867           │ 28832     │ … │ 3.89567         │ 1.91972e5        │ 3.02526    │
+│ 64  │ 2010 │ 79559           │ 27928     │ … │ 3.89366         │ 1.95073e5        │ 3.10811    │
+│ 65  │ 2011 │ 80529           │ 27787     │ … │ 3.87483         │ 1.96284e5        │ 3.18783    │
+│ 66  │ 2012 │ 80944           │ 27794     │ … │ 3.88266         │ 200704.0         │ 3.25129    │
+</code></pre></div>
         
     </div>
 

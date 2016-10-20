@@ -41,3 +41,4 @@ pages:
    - Data Access: dataframes/accessors.md
    - R Datasets: dataframes/RDatasets.md
    - Regressions: dataframes/regressions.md
+   - Plotting: dataframes/plotting.md

@@ -8,6 +8,3 @@ A Cookbook for Julia. Contains recipes for:
 * Dictionaries
 * Date Time
 * Regular Expressions
-
-
-- link to [JuliaCookbook](@ref)

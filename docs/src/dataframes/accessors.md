@@ -11,6 +11,7 @@ julia> df = readtable(filename; allowcomments=true)                             
 ## Listing out columns
 
 A list of columns in the DataFrame can be obtained by running `names(DATAFRAME)`:
+
 ```julia
 julia> names(df)
 6-element Array{Symbol,1}:
@@ -23,6 +24,7 @@ julia> names(df)
  ```
 
  The data types contained in the columns can be list out using `eltypes(DATAFRAME)`:
+
  ```julia
  julia> eltypes(df)
  6-element Array{Type,1}:

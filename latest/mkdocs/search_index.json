@@ -146,71 +146,6 @@
             "title": "Filter"
         }, 
         {
-            "location": "/dates/", 
-            "text": "Date-Time\n\n\nJulia provides the immutable \nDate\n and \nDateTime\n data structures for working with dates. The \nDate\n object stores only a date and can be created as:\n\n\nDate(YEAR, MONTH, DAY)\n\njulia\n Date(2016, 9, 26)\n2016-09-26\n\n\n\n\nAlternatively a format string can be passed in for a custom date string:\n\n\njulia\n Date(\n26/09/2016\n, \ndd/mm/yyyy\n)\n2016-09-26\n\njulia\n Date(\n09-26-2016\n, \nmm-dd-yyyy\n)\n2016-09-26\n\n\n\n\nThe \nDateTime\n object can be used to work with both date and time, and accepts a variable number of arguments:\n\n\nDateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia\n DateTime(2016)\n2016-01-01T00:00:00\n\njulia\n DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00\n\n\n\n\nThe \nDateTime\n function also accepts a format string for date strings:\n\n\njulia\n DateTime(\n20160926 173000\n,\nyyyymmdd HHMMSS\n)\n2016-09-26T17:30:00\n\n\n\n\n\n\nFinding Today's Date\n\n\nTo fetch a \nDate\n object containing the current date:\n\n\njulia\n Dates.today()\n2016-09-26\n\n\n\n\nTo fetch a \nDateTime\n object containing the current date and time:\n\n\njulia\n Dates.now()\n2016-09-26T18:56:04.868\n\n\n\n\n\n\nAccessing Date-Time fields\n\n\nJulia provides functions to access the individual fields in a \nDateTime\n or \nDate\n object:\n\n\njulia\n using Dates\n\njulia\n t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia\n Dates.year(t)\n2016\n\njulia\n Dates.month(t)\n9\n\njulia\n Dates.day(t)\n26\n\njulia\n Dates.hour(t)\n17\n\njulia\n Dates.minute(t)\n30\n\njulia\n Dates.second(t)\n0\n\n\n\n\n\n\nConverting a Date-Time object to Epoch seconds\n\n\nJulia provides the \ndatetime2epochms\n function to convert the date denoted by a \nDateTime\n object into the number of seconds elapsed since the rounding epoch date-time \n0000-01-01T00:00:00\n:\n\n\njulia\n Dates.datetime2epochms(Dates.now())\n63642136200066\n\n\n\n\n\n\nConverting Epoch Seconds to a Date-Time object\n\n\nJulia provides the \nepochms2datetime\n function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a \nDateTime\n object:\n\n\njulia\n Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066\n\n\n\n\n\n\nAdding to or Subtracting from a Date\n\n\nDate\n objects can be subtracted to yield a result in days:\n\n\njulia\n Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days\n\n\n\n\nSimilarly, \nDateTime\n objects can be subtracted to yield a result in milliseconds:\n\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds\n\n\n\n\nAdditionally, individual \nDateTime\n components can be added or subtracted from both \nDate\n and \nDateTime\n objects, to yield new objects:\n\n\njulia\n Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16\n\n\n\n\n\n\nDay in a Week/Month/Year or Week Number\n\n\nJulia provides query functions for \nDateTime\n objects:\n\n\njulia\n t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia\n Dates.dayofweek(t)\n1\n\njulia\n Dates.dayofmonth(t)\n26\n\njulia\n Dates.dayofyear(t)\n270\n\njulia\n Dates.week(t)\n39", 
-            "title": "Dates"
-        }, 
-        {
-            "location": "/dates/#date-time", 
-            "text": "Julia provides the immutable  Date  and  DateTime  data structures for working with dates. The  Date  object stores only a date and can be created as:  Date(YEAR, MONTH, DAY)\n\njulia  Date(2016, 9, 26)\n2016-09-26  Alternatively a format string can be passed in for a custom date string:  julia  Date( 26/09/2016 ,  dd/mm/yyyy )\n2016-09-26\n\njulia  Date( 09-26-2016 ,  mm-dd-yyyy )\n2016-09-26  The  DateTime  object can be used to work with both date and time, and accepts a variable number of arguments:  DateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia  DateTime(2016)\n2016-01-01T00:00:00\n\njulia  DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00  The  DateTime  function also accepts a format string for date strings:  julia  DateTime( 20160926 173000 , yyyymmdd HHMMSS )\n2016-09-26T17:30:00", 
-            "title": "Date-Time"
-        }, 
-        {
-            "location": "/dates/#finding-todays-date", 
-            "text": "To fetch a  Date  object containing the current date:  julia  Dates.today()\n2016-09-26  To fetch a  DateTime  object containing the current date and time:  julia  Dates.now()\n2016-09-26T18:56:04.868", 
-            "title": "Finding Today's Date"
-        }, 
-        {
-            "location": "/dates/#accessing-date-time-fields", 
-            "text": "Julia provides functions to access the individual fields in a  DateTime  or  Date  object:  julia  using Dates\n\njulia  t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia  Dates.year(t)\n2016\n\njulia  Dates.month(t)\n9\n\njulia  Dates.day(t)\n26\n\njulia  Dates.hour(t)\n17\n\njulia  Dates.minute(t)\n30\n\njulia  Dates.second(t)\n0", 
-            "title": "Accessing Date-Time fields"
-        }, 
-        {
-            "location": "/dates/#converting-a-date-time-object-to-epoch-seconds", 
-            "text": "Julia provides the  datetime2epochms  function to convert the date denoted by a  DateTime  object into the number of seconds elapsed since the rounding epoch date-time  0000-01-01T00:00:00 :  julia  Dates.datetime2epochms(Dates.now())\n63642136200066", 
-            "title": "Converting a Date-Time object to Epoch seconds"
-        }, 
-        {
-            "location": "/dates/#converting-epoch-seconds-to-a-date-time-object", 
-            "text": "Julia provides the  epochms2datetime  function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a  DateTime  object:  julia  Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066", 
-            "title": "Converting Epoch Seconds to a Date-Time object"
-        }, 
-        {
-            "location": "/dates/#adding-to-or-subtracting-from-a-date", 
-            "text": "Date  objects can be subtracted to yield a result in days:  julia  Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days  Similarly,  DateTime  objects can be subtracted to yield a result in milliseconds:  julia  DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds  Additionally, individual  DateTime  components can be added or subtracted from both  Date  and  DateTime  objects, to yield new objects:  julia  Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia  DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16", 
-            "title": "Adding to or Subtracting from a Date"
-        }, 
-        {
-            "location": "/dates/#day-in-a-weekmonthyear-or-week-number", 
-            "text": "Julia provides query functions for  DateTime  objects:  julia  t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia  Dates.dayofweek(t)\n1\n\njulia  Dates.dayofmonth(t)\n26\n\njulia  Dates.dayofyear(t)\n270\n\njulia  Dates.week(t)\n39", 
-            "title": "Day in a Week/Month/Year or Week Number"
-        }, 
-        {
-            "location": "/regex/", 
-            "text": "Pattern Matching\n\n\nJulia supports regular expressions or regexes for string matching. The expressions must be compliant with the \nPerl Compatible Regular Expressions\n library.\n\n\nA regular expression in Julia is denoted by a leading \nr\n. For example, a regular to match comments will look like:\n\n\nr\n^\\s*(?:#|$)\n\n\n\n\n\nThe \nismatch\n, \nmatch\n and \nreplace\n functions accept regular expressions.\n\n\n\n\nMatching Letters\n\n\nTo check if a string consists of only alphabetic characters:\n\n\njulia\n ismatch(r\n^[A-Za-z]*$\n, \nasdf\n)\ntrue\n\njulia\n ismatch(r\n^[A-Za-z]*$\n, \nasdf123\n)\nfalse\n\n\n\n\n\n\nMatching Words\n\n\nUse the \n\\b\n character to match at word boundaries.\n\n\njulia\n match(r\n\\bthe\\b\n, \nread the thesaurus\n).offset\n6\n\n\n\n\n\n\nFinding the nth match\n\n\nThe \nmatchall\n function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:\n\n\njulia\n matchall(r\n[0-9]+\n, \n12 apples plus 1 make 13\n)[3]\n\n13\n\n\n\n\n\nHowever, for larger strings, it may take a while to generate all matches. For such cases:\n\n\nfunction nth_occurance(pattern::Regex, n::Int, str::String)\n   count = 1\n   idx = 1\n   while idx \n= length(str)\n      m = match(pattern, str, idx)\n      if m == nothing\n         return\n      elseif(count == n)\n         return m.match\n      else\n         count += 1\n         idx = m.offset + length(m.match) + 1\n      end\n   end\n\n   return\nend\n\njulia\n nth_occurance(r\n[0-9]+\n, 3, \n12 plus 1 make 13\n)\n\n13", 
-            "title": "Regex"
-        }, 
-        {
-            "location": "/regex/#pattern-matching", 
-            "text": "Julia supports regular expressions or regexes for string matching. The expressions must be compliant with the  Perl Compatible Regular Expressions  library.  A regular expression in Julia is denoted by a leading  r . For example, a regular to match comments will look like:  r ^\\s*(?:#|$)   The  ismatch ,  match  and  replace  functions accept regular expressions.", 
-            "title": "Pattern Matching"
-        }, 
-        {
-            "location": "/regex/#matching-letters", 
-            "text": "To check if a string consists of only alphabetic characters:  julia  ismatch(r ^[A-Za-z]*$ ,  asdf )\ntrue\n\njulia  ismatch(r ^[A-Za-z]*$ ,  asdf123 )\nfalse", 
-            "title": "Matching Letters"
-        }, 
-        {
-            "location": "/regex/#matching-words", 
-            "text": "Use the  \\b  character to match at word boundaries.  julia  match(r \\bthe\\b ,  read the thesaurus ).offset\n6", 
-            "title": "Matching Words"
-        }, 
-        {
-            "location": "/regex/#finding-the-nth-match", 
-            "text": "The  matchall  function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:  julia  matchall(r [0-9]+ ,  12 apples plus 1 make 13 )[3] 13   However, for larger strings, it may take a while to generate all matches. For such cases:  function nth_occurance(pattern::Regex, n::Int, str::String)\n   count = 1\n   idx = 1\n   while idx  = length(str)\n      m = match(pattern, str, idx)\n      if m == nothing\n         return\n      elseif(count == n)\n         return m.match\n      else\n         count += 1\n         idx = m.offset + length(m.match) + 1\n      end\n   end\n\n   return\nend\n\njulia  nth_occurance(r [0-9]+ , 3,  12 plus 1 make 13 ) 13", 
-            "title": "Finding the nth match"
-        }, 
-        {
             "location": "/arrays/arrays/", 
             "text": "Arrays\n\n\nThis file contains recipes for common problems related to arrays. The problem shown here are from the arrays section in the \nPerl Cookbook\n.\n\n\nIn Julia, an array is an ordered collection of elements. We will be dealing with the \nArray{T,N}\n data structure exclusively, and won't be dealing with other subtypes of  \nAbstractArray{T,N}\n.\n\n\n\n\nContents\n\n\n\n\nCreating an array\n\n\nDoing Something with Every Element in a List\n\n\nCombining arrays together\n\n\nReordering Elements\n\n\nSet Operations\n\n\nSearching\n\n\n\n\n\n\nReferences\n\n\n\n\nJulia Array documentation\n\n\nJulia Array Wiki", 
             "title": "Introduction"
@@ -354,6 +289,71 @@
             "location": "/arrays/search/#filtering-out-elements", 
             "text": "If you'd like to remove the elements of an array that do not satisfy a condition, the  filter  function can come in handy. For example, to remove the negative numbers in an array:  julia  filter(x -  x  = 0, [1,-2,3,-4,0])\n2-element Array{Int64,1}:\n 1\n 3\n 0", 
             "title": "Filtering out elements"
+        }, 
+        {
+            "location": "/dates/", 
+            "text": "Date-Time\n\n\nJulia provides the immutable \nDate\n and \nDateTime\n data structures for working with dates. The \nDate\n object stores only a date and can be created as:\n\n\nDate(YEAR, MONTH, DAY)\n\njulia\n Date(2016, 9, 26)\n2016-09-26\n\n\n\n\nAlternatively a format string can be passed in for a custom date string:\n\n\njulia\n Date(\n26/09/2016\n, \ndd/mm/yyyy\n)\n2016-09-26\n\njulia\n Date(\n09-26-2016\n, \nmm-dd-yyyy\n)\n2016-09-26\n\n\n\n\nThe \nDateTime\n object can be used to work with both date and time, and accepts a variable number of arguments:\n\n\nDateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia\n DateTime(2016)\n2016-01-01T00:00:00\n\njulia\n DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00\n\n\n\n\nThe \nDateTime\n function also accepts a format string for date strings:\n\n\njulia\n DateTime(\n20160926 173000\n,\nyyyymmdd HHMMSS\n)\n2016-09-26T17:30:00\n\n\n\n\n\n\nFinding Today's Date\n\n\nTo fetch a \nDate\n object containing the current date:\n\n\njulia\n Dates.today()\n2016-09-26\n\n\n\n\nTo fetch a \nDateTime\n object containing the current date and time:\n\n\njulia\n Dates.now()\n2016-09-26T18:56:04.868\n\n\n\n\n\n\nAccessing Date-Time fields\n\n\nJulia provides functions to access the individual fields in a \nDateTime\n or \nDate\n object:\n\n\njulia\n using Dates\n\njulia\n t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia\n Dates.year(t)\n2016\n\njulia\n Dates.month(t)\n9\n\njulia\n Dates.day(t)\n26\n\njulia\n Dates.hour(t)\n17\n\njulia\n Dates.minute(t)\n30\n\njulia\n Dates.second(t)\n0\n\n\n\n\n\n\nConverting a Date-Time object to Epoch seconds\n\n\nJulia provides the \ndatetime2epochms\n function to convert the date denoted by a \nDateTime\n object into the number of seconds elapsed since the rounding epoch date-time \n0000-01-01T00:00:00\n:\n\n\njulia\n Dates.datetime2epochms(Dates.now())\n63642136200066\n\n\n\n\n\n\nConverting Epoch Seconds to a Date-Time object\n\n\nJulia provides the \nepochms2datetime\n function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a \nDateTime\n object:\n\n\njulia\n Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066\n\n\n\n\n\n\nAdding to or Subtracting from a Date\n\n\nDate\n objects can be subtracted to yield a result in days:\n\n\njulia\n Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days\n\n\n\n\nSimilarly, \nDateTime\n objects can be subtracted to yield a result in milliseconds:\n\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds\n\n\n\n\nAdditionally, individual \nDateTime\n components can be added or subtracted from both \nDate\n and \nDateTime\n objects, to yield new objects:\n\n\njulia\n Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16\n\n\n\n\n\n\nDay in a Week/Month/Year or Week Number\n\n\nJulia provides query functions for \nDateTime\n objects:\n\n\njulia\n t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia\n Dates.dayofweek(t)\n1\n\njulia\n Dates.dayofmonth(t)\n26\n\njulia\n Dates.dayofyear(t)\n270\n\njulia\n Dates.week(t)\n39", 
+            "title": "Dates"
+        }, 
+        {
+            "location": "/dates/#date-time", 
+            "text": "Julia provides the immutable  Date  and  DateTime  data structures for working with dates. The  Date  object stores only a date and can be created as:  Date(YEAR, MONTH, DAY)\n\njulia  Date(2016, 9, 26)\n2016-09-26  Alternatively a format string can be passed in for a custom date string:  julia  Date( 26/09/2016 ,  dd/mm/yyyy )\n2016-09-26\n\njulia  Date( 09-26-2016 ,  mm-dd-yyyy )\n2016-09-26  The  DateTime  object can be used to work with both date and time, and accepts a variable number of arguments:  DateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia  DateTime(2016)\n2016-01-01T00:00:00\n\njulia  DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00  The  DateTime  function also accepts a format string for date strings:  julia  DateTime( 20160926 173000 , yyyymmdd HHMMSS )\n2016-09-26T17:30:00", 
+            "title": "Date-Time"
+        }, 
+        {
+            "location": "/dates/#finding-todays-date", 
+            "text": "To fetch a  Date  object containing the current date:  julia  Dates.today()\n2016-09-26  To fetch a  DateTime  object containing the current date and time:  julia  Dates.now()\n2016-09-26T18:56:04.868", 
+            "title": "Finding Today's Date"
+        }, 
+        {
+            "location": "/dates/#accessing-date-time-fields", 
+            "text": "Julia provides functions to access the individual fields in a  DateTime  or  Date  object:  julia  using Dates\n\njulia  t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia  Dates.year(t)\n2016\n\njulia  Dates.month(t)\n9\n\njulia  Dates.day(t)\n26\n\njulia  Dates.hour(t)\n17\n\njulia  Dates.minute(t)\n30\n\njulia  Dates.second(t)\n0", 
+            "title": "Accessing Date-Time fields"
+        }, 
+        {
+            "location": "/dates/#converting-a-date-time-object-to-epoch-seconds", 
+            "text": "Julia provides the  datetime2epochms  function to convert the date denoted by a  DateTime  object into the number of seconds elapsed since the rounding epoch date-time  0000-01-01T00:00:00 :  julia  Dates.datetime2epochms(Dates.now())\n63642136200066", 
+            "title": "Converting a Date-Time object to Epoch seconds"
+        }, 
+        {
+            "location": "/dates/#converting-epoch-seconds-to-a-date-time-object", 
+            "text": "Julia provides the  epochms2datetime  function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a  DateTime  object:  julia  Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066", 
+            "title": "Converting Epoch Seconds to a Date-Time object"
+        }, 
+        {
+            "location": "/dates/#adding-to-or-subtracting-from-a-date", 
+            "text": "Date  objects can be subtracted to yield a result in days:  julia  Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days  Similarly,  DateTime  objects can be subtracted to yield a result in milliseconds:  julia  DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds  Additionally, individual  DateTime  components can be added or subtracted from both  Date  and  DateTime  objects, to yield new objects:  julia  Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia  DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16", 
+            "title": "Adding to or Subtracting from a Date"
+        }, 
+        {
+            "location": "/dates/#day-in-a-weekmonthyear-or-week-number", 
+            "text": "Julia provides query functions for  DateTime  objects:  julia  t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia  Dates.dayofweek(t)\n1\n\njulia  Dates.dayofmonth(t)\n26\n\njulia  Dates.dayofyear(t)\n270\n\njulia  Dates.week(t)\n39", 
+            "title": "Day in a Week/Month/Year or Week Number"
+        }, 
+        {
+            "location": "/regex/", 
+            "text": "Pattern Matching\n\n\nJulia supports regular expressions or regexes for string matching. The expressions must be compliant with the \nPerl Compatible Regular Expressions\n library.\n\n\nA regular expression in Julia is denoted by a leading \nr\n. For example, a regular to match comments will look like:\n\n\nr\n^\\s*(?:#|$)\n\n\n\n\n\nThe \nismatch\n, \nmatch\n and \nreplace\n functions accept regular expressions.\n\n\n\n\nMatching Letters\n\n\nTo check if a string consists of only alphabetic characters:\n\n\njulia\n ismatch(r\n^[A-Za-z]*$\n, \nasdf\n)\ntrue\n\njulia\n ismatch(r\n^[A-Za-z]*$\n, \nasdf123\n)\nfalse\n\n\n\n\n\n\nMatching Words\n\n\nUse the \n\\b\n character to match at word boundaries.\n\n\njulia\n match(r\n\\bthe\\b\n, \nread the thesaurus\n).offset\n6\n\n\n\n\n\n\nFinding the nth match\n\n\nThe \nmatchall\n function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:\n\n\njulia\n matchall(r\n[0-9]+\n, \n12 apples plus 1 make 13\n)[3]\n\n13\n\n\n\n\n\nHowever, for larger strings, it may take a while to generate all matches. For such cases:\n\n\nfunction nth_occurance(pattern::Regex, n::Int, str::String)\n   count = 1\n   idx = 1\n   while idx \n= length(str)\n      m = match(pattern, str, idx)\n      if m == nothing\n         return\n      elseif(count == n)\n         return m.match\n      else\n         count += 1\n         idx = m.offset + length(m.match) + 1\n      end\n   end\n\n   return\nend\n\njulia\n nth_occurance(r\n[0-9]+\n, 3, \n12 plus 1 make 13\n)\n\n13", 
+            "title": "Regex"
+        }, 
+        {
+            "location": "/regex/#pattern-matching", 
+            "text": "Julia supports regular expressions or regexes for string matching. The expressions must be compliant with the  Perl Compatible Regular Expressions  library.  A regular expression in Julia is denoted by a leading  r . For example, a regular to match comments will look like:  r ^\\s*(?:#|$)   The  ismatch ,  match  and  replace  functions accept regular expressions.", 
+            "title": "Pattern Matching"
+        }, 
+        {
+            "location": "/regex/#matching-letters", 
+            "text": "To check if a string consists of only alphabetic characters:  julia  ismatch(r ^[A-Za-z]*$ ,  asdf )\ntrue\n\njulia  ismatch(r ^[A-Za-z]*$ ,  asdf123 )\nfalse", 
+            "title": "Matching Letters"
+        }, 
+        {
+            "location": "/regex/#matching-words", 
+            "text": "Use the  \\b  character to match at word boundaries.  julia  match(r \\bthe\\b ,  read the thesaurus ).offset\n6", 
+            "title": "Matching Words"
+        }, 
+        {
+            "location": "/regex/#finding-the-nth-match", 
+            "text": "The  matchall  function can be used to return all occurrences of a pattern in a string. To nth match can then be retrieved using an indexing. For example, to find the third integer in a string:  julia  matchall(r [0-9]+ ,  12 apples plus 1 make 13 )[3] 13   However, for larger strings, it may take a while to generate all matches. For such cases:  function nth_occurance(pattern::Regex, n::Int, str::String)\n   count = 1\n   idx = 1\n   while idx  = length(str)\n      m = match(pattern, str, idx)\n      if m == nothing\n         return\n      elseif(count == n)\n         return m.match\n      else\n         count += 1\n         idx = m.offset + length(m.match) + 1\n      end\n   end\n\n   return\nend\n\njulia  nth_occurance(r [0-9]+ , 3,  12 plus 1 make 13 ) 13", 
+            "title": "Finding the nth match"
         }, 
         {
             "location": "/dates/", 

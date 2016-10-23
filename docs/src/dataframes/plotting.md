@@ -33,7 +33,7 @@ plot!(ineq[:Year], ineq[:Quintile3], label="Third Quantile")
 plot!(ineq[:Year], ineq[:Quintile4], label="Fourth Quantile")
 ```
 
-![Income inequality in the US](#/media/ineq_quantiles.png)
+![Income inequality in the US](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/ineq_quantiles.png)
 
 A plot of the income development of rich families can be obtained by running:
 
@@ -52,7 +52,7 @@ plot!(ineq[:Year], ineq[:P99_5], label="P99.5")
 plot!(ineq[:Year], ineq[:P99_9], label="P99_9")
 plot!(ineq[:Year], ineq[:P99_99], label="P99_99")
 ```
-![Income inequality in the US](#/media/ineq_pseries.png)
+![Income inequality in the US](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/ineq_pseries.png)
 
 Cleary, P90 and P95 are under-emphasized in the graph. A logarithmic scale can be used by setting the `yscale` argument:
 
@@ -71,9 +71,9 @@ plot(
  plot!(ineq[:Year], ineq[:P99_5], label="P99.5")
  plot!(ineq[:Year], ineq[:P99_9], label="P99_9")
  plot!(ineq[:Year], ineq[:P99_99], label="P99_99")
- ```
+```
 
-![Income inequality in the US](#/media/ineq_pseries_log.png)
+![Income inequality in the US](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/ineq_pseries_log.png)
 
 
 # Histogram
@@ -95,9 +95,9 @@ histogram(
      ylabel="Number of People",
      title="Age Distribution of people with Bad Health"
  )
-```
+ ```
 
-![Income inequality in the US](#/media/bhealth_age_dist.png)
+![Income inequality in the US](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/bhealth_age_dist.png)
 
 
 More plotting examples can be obtained at the Plots.jl [documentation](https://juliaplots.github.io/).
@@ -126,11 +126,11 @@ Scatterplots are useful in visually finding the correlation between two sets of 
 julia> scatter(prestige[:Income], prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")
 ```
 
-![Canadian data, Prestige - Income](#/media/scatter_prestige.png)
+![Canadian data, Prestige - Income](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/scatter_prestige.png)
 
 It is often very useful to plot as it reveals the nature of relationships among parameters, from the above figure it can be observed that distribution of income is not very even. Hence it is worth trying to see how `log` would help here:
 
 ```julia
 julia> scatter(log(prestige[:Income]), prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")
 ```
-![Canadian data, Prestige - Income](#/media/scatter_prestige_log.png)
+![Canadian data, Prestige - Income](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/scatter_prestige_log.png)

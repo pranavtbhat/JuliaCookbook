@@ -28,4 +28,4 @@ plot(
 plot!(f, 1950, 2020, label="correlation")
 ```
 
-![Real GDP per Family vs Year](#/media/linear_regression_ineq.png)
+![Real GDP per Family vs Year](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/linear_regression_ineq.png)

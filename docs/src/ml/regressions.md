@@ -1,7 +1,7 @@
 # Regressions
 
 
-# Linear Regression
+# Linear Regression on DataFrames
 
 The examples shown below use the [Income Inequality in the US](https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/incomeInequality.html) dataset which can be loaded by running:
 ```julia

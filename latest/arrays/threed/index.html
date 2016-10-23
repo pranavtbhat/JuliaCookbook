@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Iteration - JuliaCookbook</title>
+    <title>3D Arrays - JuliaCookbook</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -113,8 +113,8 @@
 
         
             
-<li class="active">
-    <a href="./">Iteration</a>
+<li >
+    <a href="../map/">Iteration</a>
 </li>
 
         
@@ -137,8 +137,8 @@
 
         
             
-<li >
-    <a href="../threed/">3D Arrays</a>
+<li class="active">
+    <a href="./">3D Arrays</a>
 </li>
 
         
@@ -224,12 +224,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../creating/">
+                        <a rel="next" href="../search/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../reorder/">
+                        <a rel="prev" href="../../dates/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -254,78 +254,77 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#doing-something-with-every-element-in-a-list">Doing Something with Every Element in a List</a></li>
-        
-            <li class="second-level"><a href="#iteration">Iteration</a></li>
-            
-        
-            <li class="second-level"><a href="#map">Map</a></li>
-            
-        
-            <li class="second-level"><a href="#map-reduce">Map Reduce</a></li>
-            
+        <li class="first-level active"><a href="#three-dimensional-arrays">Three dimensional arrays</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><a id='Doing-Something-with-Every-Element-in-a-List-1'></a></p>
-<h1 id="doing-something-with-every-element-in-a-list">Doing Something with Every Element in a List</h1>
-<p>Most use cases of Arrays involve iterating over each element in the array, and applying some operation on each element. The result could be new array, changes to the same array, or an aggregate of some kind.</p>
-<p><a id='Iteration-1'></a></p>
-<h2 id="iteration">Iteration</h2>
-<p>Julia provides the <code>in</code> operator which when used in conjunction with the for loop, can be used to iterate over every element in the list:</p>
-<pre><code class="julia">julia&gt; for item in [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;]
-          println(item)
-       end
-A
-B
-C
+<p><a id='Three-dimensional-arrays-1'></a></p>
+<h1 id="three-dimensional-arrays">Three dimensional arrays</h1>
+<p>This file contains an example demonstrating the use of three dimensional arrays.</p>
+<p>Consider the system of equations presented below:</p>
+<pre><code class="julia">xrange = 1 : 0.1 : 10
+yrange = 1 : 0.1 : 10
+zrange = 1 : 0.1 : 10
+
+a = 1
+b = 2
+c = 3
+
+f(x,y,z) = (x - a) * (y - b) * (z - c)
+g(x,y,z) = (x - a) ^ 2 + (y - b) ^ 2 + (z - c) ^ 2
 </code></pre>
 
-<p>To iterate over every element in the list and keep track of the index of the element, the <code>enumerate</code> iterator can be used:</p>
-<pre><code class="julia">julia&gt; for (index,item) in enumerate([&quot;A&quot;,&quot;B&quot;,&quot;C&quot;])
-           println(&quot;$(index) -&gt; $(item)&quot;)
-       end
-1 -&gt; A
-2 -&gt; B
-3 -&gt; C
+<p>If you want to cache the values of <code>f</code> and <code>g</code> for each (x,y,z), then you'd need a three dimensional array:</p>
+<pre><code class="julia">type Point
+   x::Float64
+   y::Float64
+   z::Float64
+   fv::Float64
+   gv::Float64
+end
+
+type Cache
+   xrange::Range
+   yrange::Range
+   zrange::Range
+   points::Array{Point,3}
+
+   function Cache(xrange::Range, yrange::Range, zrange::Range, f::Function, g::Function)
+      self = new(xrange, yrange, zrange, Array{Point,3}(length(xrange), length(yrange), length(zrange)))
+
+      for (i,x) in enumerate(xrange), (j,y) in enumerate(yrange), (k,z) in enumerate(zrange)
+         self.points[i,j,k] = Point(x, y, z, f(x,y,z), g(x,y,z))
+      end
+      self
+   end
+end
+
+Base.show(io::IO, x::Cache) = write(io, &quot;Three dimensional points array with $(length(x.points)) values.\n X = $(x.xrange)\n Y = $(x.yrange)\n Z = $(x.zrange)\n&quot;)
+
+julia&gt; cache = Cache(xrange, yrange, zrange, f, g)
+Three dimensional points array with 753571 values.
+ X = 1.0:0.1:10.0
+ Y = 1.0:0.1:10.0
+ Z = 1.0:0.1:10.0
 </code></pre>
 
-<p>To simply iterate over the indices of an array, the <code>eachindex</code> function can be used:</p>
-<pre><code class="julia">julia&gt; for index in eachindex([&quot;A&quot;,&quot;B&quot;,&quot;C&quot;])
-           println(index)
-       end
-1
-2
-3
-</code></pre>
+<p>Type <code>cache</code> stores the value of <code>f(x,y,z) and g(x,y,z)</code> for each <code>(x,y,z)</code>. But what if you wanted to access the closest available <code>f</code> value for some (x,y,z)? This would require you to define a <code>getindex</code> method for type <code>cache</code>:</p>
+<pre><code class="julia">
+within(i::Number, range::Range) =  minimum(range) &lt;= i &lt;= maximum(range)
 
-<p>To iterate over multiple arrays at the same time, use the <code>zip</code> iterator:</p>
-<pre><code class="julia">julia&gt; for (item1,item2) in zip([&quot;A&quot;,&quot;B&quot;,&quot;C&quot;], [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;])
-          println(item1, &quot; &quot;, item2)
-       end
- A a
- B b
- C c
-</code></pre>
+function Base.getindex(c::Cache, x::Float64, y::Float64, z::Float64)
+   i = within(x, c.xrange) ? searchsortedfirst(c.xrange, x) : error(&quot;X argument out of range&quot;)
+   j = within(y, c.yrange) ? searchsortedfirst(c.yrange, y) : error(&quot;Y argument out of range&quot;)
+   k = within(z, c.zrange) ? searchsortedfirst(c.zrange, z) : error(&quot;Z argument out of range&quot;)
 
-<p><a id='Map-1'></a></p>
-<h2 id="map">Map</h2>
-<p>If you want to perform the same operation, specified by a function <code>f</code>, on every element of an array: <code>map(f, ARRAY)</code>. For example, to increment every element in the array by one:</p>
-<pre><code class="julia">julia&gt; map(x -&gt; x + 1, [1,2,3])
-3-element Array{Int64,1}:
- 2
- 3
- 4
-</code></pre>
+   c.points[i,j,k]
+end
 
-<p><a id='Map-Reduce-1'></a></p>
-<h2 id="map-reduce">Map Reduce</h2>
-<p>If you want to perform an operation on every element in the array, and then perform some sort of aggregation on the result (min, max, sum etc), the <code>mapreduce</code> function can come in handy. For example, to find the sum of the squares of the first five numbers</p>
-<pre><code class="julia">julia&gt; mapreduce(x-&gt;x^2, +, [1,2,3,4,5])
-55
+julia&gt; cache[3.56, 7.90, 9.15]
+Point(3.6,7.9,9.2,95.108,80.00999999999999)
 </code></pre></div>
         
     </div>

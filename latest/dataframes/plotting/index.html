@@ -136,6 +136,12 @@
 </li>
 
         
+            
+<li >
+    <a href="../../arrays/threed/">3D Arrays</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -287,7 +293,7 @@ plot!(ineq[:Year], ineq[:Quintile3], label=&quot;Third Quantile&quot;)
 plot!(ineq[:Year], ineq[:Quintile4], label=&quot;Fourth Quantile&quot;)
 </code></pre>
 
-<p><img alt="Income inequality in the US" src="https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_quantiles.png" /></p>
+<p><img alt="Income inequality in the US" src="#/media/ineq_quantiles.png" /></p>
 <p>A plot of the income development of rich families can be obtained by running:</p>
 <pre><code class="julia">plot(
     ineq[:Year],
@@ -304,7 +310,7 @@ plot!(ineq[:Year], ineq[:P99_9], label=&quot;P99_9&quot;)
 plot!(ineq[:Year], ineq[:P99_99], label=&quot;P99_99&quot;)
 </code></pre>
 
-<p><img alt="Income inequality in the US" src="https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_pseries.png" /></p>
+<p><img alt="Income inequality in the US" src="#/media/ineq_pseries.png" /></p>
 <p>Cleary, P90 and P95 are under-emphasized in the graph. A logarithmic scale can be used by setting the <code>yscale</code> argument:</p>
 <pre><code class="julia">plot(
      ineq[:Year],
@@ -321,7 +327,8 @@ plot!(ineq[:Year], ineq[:P99_99], label=&quot;P99_99&quot;)
  plot!(ineq[:Year], ineq[:P99_9], label=&quot;P99_9&quot;)
  plot!(ineq[:Year], ineq[:P99_99], label=&quot;P99_99&quot;)
  ```
-![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/ineq_pseries_log.png)
+
+![Income inequality in the US](#/media/ineq_pseries_log.png)
 
 
 # Histogram
@@ -333,11 +340,12 @@ The example shown below uses the [Bad Health](http://vincentarelbundock.github.i
 <p>julia bhealth = dataset("COUNT", "badhealth")</p>
 <pre><code>
 A histogram of unhealthy people vs age can be plotted by running:
+
 </code></pre>
 
 <p>julia histogram(      bhealth[bhealth[:BadH] .== 1, :Age],      nbins=10,      label="Number of People",      xlabel="Age",      ylabel="Number of People",      title="Age Distribution of people with Bad Health"  )</p>
 <pre><code>
-![Income inequality in the US](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/bhealth_age_dist.png)
+![Income inequality in the US](#/media/bhealth_age_dist.png)
 
 
 More plotting examples can be obtained at the Plots.jl [documentation](https://juliaplots.github.io/).
@@ -356,13 +364,13 @@ Scatterplots are useful in visually finding the correlation between two sets of 
 
 <p>julia julia&gt; scatter(prestige[:Income], prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")</p>
 <pre><code>
-![Canadian data, Prestige - Income](https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige.png)
+![Canadian data, Prestige - Income](#/media/scatter_prestige.png)
 
 It is often very useful to plot as it reveals the nature of relationships among parameters, from the above figure it can be observed that distribution of income is not very even. Hence it is worth trying to see how `log` would help here:
 
 </code></pre>
 
-<p>julia julia&gt; scatter(log(prestige[:Income]), prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income") ``` <img alt="Canadian data, Prestige - Income" src="https://github.com/pranavtbhat/JuliaCookbook/blob/master/media/scatter_prestige_log.png" /></p></div>
+<p>julia julia&gt; scatter(log(prestige[:Income]), prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income") ``` <img alt="Canadian data, Prestige - Income" src="#/media/scatter_prestige_log.png" /></p></div>
         
     </div>
 

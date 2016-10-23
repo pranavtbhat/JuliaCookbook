@@ -32,6 +32,7 @@ pages:
       - Reordering: arrays/reorder.md
       - Set Operations: arrays/setlike.md
       - Search: arrays/search.md
+      - 3D Arrays: arrays/threed.md
 - Dates: dates.md
 - Regex: regex.md
 - Dates: dates.md

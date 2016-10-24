@@ -272,6 +272,9 @@
         <li class="first-level "><a href="#histogram">Histogram</a></li>
         
     
+        <li class="first-level "><a href="#scatterplots">Scatterplots</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -356,34 +359,36 @@ plot!(ineq[:Year], ineq[:P99_99], label=&quot;P99_99&quot;)
      ylabel=&quot;Number of People&quot;,
      title=&quot;Age Distribution of people with Bad Health&quot;
  )
- ```
-
-![Income inequality in the US](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/bhealth_age_dist.png)
-
-
-More plotting examples can be obtained at the Plots.jl [documentation](https://juliaplots.github.io/).
-
-# Scatterplots
-
-Canadian occupational-prestige dataset is another dataset which can be loaded by running:
-
 </code></pre>
 
-<p>julia julia&gt; prestige = dataset("car","prestige"); julia&gt; head(prestige) 6×7 DataFrames.DataFrame │ Row │ Profession            │ Education │ Income │ Women │ Prestige │ Census │ Type   │ ├─────┼───────────────────────┼───────────┼────────┼───────┼──────────┼────────┼────────┤ │ 1   │ "gov.administrators"  │ 13.11     │ 12351  │ 11.16 │ 68.8     │ 1113   │ "prof" │ │ 2   │ "general.managers"    │ 12.26     │ 25879  │ 4.02  │ 69.1     │ 1130   │ "prof" │ │ 3   │ "accountants"         │ 12.77     │ 9271   │ 15.7  │ 63.4     │ 1171   │ "prof" │ │ 4   │ "purchasing.officers" │ 11.42     │ 8865   │ 9.11  │ 56.8     │ 1175   │ "prof" │ │ 5   │ "chemists"            │ 14.62     │ 8403   │ 11.68 │ 73.5     │ 2111   │ "prof" │ │ 6   │ "physicists"          │ 15.64     │ 11030  │ 5.13  │ 77.6     │ 2113   │ "prof" │</p>
-<pre><code>
-Scatterplots are useful in visually finding the correlation between two sets of variables:
-
+<p><img alt="Income inequality in the US" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/bhealth_age_dist.png" /></p>
+<p>More plotting examples can be obtained at the Plots.jl <a href="https://juliaplots.github.io/">documentation</a>.</p>
+<p><a id='Scatterplots-1'></a></p>
+<h1 id="scatterplots">Scatterplots</h1>
+<p>Canadian occupational-prestige dataset is another dataset which can be loaded by running:</p>
+<pre><code class="julia">julia&gt; prestige = dataset(&quot;car&quot;,&quot;prestige&quot;);
+julia&gt; head(prestige)
+6×7 DataFrames.DataFrame
+│ Row │ Profession            │ Education │ Income │ Women │ Prestige │ Census │ Type   │
+├─────┼───────────────────────┼───────────┼────────┼───────┼──────────┼────────┼────────┤
+│ 1   │ &quot;gov.administrators&quot;  │ 13.11     │ 12351  │ 11.16 │ 68.8     │ 1113   │ &quot;prof&quot; │
+│ 2   │ &quot;general.managers&quot;    │ 12.26     │ 25879  │ 4.02  │ 69.1     │ 1130   │ &quot;prof&quot; │
+│ 3   │ &quot;accountants&quot;         │ 12.77     │ 9271   │ 15.7  │ 63.4     │ 1171   │ &quot;prof&quot; │
+│ 4   │ &quot;purchasing.officers&quot; │ 11.42     │ 8865   │ 9.11  │ 56.8     │ 1175   │ &quot;prof&quot; │
+│ 5   │ &quot;chemists&quot;            │ 14.62     │ 8403   │ 11.68 │ 73.5     │ 2111   │ &quot;prof&quot; │
+│ 6   │ &quot;physicists&quot;          │ 15.64     │ 11030  │ 5.13  │ 77.6     │ 2113   │ &quot;prof&quot; │
 </code></pre>
 
-<p>julia julia&gt; scatter(prestige[:Income], prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income")</p>
-<pre><code>
-![Canadian data, Prestige - Income](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/scatter_prestige.png)
-
-It is often very useful to plot as it reveals the nature of relationships among parameters, from the above figure it can be observed that distribution of income is not very even. Hence it is worth trying to see how `log` would help here:
-
+<p>Scatterplots are useful in visually finding the correlation between two sets of variables:</p>
+<pre><code class="julia">julia&gt; scatter(prestige[:Income], prestige[:Prestige], xaxis=&quot;Income&quot;, yaxis=&quot;Prestige&quot;, title=&quot;Prestige Vs Income&quot;)
 </code></pre>
 
-<p>julia julia&gt; scatter(log(prestige[:Income]), prestige[:Prestige], xaxis="Income", yaxis="Prestige", title="Prestige Vs Income") ``` <img alt="Canadian data, Prestige - Income" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/scatter_prestige_log.png" /></p></div>
+<p><img alt="Canadian data, Prestige - Income" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/scatter_prestige.png" /></p>
+<p>It is often very useful to plot as it reveals the nature of relationships among parameters, from the above figure it can be observed that distribution of income is not very even. Hence it is worth trying to see how <code>log</code> would help here:</p>
+<pre><code class="julia">julia&gt; scatter(log(prestige[:Income]), prestige[:Prestige], xaxis=&quot;Income&quot;, yaxis=&quot;Prestige&quot;, title=&quot;Prestige Vs Income&quot;)
+</code></pre>
+
+<p><img alt="Canadian data, Prestige - Income" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/scatter_prestige_log.png" /></p></div>
         
     </div>
 

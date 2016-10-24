@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,19 +13,19 @@
         
     <url>
      <loc>None/tuples/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/strings/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/dicts/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -40,7 +40,7 @@
     
     <url>
      <loc>None/dates/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -48,7 +48,7 @@
     
     <url>
      <loc>None/regex/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -56,7 +56,7 @@
     
     <url>
      <loc>None/dates/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -65,31 +65,31 @@
         
     <url>
      <loc>None/dataframes/DataFrames/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/dataframes/file_input/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/dataframes/accessors/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/dataframes/RDatasets/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/dataframes/plotting/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -99,7 +99,7 @@
         
     <url>
      <loc>None/ml/regressions/</loc>
-     <lastmod>2016-10-23</lastmod>
+     <lastmod>2016-10-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

@@ -265,8 +265,11 @@
     
         <li class="first-level active"><a href="#regressions">Regressions</a></li>
         
-    
-        <li class="first-level "><a href="#linear-regression-on-dataframes">Linear Regression on DataFrames</a></li>
+            <li class="second-level"><a href="#linear-regression-on-dataframes">Linear Regression on DataFrames</a></li>
+            
+        
+            <li class="second-level"><a href="#minimum-least-squares-on-arbitrary-functions">Minimum Least Squares on Arbitrary Functions</a></li>
+            
         
     
     </ul>
@@ -276,7 +279,7 @@
 <p><a id='Regressions-1'></a></p>
 <h1 id="regressions">Regressions</h1>
 <p><a id='Linear-Regression-on-DataFrames-1'></a></p>
-<h1 id="linear-regression-on-dataframes">Linear Regression on DataFrames</h1>
+<h2 id="linear-regression-on-dataframes">Linear Regression on DataFrames</h2>
 <p>The examples shown below use the <a href="https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/incomeInequality.html">Income Inequality in the US</a> dataset which can be loaded by running:</p>
 <pre><code class="julia">julia&gt; ineq = dataset(&quot;Ecdat&quot;, &quot;incomeInequality&quot;)
 </code></pre>
@@ -299,7 +302,34 @@ plot(
 plot!(f, 1950, 2020, label=&quot;correlation&quot;)
 </code></pre>
 
-<p><img alt="Real GDP per Family vs Year" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/linear_regression_ineq.png" /></p></div>
+<p><img alt="Real GDP per Family vs Year" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/linear_regression_ineq.png" /></p>
+<p><a id='Minimum-Least-Squares-on-Arbitrary-Functions-1'></a></p>
+<h2 id="minimum-least-squares-on-arbitrary-functions">Minimum Least Squares on Arbitrary Functions</h2>
+<p>You have a function <code>y = f(x)</code>, and you want to use want to predict the values of y:</p>
+<pre><code class="julia">using DataFrames
+using GLM
+using Plots
+
+e = 2.3
+f(x) = x ^ e + 1
+df = DataFrame(X = collect(1 : 100), Y = map(f, 1 : 100))
+
+OLS = glm(Y ~ X, df, Normal(), IdentityLink())
+
+plot(
+   df[:X],
+   df[:Y],
+   smooth=true,
+   seriestype=:scatter,
+   linewidth=8,
+   linealpha=0.5,
+   label=&quot;data&quot;
+)
+
+plot!(df[:X], predict(OLS), label=&quot;Correlation&quot;)
+</code></pre>
+
+<p><img alt="Lease squares estimate" src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/least_squares.png" /></p></div>
         
     </div>
 

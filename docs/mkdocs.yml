@@ -35,7 +35,11 @@ pages:
       - 3D Arrays: arrays/threed.md
 - Dates: dates.md
 - Regex: regex.md
-- Dates: dates.md
+- Translation:
+   - Introduction: index.md
+   - Matlab to Julia: matlab.md
+   - Python to Julia: python.md
+   - R to Julia: R.md
 - DataFrames:
    - Introduction: dataframes/DataFrames.md
    - File IO: dataframes/file_input.md

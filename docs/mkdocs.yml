@@ -36,10 +36,10 @@ pages:
 - Dates: dates.md
 - Regex: regex.md
 - Translation:
-   - Introduction: index.md
-   - Matlab to Julia: matlab.md
-   - Python to Julia: python.md
-   - R to Julia: R.md
+   - Introduction: translation/index.md
+   - Matlab to Julia: translation/matlab.md
+   - Python to Julia: translation/python.md
+   - R to Julia: translation/R.md
 - DataFrames:
    - Introduction: dataframes/DataFrames.md
    - File IO: dataframes/file_input.md

@@ -57,4 +57,4 @@ plot(
 plot!(df[:X], predict(OLS), label="Correlation")
 ```
 
-![Lease squares estimate](https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/least_squares.png)
+<img src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/least_squares.png" width="532" height ="807">

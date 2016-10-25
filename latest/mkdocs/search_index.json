@@ -361,44 +361,114 @@
             "title": "Finding the nth match"
         }, 
         {
-            "location": "/dates/", 
-            "text": "Date-Time\n\n\nJulia provides the immutable \nDate\n and \nDateTime\n data structures for working with dates. The \nDate\n object stores only a date and can be created as:\n\n\nDate(YEAR, MONTH, DAY)\n\njulia\n Date(2016, 9, 26)\n2016-09-26\n\n\n\n\nAlternatively a format string can be passed in for a custom date string:\n\n\njulia\n Date(\n26/09/2016\n, \ndd/mm/yyyy\n)\n2016-09-26\n\njulia\n Date(\n09-26-2016\n, \nmm-dd-yyyy\n)\n2016-09-26\n\n\n\n\nThe \nDateTime\n object can be used to work with both date and time, and accepts a variable number of arguments:\n\n\nDateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia\n DateTime(2016)\n2016-01-01T00:00:00\n\njulia\n DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00\n\n\n\n\nThe \nDateTime\n function also accepts a format string for date strings:\n\n\njulia\n DateTime(\n20160926 173000\n,\nyyyymmdd HHMMSS\n)\n2016-09-26T17:30:00\n\n\n\n\n\n\nFinding Today's Date\n\n\nTo fetch a \nDate\n object containing the current date:\n\n\njulia\n Dates.today()\n2016-09-26\n\n\n\n\nTo fetch a \nDateTime\n object containing the current date and time:\n\n\njulia\n Dates.now()\n2016-09-26T18:56:04.868\n\n\n\n\n\n\nAccessing Date-Time fields\n\n\nJulia provides functions to access the individual fields in a \nDateTime\n or \nDate\n object:\n\n\njulia\n using Dates\n\njulia\n t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia\n Dates.year(t)\n2016\n\njulia\n Dates.month(t)\n9\n\njulia\n Dates.day(t)\n26\n\njulia\n Dates.hour(t)\n17\n\njulia\n Dates.minute(t)\n30\n\njulia\n Dates.second(t)\n0\n\n\n\n\n\n\nConverting a Date-Time object to Epoch seconds\n\n\nJulia provides the \ndatetime2epochms\n function to convert the date denoted by a \nDateTime\n object into the number of seconds elapsed since the rounding epoch date-time \n0000-01-01T00:00:00\n:\n\n\njulia\n Dates.datetime2epochms(Dates.now())\n63642136200066\n\n\n\n\n\n\nConverting Epoch Seconds to a Date-Time object\n\n\nJulia provides the \nepochms2datetime\n function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a \nDateTime\n object:\n\n\njulia\n Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066\n\n\n\n\n\n\nAdding to or Subtracting from a Date\n\n\nDate\n objects can be subtracted to yield a result in days:\n\n\njulia\n Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days\n\n\n\n\nSimilarly, \nDateTime\n objects can be subtracted to yield a result in milliseconds:\n\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds\n\n\n\n\nAdditionally, individual \nDateTime\n components can be added or subtracted from both \nDate\n and \nDateTime\n objects, to yield new objects:\n\n\njulia\n Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia\n DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16\n\n\n\n\n\n\nDay in a Week/Month/Year or Week Number\n\n\nJulia provides query functions for \nDateTime\n objects:\n\n\njulia\n t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia\n Dates.dayofweek(t)\n1\n\njulia\n Dates.dayofmonth(t)\n26\n\njulia\n Dates.dayofyear(t)\n270\n\njulia\n Dates.week(t)\n39", 
-            "title": "Dates"
+            "location": "/translation/", 
+            "text": "Translating existing codebases into Julia\n\n\nIf you've decided to:\n\n\n\n\nMove to Julia, and translate your existing Matlab/Python/R codebase to Julia\n\n\nTry Julia out, and see how it performs against an existing codebase in Matlab/Python/R\n\n\n\n\nthen this section should be able to help you out.\n\n\n\n\nReferences\n\n\n\n\nhttp://docs.julialang.org/en/release-0.5/manual/noteworthy-differences/\n\n\nhttps://gist.github.com/cuckookernel/9784889", 
+            "title": "Introduction"
         }, 
         {
-            "location": "/dates/#date-time", 
-            "text": "Julia provides the immutable  Date  and  DateTime  data structures for working with dates. The  Date  object stores only a date and can be created as:  Date(YEAR, MONTH, DAY)\n\njulia  Date(2016, 9, 26)\n2016-09-26  Alternatively a format string can be passed in for a custom date string:  julia  Date( 26/09/2016 ,  dd/mm/yyyy )\n2016-09-26\n\njulia  Date( 09-26-2016 ,  mm-dd-yyyy )\n2016-09-26  The  DateTime  object can be used to work with both date and time, and accepts a variable number of arguments:  DateTime([YEAR], [MONTH], [DAY], [HOURS], [MINUTES], [SECONDS], [MILLI SECONDS])\n\njulia  DateTime(2016)\n2016-01-01T00:00:00\n\njulia  DateTime(2016, 09, 26, 5, 30)\n2016-09-26T05:30:00  The  DateTime  function also accepts a format string for date strings:  julia  DateTime( 20160926 173000 , yyyymmdd HHMMSS )\n2016-09-26T17:30:00", 
-            "title": "Date-Time"
+            "location": "/translation/#translating-existing-codebases-into-julia", 
+            "text": "If you've decided to:   Move to Julia, and translate your existing Matlab/Python/R codebase to Julia  Try Julia out, and see how it performs against an existing codebase in Matlab/Python/R   then this section should be able to help you out.", 
+            "title": "Translating existing codebases into Julia"
         }, 
         {
-            "location": "/dates/#finding-todays-date", 
-            "text": "To fetch a  Date  object containing the current date:  julia  Dates.today()\n2016-09-26  To fetch a  DateTime  object containing the current date and time:  julia  Dates.now()\n2016-09-26T18:56:04.868", 
-            "title": "Finding Today's Date"
+            "location": "/translation/#references", 
+            "text": "http://docs.julialang.org/en/release-0.5/manual/noteworthy-differences/  https://gist.github.com/cuckookernel/9784889", 
+            "title": "References"
         }, 
         {
-            "location": "/dates/#accessing-date-time-fields", 
-            "text": "Julia provides functions to access the individual fields in a  DateTime  or  Date  object:  julia  using Dates\n\njulia  t = DateTime(2016, 9, 26, 17, 30, 0)\n2016-09-26T17:30:00\n\njulia  Dates.year(t)\n2016\n\njulia  Dates.month(t)\n9\n\njulia  Dates.day(t)\n26\n\njulia  Dates.hour(t)\n17\n\njulia  Dates.minute(t)\n30\n\njulia  Dates.second(t)\n0", 
-            "title": "Accessing Date-Time fields"
+            "location": "/translation/matlab/", 
+            "text": "Converting Matlab code to Julia\n\n\nJulia and Matlab have very similar syntax, with a few notable differences. This file should help you convert Matlab code into Julia.\n\n\n\n\nPackage imports\n\n\nThe first challenge in porting your code, is finding the equivalent packages in Julia. A full list of registered Julia packages can be found at the Pkg list \nwebsite\n, or at \nJulia.jl\n, which provides a domain-wise list of packages. Some common matlab libraries and their equivalents include:\n\n\n\n\nBioinformatics Toolbox -\n \nBio.jl\n\n\nStatistics and Machine Learning Toolbox -\n \nStatsBase.jl\n, \nMLBase.jl\n\n\n\n\nAlso, Julia uses the \nimport\n, \nusing\n and \ninclude\n constructs to import code from other files or packages.\n\n\n\n\nArray Indexing\n\n\nMatlab and Julia use very similar notations for vector indexing, and differ only in the operator used: Matlab uses the \nA(1,2)\n notation, while Julia uses the \nA[1,2]\n notation.\n\n\n\n\nAssignment by reference\n\n\nMost julia objects are assigned by reference. Modifications to an object will reflect on all variables pointing to it. For exapmple:\n\n\nA = [1 2 3]\nB = A\npush!(B, 4)\n\njulia\n A\n4-element Array{Int64,1}:\n 1\n 2\n 3\n 4\n\n\n\n\n\n\nImaginary Numbers\n\n\nThe square root of an \n-1\n is denoted by the symbol \nim\n in Julia.\n\n\njulia\n sqrt(complex(-1))\n0.0 + 1.0im\n\n\n\n\nComplex numbers in general are represented by the \nComplex{T}\n type. The complex form of a number can be obtained using the \ncomplex\n function.\n\n\n\n\nFiles and functions\n\n\nIn Julia file names aren't associated with the functions they contain. A file may contain multiple modules and functions and can be named arbitrarily.\n\n\n\n\nFunction definitions\n\n\nJulia uses explicit return statements, as opposed to Matlab which uses named output arguments. The syntax for declaring anonymous functions also differs in Julia.\n\n\nfunction f(x,y)\n   return(x + y)\nend\n\nf = (x,y) -\n x + y\n\nf(x,y) = x + y", 
+            "title": "Matlab to Julia"
         }, 
         {
-            "location": "/dates/#converting-a-date-time-object-to-epoch-seconds", 
-            "text": "Julia provides the  datetime2epochms  function to convert the date denoted by a  DateTime  object into the number of seconds elapsed since the rounding epoch date-time  0000-01-01T00:00:00 :  julia  Dates.datetime2epochms(Dates.now())\n63642136200066", 
-            "title": "Converting a Date-Time object to Epoch seconds"
+            "location": "/translation/matlab/#converting-matlab-code-to-julia", 
+            "text": "Julia and Matlab have very similar syntax, with a few notable differences. This file should help you convert Matlab code into Julia.", 
+            "title": "Converting Matlab code to Julia"
         }, 
         {
-            "location": "/dates/#converting-epoch-seconds-to-a-date-time-object", 
-            "text": "Julia provides the  epochms2datetime  function to convert the date denoted by the number of milliseconds elapsed since the rounding epoch date-time, into a  DateTime  object:  julia  Dates.epochms2datetime(63642136200066)\n2016-09-26T19:10:00.066", 
-            "title": "Converting Epoch Seconds to a Date-Time object"
+            "location": "/translation/matlab/#package-imports", 
+            "text": "The first challenge in porting your code, is finding the equivalent packages in Julia. A full list of registered Julia packages can be found at the Pkg list  website , or at  Julia.jl , which provides a domain-wise list of packages. Some common matlab libraries and their equivalents include:   Bioinformatics Toolbox -   Bio.jl  Statistics and Machine Learning Toolbox -   StatsBase.jl ,  MLBase.jl   Also, Julia uses the  import ,  using  and  include  constructs to import code from other files or packages.", 
+            "title": "Package imports"
         }, 
         {
-            "location": "/dates/#adding-to-or-subtracting-from-a-date", 
-            "text": "Date  objects can be subtracted to yield a result in days:  julia  Date(2016, 09, 26) - Date(2016, 07, 13)\n75 days  Similarly,  DateTime  objects can be subtracted to yield a result in milliseconds:  julia  DateTime(2016, 09, 26, 5, 20, 26) - DateTime(2016, 07, 13, 11, 19)\n6458486000 milliseconds  Additionally, individual  DateTime  components can be added or subtracted from both  Date  and  DateTime  objects, to yield new objects:  julia  Date(2016, 09, 26) - Dates.Year(1) + Dates.Day(10)\n2015-10-06\n\njulia  DateTime(2016, 09, 26, 5, 20, 26) - Dates.Month(2) + Dates.Hour(3) - Dates.Second(10)\n2016-07-26T08:20:16", 
-            "title": "Adding to or Subtracting from a Date"
+            "location": "/translation/matlab/#array-indexing", 
+            "text": "Matlab and Julia use very similar notations for vector indexing, and differ only in the operator used: Matlab uses the  A(1,2)  notation, while Julia uses the  A[1,2]  notation.", 
+            "title": "Array Indexing"
         }, 
         {
-            "location": "/dates/#day-in-a-weekmonthyear-or-week-number", 
-            "text": "Julia provides query functions for  DateTime  objects:  julia  t = Dates.now()\n2016-09-26T19:25:01.028\n\njulia  Dates.dayofweek(t)\n1\n\njulia  Dates.dayofmonth(t)\n26\n\njulia  Dates.dayofyear(t)\n270\n\njulia  Dates.week(t)\n39", 
-            "title": "Day in a Week/Month/Year or Week Number"
+            "location": "/translation/matlab/#assignment-by-reference", 
+            "text": "Most julia objects are assigned by reference. Modifications to an object will reflect on all variables pointing to it. For exapmple:  A = [1 2 3]\nB = A\npush!(B, 4)\n\njulia  A\n4-element Array{Int64,1}:\n 1\n 2\n 3\n 4", 
+            "title": "Assignment by reference"
+        }, 
+        {
+            "location": "/translation/matlab/#imaginary-numbers", 
+            "text": "The square root of an  -1  is denoted by the symbol  im  in Julia.  julia  sqrt(complex(-1))\n0.0 + 1.0im  Complex numbers in general are represented by the  Complex{T}  type. The complex form of a number can be obtained using the  complex  function.", 
+            "title": "Imaginary Numbers"
+        }, 
+        {
+            "location": "/translation/matlab/#files-and-functions", 
+            "text": "In Julia file names aren't associated with the functions they contain. A file may contain multiple modules and functions and can be named arbitrarily.", 
+            "title": "Files and functions"
+        }, 
+        {
+            "location": "/translation/matlab/#function-definitions", 
+            "text": "Julia uses explicit return statements, as opposed to Matlab which uses named output arguments. The syntax for declaring anonymous functions also differs in Julia.  function f(x,y)\n   return(x + y)\nend\n\nf = (x,y) -  x + y\n\nf(x,y) = x + y", 
+            "title": "Function definitions"
+        }, 
+        {
+            "location": "/translation/python/", 
+            "text": "Converting Python code to Julia\n\n\nThis file contains some of the differences between Python and Julia, and should help you convert your Python code base into Julia.\n\n\n\n\nIndentation and Block statements\n\n\nIn Python indentations are used to identify statement blocks. In Julia, the keyword \nend\n is often used to terminate a block of statements.\n\n\n# Julia\nfunction f(x,y)\n   x,y\nend\n\n\n\n\n# Python\ndef f(x,y):\n   return(x,y)\n\n\n\n\n\n\n\nArray indexing\n\n\nIn Julia, array indices begin with 1 unlike Python which uses 0 based indexing.\n\n\nA = [1,2,3]\n\njulia\n A[0]\nERROR: BoundsError: attempt to access 3-element Array{Int64,1} at index [0]\n\n\n\n\n\n\nMultiple Dispatch\n\n\nIn Julia, methods do not belong to objects, but are implementations of generic functions. If you're used to Object oriented languages such as Python, this may seem strange. In python you'd use the \n.\n operator to access an objects methods. In Julia, you would pass the object as the first argument to the function. For example, to define a Class \nPerson\n with an age accessor method in Python, you would do:\n\n\nclass Person:\n   def __init__(self, age):\n      self.age = age\n\n   def get_age(self):\n      return(self.age)\n\np = Person(10)\n\npython\n p.get_age()\n\n\n\n\ntype Person\n   age::Int\nend\n\ngetAge(x::Person) = x.age\n\np = Person(10)\n\njulia\n getAge(p)\n10", 
+            "title": "Python to Julia"
+        }, 
+        {
+            "location": "/translation/python/#converting-python-code-to-julia", 
+            "text": "This file contains some of the differences between Python and Julia, and should help you convert your Python code base into Julia.", 
+            "title": "Converting Python code to Julia"
+        }, 
+        {
+            "location": "/translation/python/#indentation-and-block-statements", 
+            "text": "In Python indentations are used to identify statement blocks. In Julia, the keyword  end  is often used to terminate a block of statements.  # Julia\nfunction f(x,y)\n   x,y\nend  # Python\ndef f(x,y):\n   return(x,y)", 
+            "title": "Indentation and Block statements"
+        }, 
+        {
+            "location": "/translation/python/#array-indexing", 
+            "text": "In Julia, array indices begin with 1 unlike Python which uses 0 based indexing.  A = [1,2,3]\n\njulia  A[0]\nERROR: BoundsError: attempt to access 3-element Array{Int64,1} at index [0]", 
+            "title": "Array indexing"
+        }, 
+        {
+            "location": "/translation/python/#multiple-dispatch", 
+            "text": "In Julia, methods do not belong to objects, but are implementations of generic functions. If you're used to Object oriented languages such as Python, this may seem strange. In python you'd use the  .  operator to access an objects methods. In Julia, you would pass the object as the first argument to the function. For example, to define a Class  Person  with an age accessor method in Python, you would do:  class Person:\n   def __init__(self, age):\n      self.age = age\n\n   def get_age(self):\n      return(self.age)\n\np = Person(10)\n\npython  p.get_age()  type Person\n   age::Int\nend\n\ngetAge(x::Person) = x.age\n\np = Person(10)\n\njulia  getAge(p)\n10", 
+            "title": "Multiple Dispatch"
+        }, 
+        {
+            "location": "/translation/R/", 
+            "text": "Converting R code to Julia\n\n\nThis file contains some of the key differences between R and Julia, and should help you convert your R codebase into Julia.\n\n\n\n\nBlock Termination\n\n\nR uses the \n{}\n to denote a block of statements, as opposed to Julia which uses the \nend\n keyword to terminate a block of statements.\n\n\n\n\nAssignment\n\n\nJulia doesn't allow the \n-\n, \n-\n and \n-\n operators that are used commonly in R code.\n\n\n\n\nArray Creation\n\n\nR     : \nc(1,2,3)\n Julia : \n[1,2,3]\n\n\n\n\nMatrix Multiplication\n\n\nR     : \nA %*% B\n Julia : \nA * B", 
+            "title": "R to Julia"
+        }, 
+        {
+            "location": "/translation/R/#converting-r-code-to-julia", 
+            "text": "This file contains some of the key differences between R and Julia, and should help you convert your R codebase into Julia.", 
+            "title": "Converting R code to Julia"
+        }, 
+        {
+            "location": "/translation/R/#block-termination", 
+            "text": "R uses the  {}  to denote a block of statements, as opposed to Julia which uses the  end  keyword to terminate a block of statements.", 
+            "title": "Block Termination"
+        }, 
+        {
+            "location": "/translation/R/#assignment", 
+            "text": "Julia doesn't allow the  - ,  -  and  -  operators that are used commonly in R code.", 
+            "title": "Assignment"
+        }, 
+        {
+            "location": "/translation/R/#array-creation", 
+            "text": "R     :  c(1,2,3)  Julia :  [1,2,3]", 
+            "title": "Array Creation"
+        }, 
+        {
+            "location": "/translation/R/#matrix-multiplication", 
+            "text": "R     :  A %*% B  Julia :  A * B", 
+            "title": "Matrix Multiplication"
         }, 
         {
             "location": "/dataframes/DataFrames/", 

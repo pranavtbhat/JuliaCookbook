@@ -9,4 +9,4 @@ A Cookbook for Julia. Contains recipes for:
 * Date Time
 * Regular Expressions
 
-This work is funded by Professor Ivo Welch, J. Fred Weston Professor of Finance at UCLA Anderson.
+This work is funded by Professor [Ivo Welch](http://www.ivo-welch.info/), J. Fred Weston Professor of Finance at UCLA Anderson.

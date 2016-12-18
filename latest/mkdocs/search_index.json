@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "JuliaCookbook\n\n\nA Cookbook for Julia. Contains recipes for:\n\n\n\n\nDataFrames\n\n\nTuples\n\n\nArrays\n\n\nStrings\n\n\nDictionaries\n\n\nDate Time\n\n\nRegular Expressions", 
+            "text": "JuliaCookbook\n\n\nA Cookbook for Julia. Contains recipes for:\n\n\n\n\nDataFrames\n\n\nTuples\n\n\nArrays\n\n\nStrings\n\n\nDictionaries\n\n\nDate Time\n\n\nRegular Expressions\n\n\n\n\nThis work is funded by Professor Ivo Welch, J. Fred Weston Professor of Finance at UCLA Anderson.", 
             "title": "Home"
         }, 
         {
             "location": "/#juliacookbook", 
-            "text": "A Cookbook for Julia. Contains recipes for:   DataFrames  Tuples  Arrays  Strings  Dictionaries  Date Time  Regular Expressions", 
+            "text": "A Cookbook for Julia. Contains recipes for:   DataFrames  Tuples  Arrays  Strings  Dictionaries  Date Time  Regular Expressions   This work is funded by Professor Ivo Welch, J. Fred Weston Professor of Finance at UCLA Anderson.", 
             "title": "JuliaCookbook"
         }, 
         {
@@ -587,7 +587,7 @@
         }, 
         {
             "location": "/ml/regressions/", 
-            "text": "Regressions\n\n\n\n\nLinear Regression on DataFrames\n\n\nThe examples shown below use the \nIncome Inequality in the US\n dataset which can be loaded by running:\n\n\njulia\n ineq = dataset(\nEcdat\n, \nincomeInequality\n)\n\n\n\n\nFitting \nRealGDPPerFamily\n to the \nYear\n is as simple as:\n\n\nlinearmodel = fit(LinearModel, RealGDPPerFamily ~ Year, ineq)\nc, m = coef(linearmodel)\nf(x) = m*x + c\nplot(\n   ineq[:Year],\n   ineq[:RealGDPPerFamily],\n   smooth=true,\n   seriestype=:scatter,\n   title = \nRealGDPPerFamily vs Year\n,\n   linewidth=8,\n   linealpha=0.5,\n   label=\ndata\n\n   )\n\nplot!(f, 1950, 2020, label=\ncorrelation\n)\n\n\n\n\n\n\n\n\nMinimum Least Squares on Arbitrary Functions\n\n\nYou have a function \ny = f(x)\n, and you want to use want to predict the values of y:\n\n\nusing DataFrames\nusing GLM\nusing Plots\n\ne = 2.3\nf(x) = x ^ e + 1\ndf = DataFrame(X = collect(1 : 100), Y = map(f, 1 : 100))\n\nOLS = glm(Y ~ X, df, Normal(), IdentityLink())\n\nplot(\n   df[:X],\n   df[:Y],\n   smooth=true,\n   seriestype=:scatter,\n   linewidth=8,\n   linealpha=0.5,\n   label=\ndata\n\n)\n\nplot!(df[:X], predict(OLS), label=\nCorrelation\n)", 
+            "text": "Regressions\n\n\n\n\nLinear Regression on DataFrames\n\n\nThe examples shown below use the \nIncome Inequality in the US\n dataset which can be loaded by running:\n\n\njulia\n ineq = dataset(\nEcdat\n, \nincomeInequality\n)\n\n\n\n\nFitting \nRealGDPPerFamily\n to the \nYear\n is as simple as:\n\n\nlinearmodel = fit(LinearModel, RealGDPPerFamily ~ Year, ineq)\nc, m = coef(linearmodel)\nf(x) = m*x + c\nplot(\n   ineq[:Year],\n   ineq[:RealGDPPerFamily],\n   smooth=true,\n   seriestype=:scatter,\n   title = \nRealGDPPerFamily vs Year\n,\n   linewidth=8,\n   linealpha=0.5,\n   label=\ndata\n\n   )\n\nplot!(f, 1950, 2020, label=\ncorrelation\n)\n\n\n\n\n\n\n\n\nMinimum Least Squares on Arbitrary Functions\n\n\nYou have a function \ny = f(x)\n, and you want to use want to predict the values of y:\n\n\nusing DataFrames\nusing GLM\nusing Plots\n\ne = 2.3\nf(x) = x ^ e + 1\ndf = DataFrame(X = collect(1 : 100), Y = map(f, 1 : 100))\n\nOLS = glm(Y ~ X, df, Normal(), IdentityLink())\n\nplot(\n   df[:X],\n   df[:Y],\n   smooth=true,\n   seriestype=:scatter,\n   linewidth=8,\n   linealpha=0.5,\n   label=\ndata\n\n)\n\nplot!(df[:X], predict(OLS), label=\nCorrelation\n)\n\n\n\n\n\n\n\n\nGeneralized least squares and Weighted Least squares", 
             "title": "Regressions"
         }, 
         {
@@ -604,6 +604,11 @@
             "location": "/ml/regressions/#minimum-least-squares-on-arbitrary-functions", 
             "text": "You have a function  y = f(x) , and you want to use want to predict the values of y:  using DataFrames\nusing GLM\nusing Plots\n\ne = 2.3\nf(x) = x ^ e + 1\ndf = DataFrame(X = collect(1 : 100), Y = map(f, 1 : 100))\n\nOLS = glm(Y ~ X, df, Normal(), IdentityLink())\n\nplot(\n   df[:X],\n   df[:Y],\n   smooth=true,\n   seriestype=:scatter,\n   linewidth=8,\n   linealpha=0.5,\n   label= data \n)\n\nplot!(df[:X], predict(OLS), label= Correlation )", 
             "title": "Minimum Least Squares on Arbitrary Functions"
+        }, 
+        {
+            "location": "/ml/regressions/#generalized-least-squares-and-weighted-least-squares", 
+            "text": "", 
+            "title": "Generalized least squares and Weighted Least squares"
         }
     ]
 }

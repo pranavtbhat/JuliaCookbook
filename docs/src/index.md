@@ -8,3 +8,5 @@ A Cookbook for Julia. Contains recipes for:
 * Dictionaries
 * Date Time
 * Regular Expressions
+
+This work is funded by Professor Ivo Welch, J. Fred Weston Professor of Finance at UCLA Anderson.

@@ -58,3 +58,5 @@ plot!(df[:X], predict(OLS), label="Correlation")
 ```
 
 <img src="https://raw.githubusercontent.com/pranavtbhat/JuliaCookbook/master/media/least_squares.png" width="807" height ="532">
+
+## Generalized least squares and Weighted Least squares

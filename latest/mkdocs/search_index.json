@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "JuliaCookbook\n\n\nA Cookbook for Julia. Contains recipes for:\n\n\n\n\nDataFrames\n\n\nTuples\n\n\nArrays\n\n\nStrings\n\n\nDictionaries\n\n\nDate Time\n\n\nRegular Expressions\n\n\n\n\nThis work is funded by Professor Ivo Welch, J. Fred Weston Professor of Finance at UCLA Anderson.", 
+            "text": "JuliaCookbook\n\n\nA Cookbook for Julia. Contains recipes for:\n\n\n\n\nDataFrames\n\n\nTuples\n\n\nArrays\n\n\nStrings\n\n\nDictionaries\n\n\nDate Time\n\n\nRegular Expressions\n\n\n\n\nThis work is funded by Professor \nIvo Welch\n, J. Fred Weston Professor of Finance at UCLA Anderson.", 
             "title": "Home"
         }, 
         {
             "location": "/#juliacookbook", 
-            "text": "A Cookbook for Julia. Contains recipes for:   DataFrames  Tuples  Arrays  Strings  Dictionaries  Date Time  Regular Expressions   This work is funded by Professor Ivo Welch, J. Fred Weston Professor of Finance at UCLA Anderson.", 
+            "text": "A Cookbook for Julia. Contains recipes for:   DataFrames  Tuples  Arrays  Strings  Dictionaries  Date Time  Regular Expressions   This work is funded by Professor  Ivo Welch , J. Fred Weston Professor of Finance at UCLA Anderson.", 
             "title": "JuliaCookbook"
         }, 
         {
